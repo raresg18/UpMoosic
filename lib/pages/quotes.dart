@@ -1,0 +1,190 @@
+Map<int, String> HappyQuotes = {
+  1: "Happiness depends upon ourselves.",
+  2: "The purpose of life is not to be happy. It is to be useful, to be honorable, to be compassionate, to have it make some difference that you have lived and lived well.",
+  3: "For every minute you are angry you lose sixty seconds of happiness.",
+  4: "Happiness is not something ready-made. It comes from your own actions.",
+  5: "Happiness is a choice, not a result. Nothing will make you happy until you choose to be happy.",
+  6: "The happiness of your life depends upon the quality of your thoughts.",
+  7: "Count your age by friends, not years. Count your life by smiles, not tears.",
+  8: "Happiness is not by chance, but by choice.",
+  9: "When you’re happy you enjoy the music, but when you’re sad you understand the lyrics.",
+  10: "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.",
+  11: "The secret to happiness is not in doing what one likes, but in liking what one does.",
+  12: "Happiness is the highest good.",
+  13: "The more that you read, the more things you will know. The more that you learn, the more places you’ll go.",
+  14: "Happiness is when what you think, what you say, and what you do are in harmony.",
+  15: "The only way to find true happiness is to risk being completely cut open.",
+  16: "Be happy for this moment. This moment is your life.",
+  17: "Happiness is not a goal…it’s a by-product of a life well-lived.",
+  18: "The only thing that will make you happy is being happy with who you are.",
+  19: "The happiest people don’t have the best of everything, they just make the best of everything.",
+  20: "Happiness is not the absence of problems, it’s the ability to deal with them.",
+};
+
+
+Map<int, String> SadQuotes = {
+  1: "Tears come from the heart and not from the brain.",
+  2: "Sometimes, it’s okay to not be okay.",
+  3: "The pain you feel today will be the strength you feel tomorrow.",
+  4: "Don’t cry because it’s over, smile because it happened.",
+  5: "Sadness is but a wall between two gardens.",
+  6: "It’s hard to forget someone who gave you so much to remember.",
+  7: "Grief is the price we pay for love.",
+  8: "When everything feels like an uphill struggle, just think of the view from the top.",
+  9: "The darkest hour has only sixty minutes.",
+  10: "Behind every sweet smile, there is a bitter sadness that no one can ever see and feel.",
+  11: "The best way to heal a broken heart is to give God all the pieces.",
+  12: "Don’t let the sadness of your past and the fear of your future ruin the happiness of your present.",
+  13: "Sometimes, you just need a good cry to feel better.",
+  14: "Every time you feel sad, remember that it’s a part of the journey to growth.",
+  15: "It’s okay to cry, but don’t forget to smile again.",
+  16: "Sadness flies away on the wings of time.",
+  17: "When you're feeling down, remember that tough times never last, but tough people do.",
+  18: "You can't control everything. Sometimes you just need to relax and have faith that things will work out.",
+  19: "The wound is the place where the Light enters you.",
+  20: "A broken heart is just the growing pains necessary so that you can love more completely when the time comes."
+};
+
+
+Map<int, String> EnergeticQuotes = {
+  1: "Success is the sum of small efforts, repeated day in and day out.",
+  2: "Energy and persistence conquer all things.",
+  3: "The only way to achieve the impossible is to believe it is possible.",
+  4: "Don’t stop when you’re tired. Stop when you’re done.",
+  5: "It always seems impossible until it’s done.",
+  6: "The only limit to our realization of tomorrow is our doubts of today.",
+  7: "The harder you work for something, the greater you’ll feel when you achieve it.",
+  8: "You don’t have to be great to start, but you have to start to be great.",
+  9: "The difference between ordinary and extraordinary is that little extra.",
+  10: "A year from now you may wish you had started today.",
+  11: "Your limitation—it’s only your imagination.",
+  12: "Push yourself, because no one else is going to do it for you.",
+  13: "Great things never come from comfort zones.",
+  14: "Dream it. Wish it. Do it.",
+  15: "Success doesn’t just find you. You have to go out and get it.",
+  16: "The pain you feel today will be the strength you feel tomorrow.",
+  17: "Hard work beats talent when talent doesn’t work hard.",
+  18: "Success is what comes after you stop making excuses.",
+  19: "Do something today that your future self will thank you for.",
+  20: "Little by little, one travels far."
+};
+
+
+Map<int, String> RelaxedQuotes = {
+  1: "Relax, breathe, and know that everything will be okay.",
+  2: "Sometimes the most productive thing you can do is relax.",
+  3: "Take it easy. Life is too short to rush through it.",
+  4: "Relax, let go of your worries, and embrace the calm.",
+  5: "Inhale peace, exhale stress.",
+  6: "Nothing is more important than relaxing your mind and body.",
+  7: "The time to relax is when you don’t have time for it.",
+  8: "Breathe in, breathe out. Take it one step at a time.",
+  9: "Calmness is the cradle of power.",
+  10: "Slow down and enjoy the simple things in life.",
+  11: "Peace comes from within. Do not seek it without.",
+  12: "When you relax, everything flows more effortlessly.",
+  13: "Relaxation is the key to achieving your dreams.",
+  14: "Take time to do what makes your soul happy.",
+  15: "A calm mind brings inner strength and self-confidence.",
+  16: "Sometimes you just need to disconnect and relax.",
+  17: "Give yourself permission to relax and take a break.",
+  18: "The most relaxing moment is when you stop worrying about everything.",
+  19: "Let go, breathe, and embrace serenity.",
+  20: "Quiet your mind and let your soul catch up."
+};
+
+
+Map<int, String> MotivatedQuotes = {
+  1: "Don’t watch the clock; do what it does. Keep going.",
+  2: "The harder you work for something, the greater you’ll feel when you achieve it.",
+  3: "You don’t have to be great to start, but you have to start to be great.",
+  4: "The only way to achieve the impossible is to believe it is possible.",
+  5: "Your limitation—it’s only your imagination.",
+  6: "Great things never come from comfort zones.",
+  7: "Dream it. Wish it. Do it.",
+  8: "Success doesn’t just find you. You have to go out and get it.",
+  9: "The difference between ordinary and extraordinary is that little extra.",
+  10: "A year from now you may wish you had started today.",
+  11: "Your only limit is your mind.",
+  12: "Push yourself, because no one else is going to do it for you.",
+  13: "Great things take time. Be patient.",
+  14: "Success is what comes after you stop making excuses.",
+  15: "Do something today that your future self will thank you for.",
+  16: "Little by little, one travels far.",
+  17: "Don’t stop when you’re tired, stop when you’re done.",
+  18: "Sometimes later becomes never. Do it now.",
+  19: "Work hard in silence, let your success be your noise.",
+  20: "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful."
+};
+
+
+Map<int, String> StressedQuotes = {
+  1: "Sometimes the most productive thing you can do is relax.",
+  2: "Don’t stress. Do your best. Forget the rest.",
+  3: "You don’t have to control your thoughts. You just have to stop letting them control you.",
+  4: "The time to relax is when you don’t have time for it.",
+  5: "Breathe in, breathe out. Let go of all the stress.",
+  6: "Calmness is the cradle of power.",
+  7: "Take a deep breath and relax. Everything will work out.",
+  8: "When you feel stressed, take a step back and remind yourself of all the good things.",
+  9: "Don't stress. Do your best, and forget the rest.",
+  10: "Sometimes, it’s okay to not be okay.",
+  11: "Let it go, and let it flow.",
+  12: "Stop stressing over things you can't control.",
+  13: "Inhale peace, exhale stress.",
+  14: "Tension is who you think you should be. Relaxation is who you are.",
+  15: "Stress is caused by being ‘here’ but wanting to be ‘there’.",
+  16: "The greatest weapon against stress is our ability to choose one thought over another.",
+  17: "Remember to breathe. Stress will pass.",
+  18: "Don’t worry about what you can’t control. Just breathe and let it go.",
+  19: "Take a break, take a walk, take a deep breath. Everything will be okay.",
+  20: "When you're stressed, take a pause. Breathe. Relax. You’ve got this."
+};
+
+
+Map<int, String> NostalgicQuotes = {
+  1: "Nostalgia is a dirty liar that insists things were better than they seemed.",
+  2: "Sometimes, you have to go back in time to move forward.",
+  3: "We do not remember days, we remember moments.",
+  4: "Nostalgia is a feeling that takes you to a time that was simpler, warmer, and kinder.",
+  5: "The best part about the past is that it’s over.",
+  6: "The older you get, the more you realize how much you miss the simpler times.",
+  7: "Nostalgia is a powerful thing. It keeps you grounded in memories you never want to forget.",
+  8: "Memories are the key not to the past, but to the future.",
+  9: "In the end, we will remember not the words of our enemies, but the silence of our friends.",
+  10: "There is no greater treasure than the memories we carry with us.",
+  11: "You never know how strong you are until being nostalgic is the only thing that keeps you going.",
+  12: "The past is a place of reference, not a place of residence.",
+  13: "Time goes by, but memories stay forever.",
+  14: "Sometimes, looking back is the only way forward.",
+  15: "The only time you should look back is to see how far you’ve come.",
+  16: "It’s not the memories we regret, but the moments we didn’t embrace while we had them.",
+  17: "There’s no point in dwelling on the past, but it can shape who we are in the present.",
+  18: "You can never replace a lost memory, but you can create new ones.",
+  19: "We can’t go back, but we can always reflect and learn from the past.",
+  20: "Nostalgia is the heart’s way of keeping the past alive."
+};
+
+
+Map<int, String> FocusedQuotes = {
+  1: "Focus on being productive instead of busy.",
+  2: "Success is the sum of small efforts, repeated day in and day out.",
+  3: "The key to success is to focus on goals, not obstacles.",
+  4: "Don’t count the days. Make the days count.",
+  5: "Focus on the present moment and the task at hand.",
+  6: "Concentration is the secret of strength.",
+  7: "The difference between who you are and who you want to be is what you do.",
+  8: "One small positive thought in the morning can change your whole day.",
+  9: "A goal is a dream with a deadline.",
+  10: "Focus on your goal. Don’t look in any direction but ahead.",
+  11: "You can’t reach your full potential if you’re distracted by everything around you.",
+  12: "Clarity comes when you have focus on what matters the most.",
+  13: "Focus on progress, not perfection.",
+  14: "The more you focus, the more you accomplish.",
+  15: "Your mind will always believe everything you tell it. Feed it truth. Feed it hope. Feed it love.",
+  16: "What you get by achieving your goals is not as important as what you become by achieving your goals.",
+  17: "Success is the result of preparation, hard work, and learning from failure.",
+  18: "The only limit to our realization of tomorrow is our doubts of today.",
+  19: "You are what you focus on, so focus on what you want.",
+  20: "Your focus determines your reality."
+};

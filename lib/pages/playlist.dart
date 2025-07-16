@@ -245,7 +245,6 @@ List<Song> playlistHappy = [
 
 ];
 
-
 List<Song> playlistSad = [
   Song(
     title: 'Nothing Else Matters',
@@ -416,7 +415,6 @@ List<Song> playlistSad = [
     spotifyUrl: 'https://open.spotify.com/track/7CjF7taV6NDoIaWSmsuF4Y',
   ),
 ];
-
 
 List<Song> playlistRelaxed = [
   Song(
@@ -1038,7 +1036,7 @@ List<Song> playlistNostalgic = [
     spotifyUrl: 'https://open.spotify.com/track/6T0mLgekmTKedHGnPqODTz',
   ),
   Song(
-    title: 'Stayin' + 'Alive',
+    title: 'Stayin\' Alive',
     artist: 'Bee Gees',
     youtubeUrl: 'https://www.youtube.com/watch?v=I_izvAbhExY',
     spotifyUrl: 'https://open.spotify.com/track/0m7XGBwct4Iqv4Vuw7m13p',
@@ -1197,4 +1195,3 @@ List<Song> playlistFocused = [
     spotifyUrl: 'https://open.spotify.com/track/0tFn33Aq1cbhsmZyZT4zGi',
   ),
 ];
-
