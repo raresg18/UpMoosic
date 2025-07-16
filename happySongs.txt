@@ -1,0 +1,55 @@
+import csv
+
+# List of songs (name and artist only)
+songs = [
+    ("Shape of You", "Ed Sheeran"),
+    ("Blinding Lights", "The Weeknd"),
+    ("Happy", "Pharrell Williams"),
+    ("Can’t Stop the Feeling!", "Justin Timberlake"),
+    ("Uptown Funk", "Mark Ronson ft. Bruno Mars"),
+    ("Walking on Sunshine", "Katrina and the Waves"),
+    ("Good as Hell", "Lizzo"),
+    ("Don’t Start Now", "Dua Lipa"),
+    ("I Wanna Dance with Somebody", "Whitney Houston"),
+    ("Wake Me Up", "Avicii"),
+    ("Levitating", "Dua Lipa ft. DaBaby"),
+    ("Roar", "Katy Perry"),
+    ("Shut Up and Dance", "WALK THE MOON"),
+    ("Just the Way You Are", "Bruno Mars"),
+    ("Sugar", "Maroon 5"),
+    ("Firework", "Katy Perry"),
+    ("Wake Me Up Before You Go-Go", "Wham!"),
+    ("I Gotta Feeling", "The Black Eyed Peas"),
+    ("Dancing Queen", "ABBA"),
+    ("Can’t Stop the Feeling!", "Justin Timberlake"),
+    ("Don’t Stop Me Now", "Queen"),
+    ("Take On Me", "a-ha"),
+    ("Happy Together", "The Turtles"),
+    ("Good Time", "Owl City & Carly Rae Jepsen"),
+    ("I’m Yours", "Jason Mraz"),
+    ("Viva La Vida", "Coldplay"),
+    ("All Star", "Smash Mouth"),
+    ("Sweet Caroline", "Neil Diamond"),
+    ("September", "Earth, Wind & Fire"),
+    ("Shiny Happy People", "R.E.M."),
+    ("On Top of the World", "Imagine Dragons"),
+    ("You Make My Dreams", "Hall & Oates"),
+    ("Go Your Own Way", "Fleetwood Mac"),
+    ("Best Day of My Life", "American Authors"),
+    ("It’s My Life", "Bon Jovi"),
+    ("Counting Stars", "OneRepublic"),
+    ("Fireflies", "Owl City"),
+    ("We Found Love", "Rihanna ft. Calvin Harris"),
+    ("Walk Me Home", "P!nk"),
+    ("Let’s Go", "Calvin Harris ft. Ne-Yo")
+]
+
+# Save as CSV
+csv_filename = "happy_playlist.csv"
+
+with open(csv_filename, mode="w", newline='', encoding='utf-8') as file:
+    writer = csv.writer(file)
+    writer.writerow(["Title", "Artist"])  # Write header
+    writer.writerows(songs)  # Write song data
+
+print(f"CSV file saved as {csv_filename}")
