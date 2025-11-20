@@ -1,0 +1,8 @@
+# l10n.yaml (Creează-l în directorul principal, lângă pubspec.yaml)
+
+arb-dir: lib/l10n
+template-arb-file: app_en.arb
+output-localization-file: app_localizations.dart
+output-class: AppLocalizations
+# 🎯 Aceasta este setarea cheie pentru a forța conversia din snake_case în camelCase.
+format-resource-ids: true

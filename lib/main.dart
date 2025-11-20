@@ -1,14 +1,24 @@
+// main.dart (Versiune Finală cu Suport pentru Plugin-uri Native)
+
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'l10n/app_localizations.dart';
-import 'locale_provider.dart';
+import 'pages/language_provider.dart';
 import 'package:provider/provider.dart';
 import 'pages/home_page.dart';
+import 'l10n/app_localizations.dart';
+import 'pages/quest_state.dart';
 
-void main() {
+// 🎯 MARCAT CA ASYNC
+void main() async {
+  // 🎯 NOU: NECESAR PENTRU shared_preferences ȘI ALTE PLUGIN-URI
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => LocaleProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => LanguageProvider()),
+        ChangeNotifierProvider(create: (_) => QuestState()),
+      ],
       child: const MyApp(),
     ),
   );
@@ -19,13 +29,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<LocaleProvider>(context);
+    // CORECTAT: Ascultă tipul LanguageProvider
+    final provider = Provider.of<LanguageProvider>(context);
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'UpMoosic',
       locale: provider.locale,
-      supportedLocales: L10n.all,
+
+      supportedLocales: const [
+        Locale('ro', ''),
+        Locale('en', ''),
+      ],
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,

@@ -5,18 +5,20 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.8.1
+  # 🎯 CORECTAT: Adaugă limita inferioară (>=3.0.0) pentru a rezolva eroarea SDK.
+  sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
   url_launcher: ^6.2.5
+  shared_preferences: ^2.2.3
 
   flutter_localizations:
     sdk: flutter
 
   intl: ^0.20.2
-  provider: ^6.0.5
+  provider: ^6.1.1
   cupertino_icons: ^1.0.8
 
   table_calendar: ^3.0.9
@@ -27,9 +29,16 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+  # Asigură-te că ai instalat build_runner pentru Hive:
+  # build_runner: ^2.4.8
+  # hive_generator: ^2.0.1
+
 
 flutter:
   uses-material-design: true
+  # 🎯 CORECTAT: Activează flag-ul L10N sub secțiunea 'flutter:'.
   generate: true
 
-  # Remove the localizations block here, as it’s not needed directly under flutter
+# ❌ Secțiunea flutter_intl/flutter_gen nu este necesară
+# deoarece setările implicite sunt folosite, iar 'generate: true'
+# activează procesul L10N.3

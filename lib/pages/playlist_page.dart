@@ -1,159 +1,212 @@
-import 'package:flutter/material.dart';
-import 'playlist.dart';
-import 'song.dart';
-import 'dart:math';
-import 'package:url_launcher/url_launcher.dart';
-import 'quotes.dart';
+// lib/pages/playlist_page.dart
 
-class PlaylistScreen extends StatefulWidget {
+import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'dart:math';
+import 'l10n_utils.dart';
+// Asigură-te că aceste importuri sunt corecte în directorul tău:
+import 'mood_data.dart';
+import 'song.dart';
+import 'quests_page.dart';
+import 'quest_model.dart';
+import '../l10n/app_localizations.dart';
+
+class PlaylistScreen extends StatelessWidget {
   final int mood;
 
-  const PlaylistScreen({Key? key, required this.mood}) : super(key: key);
+  const PlaylistScreen({super.key, required this.mood});
 
-  @override
-  _PlaylistScreenState createState() => _PlaylistScreenState();
-}
-
-class _PlaylistScreenState extends State<PlaylistScreen> {
-  String? randomQuote; // Variable to store the random quote when the button is pressed
-  bool quoteDisplayed = false; // Flag to check if the quote has already been displayed
-  late final Song randomSong; // Store the song so it doesn't change
-
-  // Function to launch URL (YouTube or Spotify)
-  Future<void> _launchURL(String url) async {
-    final Uri uri = Uri.parse(url);
+  Future<void> _launchUrl(String url) async {
+    final uri = Uri.parse(url);
     if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
-      throw 'Cannot open $url';
+      throw Exception('Nu s-a putut lansa $url');
     }
   }
 
-  // Function to display a random quote based on mood
-  void showRandomQuote() {
-    if (quoteDisplayed) return; // If quote has already been shown, do nothing
+  // Culorile de bază
+  final Color _appBarColor = const Color(0xFF455A64);
+  final Color _backgroundColor = const Color(0xFFF7F4F9);
 
-    Map<int, String> selectedQuote = {};
 
-    // Select the appropriate quote map based on mood
-    if (widget.mood == 1) {
-      selectedQuote = HappyQuotes;
-    } else if (widget.mood == 2) {
-      selectedQuote = SadQuotes;
-    } else if (widget.mood == 3) {
-      selectedQuote = RelaxedQuotes;
-    } else if (widget.mood == 4) {
-      selectedQuote = EnergeticQuotes;
-    } else if (widget.mood == 5) {
-      selectedQuote = MotivatedQuotes;
-    } else if (widget.mood == 6) {
-      selectedQuote = StressedQuotes;
-    } else if (widget.mood == 7) {
-      selectedQuote = NostalgicQuotes;
-    } else if (widget.mood == 8) {
-      selectedQuote = FocusedQuotes;
-    }
 
-    // Generate a random index and fetch a random quote
-    final randomIndex = Random().nextInt(selectedQuote.length) + 1;
-    final randomQuoteSelected = selectedQuote[randomIndex] ?? "Stay positive!";
-
-    // Update the UI with the new quote
-    setState(() {
-      randomQuote = randomQuoteSelected;
-      quoteDisplayed = true; // Mark that the quote has been shown
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-
-    // Select playlist based on mood
-    List<Song> selectedPlaylist = [];
-    if (widget.mood == 1) {
-      selectedPlaylist = playlistHappy; // Happy playlist
-    } else if (widget.mood == 2) {
-      selectedPlaylist = playlistSad; // Sad playlist
-    } else if (widget.mood == 3) {
-      selectedPlaylist = playlistRelaxed; // Relaxed playlist
-    } else if (widget.mood == 4) {
-      selectedPlaylist = playlistEnergetic; // Energetic playlist
-    } else if (widget.mood == 5) {
-      selectedPlaylist = playlistMotivated; // Motivated playlist
-    } else if (widget.mood == 6) {
-      selectedPlaylist = playlistStressed; // Stress-Free playlist
-    } else if (widget.mood == 7) {
-      selectedPlaylist = playlistNostalgic; // Nostalgic playlist
-    } else if (widget.mood == 8) {
-      selectedPlaylist = playlistFocused; // Focused playlist
-    }
-
-    // Select a random song from the playlist (store it in a final variable)
-    final randomSongIndex = Random().nextInt(selectedPlaylist.length);
-    randomSong = selectedPlaylist[randomSongIndex]; // This song won't change after initial selection
-  }
 
   @override
   Widget build(BuildContext context) {
+    // Obține instanța localizării
+    final l10n = AppLocalizations.of(context)!;
+
+    final selectedMoodModel = getMoodModelById(mood);
+
+    // Definirea culorii temei (pentru butoane)
+    final Color themePrimaryColor = Theme.of(context).colorScheme.primary;
+
+    // --- Traducerea numelui stării de spirit ---
+    final String moodNameKey = selectedMoodModel.name;
+    String translatedMoodName;
+    switch (moodNameKey) {
+      case 'Fericit': translatedMoodName = l10n.moodHappy; break;
+      case 'Trist': translatedMoodName = l10n.moodSad; break;
+      case 'Relaxat': translatedMoodName = l10n.moodRelaxed; break;
+      case 'Energetic': translatedMoodName = l10n.moodEnergetic; break;
+      case 'Motivat': translatedMoodName = l10n.moodMotivated; break;
+      case 'Stresat': translatedMoodName = l10n.moodStressed; break;
+      case 'Nostalgic': translatedMoodName = l10n.moodNostalgic; break;
+      case 'Focusat': translatedMoodName = l10n.moodFocused; break;
+      default: translatedMoodName = moodNameKey;
+    }
+
+
+    final Color buttonBackgroundColor = Colors.white;
+
+    final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
+      padding: const EdgeInsets.symmetric(vertical: 15),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30),
+      ),
+      elevation: 3,
+    );
+
+    // --- Logica de Randomizare ---
+    final random = Random();
+
+    // 1. Citatul
+    final int quoteIndex = random.nextInt(selectedMoodModel.quotesKeys.length);
+    final String quoteKey = selectedMoodModel.quotesKeys[quoteIndex];
+    final String translatedQuote = l10n.getQuote(quoteKey);
+
+    // 2. Melodia
+    final List<Song> songList = selectedMoodModel.playlist;
+    final int songIndex = random.nextInt(songList.length);
+    final Song selectedSong = songList[songIndex]; // 💡 Melodia aleasă
+
+    // 3. Quest-ul
+    final List<QuestModel> questList = selectedMoodModel.questsKeys;
+    final QuestModel selectedQuest = questList.isNotEmpty
+        ? questList[random.nextInt(questList.length)]
+        : const QuestModel(titleKey: "quest_none_title", descriptionKey: "quest_none_desc", emoji: "");
+    // ---------------------------------
+
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Melodie recomandată'),
+        // Titlul barei (numele stării tradus)
+        title: Text(translatedMoodName),
+        backgroundColor: _appBarColor,
+        foregroundColor: Colors.white,
       ),
+      backgroundColor: _backgroundColor,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(height: 50),
-            // Display the random song (song won't change)
-            Text(
-              'Melodie: ${randomSong.title}\nArtist: ${randomSong.artist}',
-              style: TextStyle(fontSize: 25),
-              textAlign: TextAlign.center,
-            ),
+        child: Padding(
+          padding: const EdgeInsets.all(30.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
 
-            const SizedBox(height: 150),
-
-            // Display the random quote when it is available (only after button press)
-            if (randomQuote != null)
-              Text(
-                '"$randomQuote"', // Display the random quote
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black54,
-                  fontStyle: FontStyle.italic, // Styling the quote
+              // Citatul
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Text(
+                  '“$translatedQuote”',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontStyle: FontStyle.italic,
+                    color: Colors.grey.shade700,
+                  ),
                 ),
-                textAlign: TextAlign.center,
               ),
 
-            // Button to show the quote
-            Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: ElevatedButton(
-                onPressed: showRandomQuote,
-                child: Text('Quote Me'),
-              ),
-            ),
+              const SizedBox(height: 50),
 
-            // Buttons for YouTube and Spotify
-            Padding(
-              padding: const EdgeInsets.only(top: 40.0), // Adds space above the buttons
-              child: ElevatedButton(
-                onPressed: () {
-                  _launchURL(randomSong.youtubeUrl); // Open song on YouTube
-                },
-                child: const Text('Ascultă pe YouTube'),
+              // Melodia Aleasă (Titlu)
+              Text(
+                l10n.luckySongPrompt, // "Melodia ta norocoasă:"
+                style: TextStyle(fontSize: 16, color: Colors.grey.shade600),
               ),
-            ),
+              const SizedBox(height: 5),
 
-            Padding(
-              padding: const EdgeInsets.only(top: 20.0), // Adds space between buttons
-              child: ElevatedButton(
-                onPressed: () {
-                  _launchURL(randomSong.spotifyUrl); // Open song on Spotify
-                },
-                child: const Text('Ascultă pe Spotify'),
+              // 🟢 CORECȚIA: AFIȘEAZĂ TITLUL ȘI ARTISTUL PE RÂNDURI SEPARATE
+              Column(
+                children: [
+                  // TITLUL MELODIEI
+                  Text(
+                    selectedSong.title,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: selectedMoodModel.color,
+                    ),
+                  ),
+                  const SizedBox(height: 4), // Spațiere mică între titlu și artist
+                  // ARTISTUL
+                  Text(
+                    selectedSong.artist,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: selectedMoodModel.color.withOpacity(0.8), // Artistul e puțin mai estompat
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
+              // -----------------------------------------------------------
+
+              const SizedBox(height: 60),
+
+              // 1. Buton YouTube
+              SizedBox(
+                width: 250,
+                child: ElevatedButton.icon(
+                  onPressed: () => _launchUrl(selectedSong.youtubeUrl),
+                  icon: const Icon(Icons.video_library),
+                  label: Text(l10n.listenOnYoutube),
+                  style: buttonStyle.copyWith(
+                    backgroundColor: MaterialStateProperty.all(buttonBackgroundColor),
+                    foregroundColor: MaterialStateProperty.all(themePrimaryColor),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+
+              // 2. Buton Spotify
+              SizedBox(
+                width: 250,
+                child: ElevatedButton.icon(
+                  onPressed: () => _launchUrl(selectedSong.spotifyUrl),
+                  icon: const Icon(Icons.headset),
+                  label: Text(l10n.listenOnSpotify),
+                  style: buttonStyle.copyWith(
+                    backgroundColor: MaterialStateProperty.all(buttonBackgroundColor),
+                    foregroundColor: MaterialStateProperty.all(themePrimaryColor),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              // 3. Butonul QUEST
+              SizedBox(
+                width: 250,
+                child: ElevatedButton.icon(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => QuestsPage(mood: mood, selectedQuest: selectedQuest),
+                      ),
+                    );
+                  },
+                  icon: const Icon(Icons.task_alt),
+                  label: Text(l10n.questButtonLabel),
+                  style: buttonStyle.copyWith(
+                    backgroundColor: MaterialStateProperty.all(buttonBackgroundColor),
+                    foregroundColor: MaterialStateProperty.all(themePrimaryColor),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
