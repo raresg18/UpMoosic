@@ -1153,6 +1153,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Mark as Complete'**
   String get completeQuestButton;
+
+  /// No description provided for @completedQuestsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed Quests History'**
+  String get completedQuestsTitle;
+
+  /// No description provided for @noCompletedQuests.
+  ///
+  /// In en, this message translates to:
+  /// **'You haven\'t completed any quests yet.'**
+  String get noCompletedQuests;
+
+  /// No description provided for @userScoreLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Quest Points: {score}'**
+  String userScoreLabel(Object score);
+
+  /// No description provided for @deleteHistoryButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Quests History'**
+  String get deleteHistoryButton;
+
+  /// No description provided for @deleteConfirmationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Deletion'**
+  String get deleteConfirmationTitle;
+
+  /// No description provided for @deleteConfirmationMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to permanently delete ALL completed quests?'**
+  String get deleteConfirmationMessage;
+
+  /// No description provided for @deleteYes.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes, Delete'**
+  String get deleteYes;
+
+  /// No description provided for @deleteNo.
+  ///
+  /// In en, this message translates to:
+  /// **'No, Cancel'**
+  String get deleteNo;
+
+  /// No description provided for @exitAppButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Exit Application'**
+  String get exitAppButton;
 }
 
 class _AppLocalizationsDelegate

@@ -27,6 +27,7 @@
   "journalTitle": "Jurnal Emoțional & Calendar de Stări 🗓️",
   "dailyNoteLabel": "Notițe pentru Jurnal (opțional)",
   "journalNoteHint": "Ce s-a întâmplat astăzi?",
+  "journalNoteLabel": "Notițe Jurnal (opțional)",
   "buttonUpdateMood": "Actualizează starea zilnică",
   "buttonSaveMood": "Salvează starea zilnică",
   "todayMoodIs": "Starea de astăzi este: {mood}! (Poți actualiza)",
@@ -240,5 +241,19 @@
   "mood": "Stare",
   "questAcceptedMessage" : "Quest Acceptat",
   "cancelQuestButton": "Anulează Misiunea",
-    "completeQuestButton": "Marchează ca Finalizat"
+  "completeQuestButton": "Marchează ca Finalizat",
+  "completedQuestsTitle": "Istoric Misiuni Finalizate",
+  "noCompletedQuests": "Nu ai finalizat încă nicio misiune.",
+  "userScoreLabel": "Puncte din Quest: {score}",
+    "@userScoreLabel": {
+      "placeholders": {
+        "score": {}
+      }
+    },
+  "deleteHistoryButton": "Șterge Istoric Quest-uri",
+  "deleteConfirmationTitle": "Confirmă Ștergerea",
+  "deleteConfirmationMessage": "Ești sigur că vrei să ștergi definitiv TOATE quest-urile finalizate?",
+  "deleteYes": "Da, Șterge",
+  "deleteNo": "Nu, Anulează",
+  "exitAppButton": "Ieșire din Aplicație"
 }

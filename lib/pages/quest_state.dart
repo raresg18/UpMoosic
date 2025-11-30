@@ -1,3 +1,5 @@
+// lib/models/quest_state.dart
+
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -88,6 +90,19 @@ class QuestState extends ChangeNotifier {
   void removeQuest(UserQuest quest) {
     _activeQuests.removeWhere((q) => q.questKey == quest.questKey);
     _saveQuests();
+    notifyListeners();
+  }
+
+  Future<void> clearCompletedQuestsHistory() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    // 1. Șterge lista de pe disc (folosim cheia corectă _completedKey)
+    await prefs.remove(_completedKey);
+
+    // 2. Golește lista din memorie imediat
+    _completedQuests.clear();
+
+    // 3. Notifică toți ascultătorii (UI-ul se va actualiza și va afișa lista goală)
     notifyListeners();
   }
 

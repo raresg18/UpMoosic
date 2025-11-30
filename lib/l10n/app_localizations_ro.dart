@@ -70,7 +70,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get selectTodayMood => 'Selectează starea de astăzi:';
 
   @override
-  String get journalNoteLabel => 'Journal Notes (optional)';
+  String get journalNoteLabel => 'Notițe Jurnal (opțional)';
 
   @override
   String get journalNoteHint => 'Ce s-a întâmplat astăzi?';
@@ -606,4 +606,34 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get completeQuestButton => 'Marchează ca Finalizat';
+
+  @override
+  String get completedQuestsTitle => 'Istoric Misiuni Finalizate';
+
+  @override
+  String get noCompletedQuests => 'Nu ai finalizat încă nicio misiune.';
+
+  @override
+  String userScoreLabel(Object score) {
+    return 'Puncte din Quest: $score';
+  }
+
+  @override
+  String get deleteHistoryButton => 'Șterge Istoric Quest-uri';
+
+  @override
+  String get deleteConfirmationTitle => 'Confirmă Ștergerea';
+
+  @override
+  String get deleteConfirmationMessage =>
+      'Ești sigur că vrei să ștergi definitiv TOATE quest-urile finalizate?';
+
+  @override
+  String get deleteYes => 'Da, Șterge';
+
+  @override
+  String get deleteNo => 'Nu, Anulează';
+
+  @override
+  String get exitAppButton => 'Ieșire din Aplicație';
 }

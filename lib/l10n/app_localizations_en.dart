@@ -597,4 +597,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get completeQuestButton => 'Mark as Complete';
+
+  @override
+  String get completedQuestsTitle => 'Completed Quests History';
+
+  @override
+  String get noCompletedQuests => 'You haven\'t completed any quests yet.';
+
+  @override
+  String userScoreLabel(Object score) {
+    return 'Quest Points: $score';
+  }
+
+  @override
+  String get deleteHistoryButton => 'Delete Quests History';
+
+  @override
+  String get deleteConfirmationTitle => 'Confirm Deletion';
+
+  @override
+  String get deleteConfirmationMessage =>
+      'Are you sure you want to permanently delete ALL completed quests?';
+
+  @override
+  String get deleteYes => 'Yes, Delete';
+
+  @override
+  String get deleteNo => 'No, Cancel';
+
+  @override
+  String get exitAppButton => 'Exit Application';
 }

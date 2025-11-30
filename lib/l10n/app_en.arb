@@ -247,6 +247,20 @@
       "noActiveQuests": "You have no active quests. Choose one from the main screen!",
       "mood": "Mood",
       "questAcceptedMessage" : "Quest Accepted",
-       "cancelQuestButton": "Cancel Quest",
-        "completeQuestButton": "Mark as Complete"
+      "cancelQuestButton": "Cancel Quest",
+      "completeQuestButton": "Mark as Complete",
+      "completedQuestsTitle": "Completed Quests History",
+      "noCompletedQuests": "You haven't completed any quests yet.",
+      "userScoreLabel": "Quest Points: {score}",
+        "@userScoreLabel": {
+          "placeholders": {
+            "score": {}
+          }
+       },
+     "deleteHistoryButton": "Delete Quests History",
+     "deleteConfirmationTitle": "Confirm Deletion",
+     "deleteConfirmationMessage": "Are you sure you want to permanently delete ALL completed quests?",
+     "deleteYes": "Yes, Delete",
+     "deleteNo": "No, Cancel",
+     "exitAppButton": "Exit Application"
 }
