@@ -30,7 +30,7 @@ class QuestsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
 
-    final selectedMoodModel = getMoodModelById(mood);
+    final selectedMoodModel = MoodData.getMoodModelById(mood);
     final moodColor = selectedMoodModel.color;
 
     // Traducem numele stării de spirit pentru a-l afișa (în snake_case)
@@ -73,7 +73,8 @@ class QuestsPage extends StatelessWidget {
             children: <Widget>[
 
               Text(
-                'Starea ta: ${selectedMoodModel.emoji} ${translatedMoodName}',
+                // 🎯 FIX: Folosește cheia de localizare 'currentMoodTitlePrefix'
+                '${l10n.currentMoodTitlePrefix} ${selectedMoodModel.emoji} ${translatedMoodName}',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.grey.shade700),
               ),

@@ -1,31 +1,47 @@
-// lib/models/mood_model.dart (sau unde ai salvat acest fișier)
+// lib/models/mood_model.dart
 
 import 'package:flutter/material.dart';
 import 'song.dart';
-import 'quest_model.dart'; // Folosește acum titleKey și descriptionKey
+import 'quest_model.dart';
+
+// 🎯 ENUMUL NECESAR PENTRU TIPUL DE STARE
+enum Mood {
+  happy,
+  sad,
+  relaxed,
+  energetic,
+  motivated,
+  stressed,
+  nostalgic,
+  focused,
+}
 
 /// Defineste un model care contine toate datele necesare pentru o stare
 class MoodModel {
   final int id;
-  final String name; // Numele fix (Fericit, Trist) - folosit pentru mapare L10N
+  // 🎯 NOU: Adaugă tipul Mood (enum)
+  final Mood type;
+  final String name;
   final String emoji;
   final Color color;
 
   final List<Song> playlist;
 
-  // 🎯 SCHIMBARE CRUCIALĂ: Stochează cheile de localizare (ex: "quote_happy_1")
-  final List<String> quotesKeys; // Schimbat din 'quotes'
+  // Utilizează 'quotesKeys'
+  final List<String> quotesKeys;
 
-  // 🎯 SCHIMBARE CRUCIALĂ: Stochează modelele de misiuni care folosesc deja chei
-  final List<QuestModel> questsKeys; // Schimbat din 'quests'
+  // 🎯 Utilizează 'questsKeys' (FOSTUL 'quests')
+  final List<QuestModel> questsKeys;
 
+  // Constructorul final
   const MoodModel({
     required this.id,
+    required this.type, // 🎯 NOU: OBLIGATORIU
     required this.name,
     required this.emoji,
     required this.color,
     required this.playlist,
-    required this.quotesKeys,   // NOU: Folosește 'quotesKeys'
-    required this.questsKeys,   // NOU: Folosește 'questsKeys'
+    required this.quotesKeys,
+    required this.questsKeys,   // 🎯 OBLIGATORIU: Am reținut 'questsKeys'
   });
 }

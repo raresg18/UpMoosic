@@ -99,7 +99,7 @@ class _MoodSelectorPageState extends State<MoodSelectorPage> {
                 spacing: 12.0,
                 runSpacing: 12.0,
                 // Iterăm prin noua listă de MoodModel-uri
-                children: allMoodsListView.map((moodModel) {
+                children: MoodData.allMoodsListView.map((moodModel) {
                   final isSelected = moodModel.name == _selectedMoodName;
 
                   return MoodChip(

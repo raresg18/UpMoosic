@@ -623,7 +623,7 @@ abstract class AppLocalizations {
   /// No description provided for @quest_happy_title_2.
   ///
   /// In en, this message translates to:
-  /// **'Note down your gratitude'**
+  /// **'Note down what you are grateful for'**
   String get quest_happy_title_2;
 
   /// No description provided for @quest_happy_desc_2.
@@ -631,174 +631,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Write three things that went well for you today.'**
   String get quest_happy_desc_2;
-
-  /// No description provided for @quest_sad_title_1.
-  ///
-  /// In en, this message translates to:
-  /// **'Listen to your favorite song'**
-  String get quest_sad_title_1;
-
-  /// No description provided for @quest_sad_desc_1.
-  ///
-  /// In en, this message translates to:
-  /// **'Put on a song that reminds you of good times.'**
-  String get quest_sad_desc_1;
-
-  /// No description provided for @quest_sad_title_2.
-  ///
-  /// In en, this message translates to:
-  /// **'Call a friend'**
-  String get quest_sad_title_2;
-
-  /// No description provided for @quest_sad_desc_2.
-  ///
-  /// In en, this message translates to:
-  /// **'Connection always helps.'**
-  String get quest_sad_desc_2;
-
-  /// No description provided for @quest_relaxed_title_1.
-  ///
-  /// In en, this message translates to:
-  /// **'Drink a glass of water'**
-  String get quest_relaxed_title_1;
-
-  /// No description provided for @quest_relaxed_desc_1.
-  ///
-  /// In en, this message translates to:
-  /// **'Hydration helps calm the nervous system.'**
-  String get quest_relaxed_desc_1;
-
-  /// No description provided for @quest_relaxed_title_2.
-  ///
-  /// In en, this message translates to:
-  /// **'Meditate for 5 minutes'**
-  String get quest_relaxed_title_2;
-
-  /// No description provided for @quest_relaxed_desc_2.
-  ///
-  /// In en, this message translates to:
-  /// **'Focus on your breath to re-anchor yourself.'**
-  String get quest_relaxed_desc_2;
-
-  /// No description provided for @quest_energetic_title_1.
-  ///
-  /// In en, this message translates to:
-  /// **'Do a set of squats'**
-  String get quest_energetic_title_1;
-
-  /// No description provided for @quest_energetic_desc_1.
-  ///
-  /// In en, this message translates to:
-  /// **'Get your blood flowing quickly.'**
-  String get quest_energetic_desc_1;
-
-  /// No description provided for @quest_energetic_title_2.
-  ///
-  /// In en, this message translates to:
-  /// **'Write a list of crazy ideas'**
-  String get quest_energetic_title_2;
-
-  /// No description provided for @quest_energetic_desc_2.
-  ///
-  /// In en, this message translates to:
-  /// **'Use your energy for maximum creativity.'**
-  String get quest_energetic_desc_2;
-
-  /// No description provided for @quest_motivated_title_1.
-  ///
-  /// In en, this message translates to:
-  /// **'Set a micro-goal'**
-  String get quest_motivated_title_1;
-
-  /// No description provided for @quest_motivated_desc_1.
-  ///
-  /// In en, this message translates to:
-  /// **'Choose a task you can finish in 15 minutes.'**
-  String get quest_motivated_desc_1;
-
-  /// No description provided for @quest_motivated_title_2.
-  ///
-  /// In en, this message translates to:
-  /// **'Reorganize your workspace'**
-  String get quest_motivated_title_2;
-
-  /// No description provided for @quest_motivated_desc_2.
-  ///
-  /// In en, this message translates to:
-  /// **'A clean environment helps focus.'**
-  String get quest_motivated_desc_2;
-
-  /// No description provided for @quest_stressed_title_1.
-  ///
-  /// In en, this message translates to:
-  /// **'5-minute breathing exercise'**
-  String get quest_stressed_title_1;
-
-  /// No description provided for @quest_stressed_desc_1.
-  ///
-  /// In en, this message translates to:
-  /// **'Practice the 4-7-8 deep breathing technique.'**
-  String get quest_stressed_desc_1;
-
-  /// No description provided for @quest_stressed_title_2.
-  ///
-  /// In en, this message translates to:
-  /// **'Write down all your worries'**
-  String get quest_stressed_title_2;
-
-  /// No description provided for @quest_stressed_desc_2.
-  ///
-  /// In en, this message translates to:
-  /// **'Move your thoughts from your head onto paper.'**
-  String get quest_stressed_desc_2;
-
-  /// No description provided for @quest_nostalgic_title_1.
-  ///
-  /// In en, this message translates to:
-  /// **'Flip through an old photo'**
-  String get quest_nostalgic_title_1;
-
-  /// No description provided for @quest_nostalgic_desc_1.
-  ///
-  /// In en, this message translates to:
-  /// **'Relive a pleasant memory for a few minutes.'**
-  String get quest_nostalgic_desc_1;
-
-  /// No description provided for @quest_nostalgic_title_2.
-  ///
-  /// In en, this message translates to:
-  /// **'Write a letter (don\'t send it)'**
-  String get quest_nostalgic_title_2;
-
-  /// No description provided for @quest_nostalgic_desc_2.
-  ///
-  /// In en, this message translates to:
-  /// **'Put your feelings about the past onto paper.'**
-  String get quest_nostalgic_desc_2;
-
-  /// No description provided for @quest_focused_title_1.
-  ///
-  /// In en, this message translates to:
-  /// **'Pomodoro Technique (25/5)'**
-  String get quest_focused_title_1;
-
-  /// No description provided for @quest_focused_desc_1.
-  ///
-  /// In en, this message translates to:
-  /// **'Work intensely for 25 minutes, take a 5-minute break.'**
-  String get quest_focused_desc_1;
-
-  /// No description provided for @quest_focused_title_2.
-  ///
-  /// In en, this message translates to:
-  /// **'Turn off notifications'**
-  String get quest_focused_title_2;
-
-  /// No description provided for @quest_focused_desc_2.
-  ///
-  /// In en, this message translates to:
-  /// **'Eliminate all distractions for the next hour.'**
-  String get quest_focused_desc_2;
 
   /// No description provided for @quest_happy_title_3.
   ///
@@ -836,6 +668,90 @@ abstract class AppLocalizations {
   /// **'Watch a funny clip or read a joke.'**
   String get quest_happy_desc_5;
 
+  /// No description provided for @quest_happy_title_6.
+  ///
+  /// In en, this message translates to:
+  /// **'Send a kind word'**
+  String get quest_happy_title_6;
+
+  /// No description provided for @quest_happy_desc_6.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell someone what you like about them or what you appreciate.'**
+  String get quest_happy_desc_6;
+
+  /// No description provided for @quest_happy_title_7.
+  ///
+  /// In en, this message translates to:
+  /// **'Listen to the song that makes you happy'**
+  String get quest_happy_title_7;
+
+  /// No description provided for @quest_happy_desc_7.
+  ///
+  /// In en, this message translates to:
+  /// **'Play the song that instantly makes you smile.'**
+  String get quest_happy_desc_7;
+
+  /// No description provided for @quest_happy_title_8.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer a smile to a stranger'**
+  String get quest_happy_title_8;
+
+  /// No description provided for @quest_happy_desc_8.
+  ///
+  /// In en, this message translates to:
+  /// **'Intentionally smile at someone you don\'t know.'**
+  String get quest_happy_desc_8;
+
+  /// No description provided for @quest_happy_title_9.
+  ///
+  /// In en, this message translates to:
+  /// **'Journal one reason'**
+  String get quest_happy_title_9;
+
+  /// No description provided for @quest_happy_desc_9.
+  ///
+  /// In en, this message translates to:
+  /// **'Write down the happiest part of your day.'**
+  String get quest_happy_desc_9;
+
+  /// No description provided for @quest_happy_title_10.
+  ///
+  /// In en, this message translates to:
+  /// **'Give a \'High Five\''**
+  String get quest_happy_title_10;
+
+  /// No description provided for @quest_happy_desc_10.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask someone for a \'high five\' or hug a loved one.'**
+  String get quest_happy_desc_10;
+
+  /// No description provided for @quest_sad_title_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Listen to your favorite song'**
+  String get quest_sad_title_1;
+
+  /// No description provided for @quest_sad_desc_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Put on a song that reminds you of good times.'**
+  String get quest_sad_desc_1;
+
+  /// No description provided for @quest_sad_title_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Call a friend'**
+  String get quest_sad_title_2;
+
+  /// No description provided for @quest_sad_desc_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Connection always helps.'**
+  String get quest_sad_desc_2;
+
   /// No description provided for @quest_sad_title_3.
   ///
   /// In en, this message translates to:
@@ -871,6 +787,150 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Warm drinks help with emotional comfort.'**
   String get quest_sad_desc_5;
+
+  /// No description provided for @quest_sad_title_6.
+  ///
+  /// In en, this message translates to:
+  /// **'The 5-minute rule'**
+  String get quest_sad_title_6;
+
+  /// No description provided for @quest_sad_desc_6.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow yourself to be sad for only 5 minutes. Then, change your focus.'**
+  String get quest_sad_desc_6;
+
+  /// No description provided for @quest_sad_title_7.
+  ///
+  /// In en, this message translates to:
+  /// **'Note 3 things from today'**
+  String get quest_sad_title_7;
+
+  /// No description provided for @quest_sad_desc_7.
+  ///
+  /// In en, this message translates to:
+  /// **'Write down three things, no matter how small, that you are grateful for.'**
+  String get quest_sad_desc_7;
+
+  /// No description provided for @quest_sad_title_8.
+  ///
+  /// In en, this message translates to:
+  /// **'Handle one small thing'**
+  String get quest_sad_title_8;
+
+  /// No description provided for @quest_sad_desc_8.
+  ///
+  /// In en, this message translates to:
+  /// **'Clean up one small area (e.g., drawer, table). A small victory helps.'**
+  String get quest_sad_desc_8;
+
+  /// No description provided for @quest_sad_title_9.
+  ///
+  /// In en, this message translates to:
+  /// **'Embrace yourself'**
+  String get quest_sad_title_9;
+
+  /// No description provided for @quest_sad_desc_9.
+  ///
+  /// In en, this message translates to:
+  /// **'Take a warm bath or wrap yourself in a soft blanket.'**
+  String get quest_sad_desc_9;
+
+  /// No description provided for @quest_sad_title_10.
+  ///
+  /// In en, this message translates to:
+  /// **'Listen to a Podcast'**
+  String get quest_sad_title_10;
+
+  /// No description provided for @quest_sad_desc_10.
+  ///
+  /// In en, this message translates to:
+  /// **'Listen to an episode of a motivational or funny podcast.'**
+  String get quest_sad_desc_10;
+
+  /// No description provided for @quest_sad_title_11.
+  ///
+  /// In en, this message translates to:
+  /// **'Take a short walk'**
+  String get quest_sad_title_11;
+
+  /// No description provided for @quest_sad_desc_11.
+  ///
+  /// In en, this message translates to:
+  /// **'Go outside for 10 minutes. A change of scenery helps.'**
+  String get quest_sad_desc_11;
+
+  /// No description provided for @quest_sad_title_12.
+  ///
+  /// In en, this message translates to:
+  /// **'Note your feeling'**
+  String get quest_sad_title_12;
+
+  /// No description provided for @quest_sad_desc_12.
+  ///
+  /// In en, this message translates to:
+  /// **'Describe exactly what you feel. Naming it helps you process it.'**
+  String get quest_sad_desc_12;
+
+  /// No description provided for @quest_sad_title_13.
+  ///
+  /// In en, this message translates to:
+  /// **'No Social Media'**
+  String get quest_sad_title_13;
+
+  /// No description provided for @quest_sad_desc_13.
+  ///
+  /// In en, this message translates to:
+  /// **'Take a 30-minute break from social media.'**
+  String get quest_sad_desc_13;
+
+  /// No description provided for @quest_sad_title_14.
+  ///
+  /// In en, this message translates to:
+  /// **'Eat a healthy snack'**
+  String get quest_sad_title_14;
+
+  /// No description provided for @quest_sad_desc_14.
+  ///
+  /// In en, this message translates to:
+  /// **'Eat a piece of fruit or something nutritious. Take care of your body.'**
+  String get quest_sad_desc_14;
+
+  /// No description provided for @quest_sad_title_15.
+  ///
+  /// In en, this message translates to:
+  /// **'Help someone'**
+  String get quest_sad_title_15;
+
+  /// No description provided for @quest_sad_desc_15.
+  ///
+  /// In en, this message translates to:
+  /// **'Send a message to a friend asking how they feel.'**
+  String get quest_sad_desc_15;
+
+  /// No description provided for @quest_relaxed_title_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Drink a glass of water'**
+  String get quest_relaxed_title_1;
+
+  /// No description provided for @quest_relaxed_desc_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Hydration helps calm the nervous system.'**
+  String get quest_relaxed_desc_1;
+
+  /// No description provided for @quest_relaxed_title_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Meditate for 5 minutes'**
+  String get quest_relaxed_title_2;
+
+  /// No description provided for @quest_relaxed_desc_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Focus on your breath to re-anchor yourself.'**
+  String get quest_relaxed_desc_2;
 
   /// No description provided for @quest_relaxed_title_3.
   ///
@@ -908,6 +968,150 @@ abstract class AppLocalizations {
   /// **'Use aromatherapy to soothe your senses.'**
   String get quest_relaxed_desc_5;
 
+  /// No description provided for @quest_relaxed_title_6.
+  ///
+  /// In en, this message translates to:
+  /// **'No screens'**
+  String get quest_relaxed_title_6;
+
+  /// No description provided for @quest_relaxed_desc_6.
+  ///
+  /// In en, this message translates to:
+  /// **'Spend 30 minutes without looking at your phone, TV, or monitor.'**
+  String get quest_relaxed_desc_6;
+
+  /// No description provided for @quest_relaxed_title_7.
+  ///
+  /// In en, this message translates to:
+  /// **'Listen to nature sounds'**
+  String get quest_relaxed_title_7;
+
+  /// No description provided for @quest_relaxed_desc_7.
+  ///
+  /// In en, this message translates to:
+  /// **'Put on a recording of rain, waves, or a forest.'**
+  String get quest_relaxed_desc_7;
+
+  /// No description provided for @quest_relaxed_title_8.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick facial massage'**
+  String get quest_relaxed_title_8;
+
+  /// No description provided for @quest_relaxed_desc_8.
+  ///
+  /// In en, this message translates to:
+  /// **'Massage your temples and forehead for 2 minutes.'**
+  String get quest_relaxed_desc_8;
+
+  /// No description provided for @quest_relaxed_title_9.
+  ///
+  /// In en, this message translates to:
+  /// **'Total silence'**
+  String get quest_relaxed_title_9;
+
+  /// No description provided for @quest_relaxed_desc_9.
+  ///
+  /// In en, this message translates to:
+  /// **'Sit in complete silence for 5 minutes, focusing on your breathing.'**
+  String get quest_relaxed_desc_9;
+
+  /// No description provided for @quest_relaxed_title_10.
+  ///
+  /// In en, this message translates to:
+  /// **'Drink a warm beverage'**
+  String get quest_relaxed_title_10;
+
+  /// No description provided for @quest_relaxed_desc_10.
+  ///
+  /// In en, this message translates to:
+  /// **'Make yourself a tea or hot chocolate, savoring every sip.'**
+  String get quest_relaxed_desc_10;
+
+  /// No description provided for @quest_relaxed_title_11.
+  ///
+  /// In en, this message translates to:
+  /// **'Change position'**
+  String get quest_relaxed_title_11;
+
+  /// No description provided for @quest_relaxed_desc_11.
+  ///
+  /// In en, this message translates to:
+  /// **'Lie down on the floor (on a mat) for 10 minutes. The change in perspective relaxes you.'**
+  String get quest_relaxed_desc_11;
+
+  /// No description provided for @quest_relaxed_title_12.
+  ///
+  /// In en, this message translates to:
+  /// **'Look out the window'**
+  String get quest_relaxed_title_12;
+
+  /// No description provided for @quest_relaxed_desc_12.
+  ///
+  /// In en, this message translates to:
+  /// **'Observe the landscape or the sky for 5 minutes without other thoughts.'**
+  String get quest_relaxed_desc_12;
+
+  /// No description provided for @quest_relaxed_title_13.
+  ///
+  /// In en, this message translates to:
+  /// **'Gentle stretching'**
+  String get quest_relaxed_title_13;
+
+  /// No description provided for @quest_relaxed_desc_13.
+  ///
+  /// In en, this message translates to:
+  /// **'Do a series of simple stretches for your neck, shoulders, and back.'**
+  String get quest_relaxed_desc_13;
+
+  /// No description provided for @quest_relaxed_title_14.
+  ///
+  /// In en, this message translates to:
+  /// **'Visit a beautiful place online'**
+  String get quest_relaxed_title_14;
+
+  /// No description provided for @quest_relaxed_desc_14.
+  ///
+  /// In en, this message translates to:
+  /// **'Look for images or clips of a place in the world that fascinates you.'**
+  String get quest_relaxed_desc_14;
+
+  /// No description provided for @quest_relaxed_title_15.
+  ///
+  /// In en, this message translates to:
+  /// **'Think of a pleasant memory'**
+  String get quest_relaxed_title_15;
+
+  /// No description provided for @quest_relaxed_desc_15.
+  ///
+  /// In en, this message translates to:
+  /// **'Revisit a happy moment from the past, recalling the details.'**
+  String get quest_relaxed_desc_15;
+
+  /// No description provided for @quest_energetic_title_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Do a set of squats'**
+  String get quest_energetic_title_1;
+
+  /// No description provided for @quest_energetic_desc_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Get your blood flowing quickly.'**
+  String get quest_energetic_desc_1;
+
+  /// No description provided for @quest_energetic_title_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a list of crazy ideas'**
+  String get quest_energetic_title_2;
+
+  /// No description provided for @quest_energetic_desc_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Use your energy for maximum creativity.'**
+  String get quest_energetic_desc_2;
+
   /// No description provided for @quest_energetic_title_3.
   ///
   /// In en, this message translates to:
@@ -943,6 +1147,150 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'A short burst of outdoor movement.'**
   String get quest_energetic_desc_5;
+
+  /// No description provided for @quest_energetic_title_6.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn something new in 5 min'**
+  String get quest_energetic_title_6;
+
+  /// No description provided for @quest_energetic_desc_6.
+  ///
+  /// In en, this message translates to:
+  /// **'Use the energy to look up a new fact or a foreign word.'**
+  String get quest_energetic_desc_6;
+
+  /// No description provided for @quest_energetic_title_7.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick DIY project'**
+  String get quest_energetic_title_7;
+
+  /// No description provided for @quest_energetic_desc_7.
+  ///
+  /// In en, this message translates to:
+  /// **'Take on a small repair or creation project that lasts a maximum of 30 minutes.'**
+  String get quest_energetic_desc_7;
+
+  /// No description provided for @quest_energetic_title_8.
+  ///
+  /// In en, this message translates to:
+  /// **'Tidy up the inbox'**
+  String get quest_energetic_title_8;
+
+  /// No description provided for @quest_energetic_desc_8.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete or archive 10 unnecessary emails.'**
+  String get quest_energetic_desc_8;
+
+  /// No description provided for @quest_energetic_title_9.
+  ///
+  /// In en, this message translates to:
+  /// **'Targeted walk'**
+  String get quest_energetic_title_9;
+
+  /// No description provided for @quest_energetic_desc_9.
+  ///
+  /// In en, this message translates to:
+  /// **'Walk quickly to a fixed point (a tree, a building) and back.'**
+  String get quest_energetic_desc_9;
+
+  /// No description provided for @quest_energetic_title_10.
+  ///
+  /// In en, this message translates to:
+  /// **'Cook something new'**
+  String get quest_energetic_title_10;
+
+  /// No description provided for @quest_energetic_desc_10.
+  ///
+  /// In en, this message translates to:
+  /// **'Channel the energy into the kitchen and try a simple recipe.'**
+  String get quest_energetic_desc_10;
+
+  /// No description provided for @quest_energetic_title_11.
+  ///
+  /// In en, this message translates to:
+  /// **'Note 3 wild ideas'**
+  String get quest_energetic_title_11;
+
+  /// No description provided for @quest_energetic_desc_11.
+  ///
+  /// In en, this message translates to:
+  /// **'Quickly write down 3 unconventional ideas or concepts you could explore.'**
+  String get quest_energetic_desc_11;
+
+  /// No description provided for @quest_energetic_title_12.
+  ///
+  /// In en, this message translates to:
+  /// **'Short HIIT workout'**
+  String get quest_energetic_title_12;
+
+  /// No description provided for @quest_energetic_desc_12.
+  ///
+  /// In en, this message translates to:
+  /// **'Do a short (5-10 minute) high-intensity interval training session.'**
+  String get quest_energetic_desc_12;
+
+  /// No description provided for @quest_energetic_title_13.
+  ///
+  /// In en, this message translates to:
+  /// **'Call an old friend'**
+  String get quest_energetic_title_13;
+
+  /// No description provided for @quest_energetic_desc_13.
+  ///
+  /// In en, this message translates to:
+  /// **'Use your eloquence to catch up with a loved one.'**
+  String get quest_energetic_desc_13;
+
+  /// No description provided for @quest_energetic_title_14.
+  ///
+  /// In en, this message translates to:
+  /// **'Organize your files'**
+  String get quest_energetic_title_14;
+
+  /// No description provided for @quest_energetic_desc_14.
+  ///
+  /// In en, this message translates to:
+  /// **'Reorder or delete files on your computer desktop.'**
+  String get quest_energetic_desc_14;
+
+  /// No description provided for @quest_energetic_title_15.
+  ///
+  /// In en, this message translates to:
+  /// **'Express yourself artistically'**
+  String get quest_energetic_title_15;
+
+  /// No description provided for @quest_energetic_desc_15.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a short poem, haiku, or quick poetry.'**
+  String get quest_energetic_desc_15;
+
+  /// No description provided for @quest_motivated_title_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Set a micro-goal'**
+  String get quest_motivated_title_1;
+
+  /// No description provided for @quest_motivated_desc_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a task you can finish in 15 minutes.'**
+  String get quest_motivated_desc_1;
+
+  /// No description provided for @quest_motivated_title_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Reorganize your workspace'**
+  String get quest_motivated_title_2;
+
+  /// No description provided for @quest_motivated_desc_2.
+  ///
+  /// In en, this message translates to:
+  /// **'A clean environment helps concentration.'**
+  String get quest_motivated_desc_2;
 
   /// No description provided for @quest_motivated_title_3.
   ///
@@ -980,6 +1328,270 @@ abstract class AppLocalizations {
   /// **'Clear planning gives you a sense of control.'**
   String get quest_motivated_desc_5;
 
+  /// No description provided for @quest_motivated_title_6.
+  ///
+  /// In en, this message translates to:
+  /// **'Visualize success'**
+  String get quest_motivated_title_6;
+
+  /// No description provided for @quest_motivated_desc_6.
+  ///
+  /// In en, this message translates to:
+  /// **'Close your eyes and imagine the desired outcome of your work.'**
+  String get quest_motivated_desc_6;
+
+  /// No description provided for @quest_motivated_title_7.
+  ///
+  /// In en, this message translates to:
+  /// **'Read an inspirational quote'**
+  String get quest_motivated_title_7;
+
+  /// No description provided for @quest_motivated_desc_7.
+  ///
+  /// In en, this message translates to:
+  /// **'Find a phrase that motivates you and write it on a post-it.'**
+  String get quest_motivated_desc_7;
+
+  /// No description provided for @quest_motivated_title_8.
+  ///
+  /// In en, this message translates to:
+  /// **'Make a 3-2-1 Plan'**
+  String get quest_motivated_title_8;
+
+  /// No description provided for @quest_motivated_desc_8.
+  ///
+  /// In en, this message translates to:
+  /// **'Name 3 big, 2 medium, 1 small tasks you will do today.'**
+  String get quest_motivated_desc_8;
+
+  /// No description provided for @quest_motivated_title_9.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn a new word'**
+  String get quest_motivated_title_9;
+
+  /// No description provided for @quest_motivated_desc_9.
+  ///
+  /// In en, this message translates to:
+  /// **'Expand your vocabulary. Knowledge empowers you.'**
+  String get quest_motivated_desc_9;
+
+  /// No description provided for @quest_motivated_title_10.
+  ///
+  /// In en, this message translates to:
+  /// **'Recharge your physical battery'**
+  String get quest_motivated_title_10;
+
+  /// No description provided for @quest_motivated_desc_10.
+  ///
+  /// In en, this message translates to:
+  /// **'Do 10 squats or 10 push-ups to wake up your body.'**
+  String get quest_motivated_desc_10;
+
+  /// No description provided for @quest_motivated_title_11.
+  ///
+  /// In en, this message translates to:
+  /// **'Change your desktop background'**
+  String get quest_motivated_title_11;
+
+  /// No description provided for @quest_motivated_desc_11.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose an image that inspires you and reminds you of a goal.'**
+  String get quest_motivated_desc_11;
+
+  /// No description provided for @quest_motivated_title_12.
+  ///
+  /// In en, this message translates to:
+  /// **'Eliminate a distraction'**
+  String get quest_motivated_title_12;
+
+  /// No description provided for @quest_motivated_desc_12.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify the biggest distraction around you and remove it for 30 minutes.'**
+  String get quest_motivated_desc_12;
+
+  /// No description provided for @quest_motivated_title_13.
+  ///
+  /// In en, this message translates to:
+  /// **'Be a Mentor'**
+  String get quest_motivated_title_13;
+
+  /// No description provided for @quest_motivated_desc_13.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer a solution or advice to someone who has a problem.'**
+  String get quest_motivated_desc_13;
+
+  /// No description provided for @quest_motivated_title_14.
+  ///
+  /// In en, this message translates to:
+  /// **'Prioritize what NOT to do'**
+  String get quest_motivated_title_14;
+
+  /// No description provided for @quest_motivated_desc_14.
+  ///
+  /// In en, this message translates to:
+  /// **'Write down 3 things you will *not* do today to focus on what is important.'**
+  String get quest_motivated_desc_14;
+
+  /// No description provided for @quest_motivated_title_15.
+  ///
+  /// In en, this message translates to:
+  /// **'Small Action Step'**
+  String get quest_motivated_title_15;
+
+  /// No description provided for @quest_motivated_desc_15.
+  ///
+  /// In en, this message translates to:
+  /// **'Take the first (smallest) step of a large task you have been putting off.'**
+  String get quest_motivated_desc_15;
+
+  /// No description provided for @quest_stressed_title_1.
+  ///
+  /// In en, this message translates to:
+  /// **'5-minute breathing exercise'**
+  String get quest_stressed_title_1;
+
+  /// No description provided for @quest_stressed_desc_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Practice the 4-7-8 deep breathing technique.'**
+  String get quest_stressed_desc_1;
+
+  /// No description provided for @quest_stressed_title_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Write down all your worries'**
+  String get quest_stressed_title_2;
+
+  /// No description provided for @quest_stressed_desc_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Move your thoughts from your head onto paper.'**
+  String get quest_stressed_desc_2;
+
+  /// No description provided for @quest_stressed_title_6.
+  ///
+  /// In en, this message translates to:
+  /// **'4-7-8 Breathing'**
+  String get quest_stressed_title_6;
+
+  /// No description provided for @quest_stressed_desc_6.
+  ///
+  /// In en, this message translates to:
+  /// **'Inhale for 4 seconds, hold for 7, exhale for 8. Repeat 4 times.'**
+  String get quest_stressed_desc_6;
+
+  /// No description provided for @quest_stressed_title_7.
+  ///
+  /// In en, this message translates to:
+  /// **'Task shattering'**
+  String get quest_stressed_title_7;
+
+  /// No description provided for @quest_stressed_desc_7.
+  ///
+  /// In en, this message translates to:
+  /// **'Take the biggest stressful task and break it down into 3 small steps.'**
+  String get quest_stressed_desc_7;
+
+  /// No description provided for @quest_stressed_title_8.
+  ///
+  /// In en, this message translates to:
+  /// **'Go outside barefoot for 5 minutes'**
+  String get quest_stressed_title_8;
+
+  /// No description provided for @quest_stressed_desc_8.
+  ///
+  /// In en, this message translates to:
+  /// **'Touch the ground, grass, or rug with your feet. It helps with grounding.'**
+  String get quest_stressed_desc_8;
+
+  /// No description provided for @quest_stressed_title_9.
+  ///
+  /// In en, this message translates to:
+  /// **'Be mindful of your jaw'**
+  String get quest_stressed_title_9;
+
+  /// No description provided for @quest_stressed_desc_9.
+  ///
+  /// In en, this message translates to:
+  /// **'Intentionally relax your jaw and shoulders. Physical de-tensioning helps.'**
+  String get quest_stressed_desc_9;
+
+  /// No description provided for @quest_stressed_title_10.
+  ///
+  /// In en, this message translates to:
+  /// **'Listen to White Noise'**
+  String get quest_stressed_title_10;
+
+  /// No description provided for @quest_stressed_desc_10.
+  ///
+  /// In en, this message translates to:
+  /// **'Put on a track of white noise or ambient sounds to block your thoughts.'**
+  String get quest_stressed_desc_10;
+
+  /// No description provided for @quest_stressed_title_11.
+  ///
+  /// In en, this message translates to:
+  /// **'Make a \'Dump\' List'**
+  String get quest_stressed_title_11;
+
+  /// No description provided for @quest_stressed_desc_11.
+  ///
+  /// In en, this message translates to:
+  /// **'Write down all the things you have to do on a sheet of paper, and then tear it up.'**
+  String get quest_stressed_desc_11;
+
+  /// No description provided for @quest_stressed_title_12.
+  ///
+  /// In en, this message translates to:
+  /// **'Take a cold water break'**
+  String get quest_stressed_title_12;
+
+  /// No description provided for @quest_stressed_desc_12.
+  ///
+  /// In en, this message translates to:
+  /// **'Put cold water on your wrists or the back of your neck. Vagus nerve stimulation helps calm you.'**
+  String get quest_stressed_desc_12;
+
+  /// No description provided for @quest_stressed_title_13.
+  ///
+  /// In en, this message translates to:
+  /// **'Reduce blue light'**
+  String get quest_stressed_title_13;
+
+  /// No description provided for @quest_stressed_desc_13.
+  ///
+  /// In en, this message translates to:
+  /// **'If it\'s evening, use blue light filters or use warm lighting.'**
+  String get quest_stressed_desc_13;
+
+  /// No description provided for @quest_stressed_title_14.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow yourself to delay a decision'**
+  String get quest_stressed_title_14;
+
+  /// No description provided for @quest_stressed_desc_14.
+  ///
+  /// In en, this message translates to:
+  /// **'Stress does not help with good decisions. Postpone a small decision until tomorrow.'**
+  String get quest_stressed_desc_14;
+
+  /// No description provided for @quest_stressed_title_15.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask for Help (Delegate)'**
+  String get quest_stressed_title_15;
+
+  /// No description provided for @quest_stressed_desc_15.
+  ///
+  /// In en, this message translates to:
+  /// **'If possible, ask someone to take over a minor task from you.'**
+  String get quest_stressed_desc_15;
+
   /// No description provided for @quest_stressed_title_3.
   ///
   /// In en, this message translates to:
@@ -1015,6 +1627,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Take a break from work and enjoy a warm drink.'**
   String get quest_stressed_desc_5;
+
+  /// No description provided for @quest_nostalgic_title_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Flip through an old photo'**
+  String get quest_nostalgic_title_1;
+
+  /// No description provided for @quest_nostalgic_desc_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Relive a pleasant memory for a few minutes.'**
+  String get quest_nostalgic_desc_1;
+
+  /// No description provided for @quest_nostalgic_title_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a letter (don\'t send it)'**
+  String get quest_nostalgic_title_2;
+
+  /// No description provided for @quest_nostalgic_desc_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Put your feelings about the past down on paper.'**
+  String get quest_nostalgic_desc_2;
 
   /// No description provided for @quest_nostalgic_title_3.
   ///
@@ -1052,6 +1688,150 @@ abstract class AppLocalizations {
   /// **'Re-watch a cinematic production you miss.'**
   String get quest_nostalgic_desc_5;
 
+  /// No description provided for @quest_nostalgic_title_6.
+  ///
+  /// In en, this message translates to:
+  /// **'Rediscover an old object'**
+  String get quest_nostalgic_title_6;
+
+  /// No description provided for @quest_nostalgic_desc_6.
+  ///
+  /// In en, this message translates to:
+  /// **'Look for an object from your childhood that reminds you of a story.'**
+  String get quest_nostalgic_desc_6;
+
+  /// No description provided for @quest_nostalgic_title_7.
+  ///
+  /// In en, this message translates to:
+  /// **'Write an anecdote'**
+  String get quest_nostalgic_title_7;
+
+  /// No description provided for @quest_nostalgic_desc_7.
+  ///
+  /// In en, this message translates to:
+  /// **'Quickly write down the funniest or most memorable incident from your past.'**
+  String get quest_nostalgic_desc_7;
+
+  /// No description provided for @quest_nostalgic_title_8.
+  ///
+  /// In en, this message translates to:
+  /// **'Listen to a full album'**
+  String get quest_nostalgic_title_8;
+
+  /// No description provided for @quest_nostalgic_desc_8.
+  ///
+  /// In en, this message translates to:
+  /// **'Put on a music album that you used to listen to non-stop during a certain period.'**
+  String get quest_nostalgic_desc_8;
+
+  /// No description provided for @quest_nostalgic_title_9.
+  ///
+  /// In en, this message translates to:
+  /// **'Visit a cherished place'**
+  String get quest_nostalgic_title_9;
+
+  /// No description provided for @quest_nostalgic_desc_9.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to or think about a place (school, park, old house) that is dear to you.'**
+  String get quest_nostalgic_desc_9;
+
+  /// No description provided for @quest_nostalgic_title_10.
+  ///
+  /// In en, this message translates to:
+  /// **'Relearn an old game'**
+  String get quest_nostalgic_title_10;
+
+  /// No description provided for @quest_nostalgic_desc_10.
+  ///
+  /// In en, this message translates to:
+  /// **'Play a board game or a classic video game you had forgotten.'**
+  String get quest_nostalgic_desc_10;
+
+  /// No description provided for @quest_nostalgic_title_11.
+  ///
+  /// In en, this message translates to:
+  /// **'Make a memory collage'**
+  String get quest_nostalgic_title_11;
+
+  /// No description provided for @quest_nostalgic_desc_11.
+  ///
+  /// In en, this message translates to:
+  /// **'Gather a few old photos and create a small physical or digital collection.'**
+  String get quest_nostalgic_desc_11;
+
+  /// No description provided for @quest_nostalgic_title_12.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a time capsule'**
+  String get quest_nostalgic_title_12;
+
+  /// No description provided for @quest_nostalgic_desc_12.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a list of 5 things you are doing now and hide it for the future.'**
+  String get quest_nostalgic_desc_12;
+
+  /// No description provided for @quest_nostalgic_title_13.
+  ///
+  /// In en, this message translates to:
+  /// **'Talk to a family member'**
+  String get quest_nostalgic_title_13;
+
+  /// No description provided for @quest_nostalgic_desc_13.
+  ///
+  /// In en, this message translates to:
+  /// **'Call an older person (parent, grandparent) and listen to a story from the past.'**
+  String get quest_nostalgic_desc_13;
+
+  /// No description provided for @quest_nostalgic_title_14.
+  ///
+  /// In en, this message translates to:
+  /// **'Take a nostalgic walk'**
+  String get quest_nostalgic_title_14;
+
+  /// No description provided for @quest_nostalgic_desc_14.
+  ///
+  /// In en, this message translates to:
+  /// **'Walk a route you frequently took in the past (to school, home).'**
+  String get quest_nostalgic_desc_14;
+
+  /// No description provided for @quest_nostalgic_title_15.
+  ///
+  /// In en, this message translates to:
+  /// **'Think of a lesson learned'**
+  String get quest_nostalgic_title_15;
+
+  /// No description provided for @quest_nostalgic_desc_15.
+  ///
+  /// In en, this message translates to:
+  /// **'What is the most valuable lesson you learned from your past? Write it down.'**
+  String get quest_nostalgic_desc_15;
+
+  /// No description provided for @quest_focused_title_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Pomodoro Technique (25/5)'**
+  String get quest_focused_title_1;
+
+  /// No description provided for @quest_focused_desc_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Work intensely for 25 minutes, take a 5-minute break.'**
+  String get quest_focused_desc_1;
+
+  /// No description provided for @quest_focused_title_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Disable notifications'**
+  String get quest_focused_title_2;
+
+  /// No description provided for @quest_focused_desc_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Eliminate all distractions for the next hour.'**
+  String get quest_focused_desc_2;
+
   /// No description provided for @quest_focused_title_3.
   ///
   /// In en, this message translates to:
@@ -1087,6 +1867,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Refresh your mind with a breath of fresh air.'**
   String get quest_focused_desc_5;
+
+  /// No description provided for @quest_focused_title_6.
+  ///
+  /// In en, this message translates to:
+  /// **'Clean the desktop'**
+  String get quest_focused_title_6;
+
+  /// No description provided for @quest_focused_desc_6.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide or delete all unnecessary files from the screen.'**
+  String get quest_focused_desc_6;
+
+  /// No description provided for @quest_focused_title_7.
+  ///
+  /// In en, this message translates to:
+  /// **'Single window'**
+  String get quest_focused_title_7;
+
+  /// No description provided for @quest_focused_desc_7.
+  ///
+  /// In en, this message translates to:
+  /// **'Close all tabs and windows, leaving only the required application.'**
+  String get quest_focused_desc_7;
+
+  /// No description provided for @quest_focused_title_8.
+  ///
+  /// In en, this message translates to:
+  /// **'Listen to background music'**
+  String get quest_focused_title_8;
+
+  /// No description provided for @quest_focused_desc_8.
+  ///
+  /// In en, this message translates to:
+  /// **'Put on instrumental music or ambient sounds designed for concentration.'**
+  String get quest_focused_desc_8;
+
+  /// No description provided for @quest_focused_title_9.
+  ///
+  /// In en, this message translates to:
+  /// **'Eat a brain snack'**
+  String get quest_focused_title_9;
+
+  /// No description provided for @quest_focused_desc_9.
+  ///
+  /// In en, this message translates to:
+  /// **'Consume a handful of nuts or a piece of dark chocolate.'**
+  String get quest_focused_desc_9;
+
+  /// No description provided for @quest_focused_title_10.
+  ///
+  /// In en, this message translates to:
+  /// **'The 5-minute method'**
+  String get quest_focused_title_10;
+
+  /// No description provided for @quest_focused_desc_10.
+  ///
+  /// In en, this message translates to:
+  /// **'Work on a task you have been putting off for 5 minutes. The start is often the hardest part.'**
+  String get quest_focused_desc_10;
+
+  /// No description provided for @quest_focused_title_11.
+  ///
+  /// In en, this message translates to:
+  /// **'Change the light source'**
+  String get quest_focused_title_11;
+
+  /// No description provided for @quest_focused_desc_11.
+  ///
+  /// In en, this message translates to:
+  /// **'Make sure the light is optimal (natural or warm) for the work area.'**
+  String get quest_focused_desc_11;
+
+  /// No description provided for @quest_focused_title_12.
+  ///
+  /// In en, this message translates to:
+  /// **'Set a reward'**
+  String get quest_focused_title_12;
+
+  /// No description provided for @quest_focused_desc_12.
+  ///
+  /// In en, this message translates to:
+  /// **'Set a small reward that you receive after finishing the task.'**
+  String get quest_focused_desc_12;
+
+  /// No description provided for @quest_focused_title_13.
+  ///
+  /// In en, this message translates to:
+  /// **'2-minute break'**
+  String get quest_focused_title_13;
+
+  /// No description provided for @quest_focused_desc_13.
+  ///
+  /// In en, this message translates to:
+  /// **'Take a 2-minute break where you stand up, stretch, and move your gaze away from the screen.'**
+  String get quest_focused_desc_13;
+
+  /// No description provided for @quest_focused_title_14.
+  ///
+  /// In en, this message translates to:
+  /// **'Write \'Why?\''**
+  String get quest_focused_title_14;
+
+  /// No description provided for @quest_focused_desc_14.
+  ///
+  /// In en, this message translates to:
+  /// **'Remind yourself why you are doing this work. Clarity of purpose brings focus.'**
+  String get quest_focused_desc_14;
+
+  /// No description provided for @quest_focused_title_15.
+  ///
+  /// In en, this message translates to:
+  /// **'Use airplane mode'**
+  String get quest_focused_title_15;
+
+  /// No description provided for @quest_focused_desc_15.
+  ///
+  /// In en, this message translates to:
+  /// **'Activate airplane mode on your phone for a specific period of time.'**
+  String get quest_focused_desc_15;
 
   /// No description provided for @accountTitle.
   ///
@@ -1207,6 +2107,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Exit Application'**
   String get exitAppButton;
+
+  /// No description provided for @currentMoodTitlePrefix.
+  ///
+  /// In en, this message translates to:
+  /// **'Your mood:'**
+  String get currentMoodTitlePrefix;
 }
 
 class _AppLocalizationsDelegate

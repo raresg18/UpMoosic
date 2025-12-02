@@ -306,105 +306,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get quest_happy_desc_1 => 'Send a positive message to a loved one.';
 
   @override
-  String get quest_happy_title_2 => 'Note down your gratitude';
+  String get quest_happy_title_2 => 'Note down what you are grateful for';
 
   @override
   String get quest_happy_desc_2 =>
       'Write three things that went well for you today.';
-
-  @override
-  String get quest_sad_title_1 => 'Listen to your favorite song';
-
-  @override
-  String get quest_sad_desc_1 =>
-      'Put on a song that reminds you of good times.';
-
-  @override
-  String get quest_sad_title_2 => 'Call a friend';
-
-  @override
-  String get quest_sad_desc_2 => 'Connection always helps.';
-
-  @override
-  String get quest_relaxed_title_1 => 'Drink a glass of water';
-
-  @override
-  String get quest_relaxed_desc_1 => 'Hydration helps calm the nervous system.';
-
-  @override
-  String get quest_relaxed_title_2 => 'Meditate for 5 minutes';
-
-  @override
-  String get quest_relaxed_desc_2 =>
-      'Focus on your breath to re-anchor yourself.';
-
-  @override
-  String get quest_energetic_title_1 => 'Do a set of squats';
-
-  @override
-  String get quest_energetic_desc_1 => 'Get your blood flowing quickly.';
-
-  @override
-  String get quest_energetic_title_2 => 'Write a list of crazy ideas';
-
-  @override
-  String get quest_energetic_desc_2 =>
-      'Use your energy for maximum creativity.';
-
-  @override
-  String get quest_motivated_title_1 => 'Set a micro-goal';
-
-  @override
-  String get quest_motivated_desc_1 =>
-      'Choose a task you can finish in 15 minutes.';
-
-  @override
-  String get quest_motivated_title_2 => 'Reorganize your workspace';
-
-  @override
-  String get quest_motivated_desc_2 => 'A clean environment helps focus.';
-
-  @override
-  String get quest_stressed_title_1 => '5-minute breathing exercise';
-
-  @override
-  String get quest_stressed_desc_1 =>
-      'Practice the 4-7-8 deep breathing technique.';
-
-  @override
-  String get quest_stressed_title_2 => 'Write down all your worries';
-
-  @override
-  String get quest_stressed_desc_2 =>
-      'Move your thoughts from your head onto paper.';
-
-  @override
-  String get quest_nostalgic_title_1 => 'Flip through an old photo';
-
-  @override
-  String get quest_nostalgic_desc_1 =>
-      'Relive a pleasant memory for a few minutes.';
-
-  @override
-  String get quest_nostalgic_title_2 => 'Write a letter (don\'t send it)';
-
-  @override
-  String get quest_nostalgic_desc_2 =>
-      'Put your feelings about the past onto paper.';
-
-  @override
-  String get quest_focused_title_1 => 'Pomodoro Technique (25/5)';
-
-  @override
-  String get quest_focused_desc_1 =>
-      'Work intensely for 25 minutes, take a 5-minute break.';
-
-  @override
-  String get quest_focused_title_2 => 'Turn off notifications';
-
-  @override
-  String get quest_focused_desc_2 =>
-      'Eliminate all distractions for the next hour.';
 
   @override
   String get quest_happy_title_3 => 'Create a small piece of art';
@@ -426,6 +332,53 @@ class AppLocalizationsEn extends AppLocalizations {
   String get quest_happy_desc_5 => 'Watch a funny clip or read a joke.';
 
   @override
+  String get quest_happy_title_6 => 'Send a kind word';
+
+  @override
+  String get quest_happy_desc_6 =>
+      'Tell someone what you like about them or what you appreciate.';
+
+  @override
+  String get quest_happy_title_7 => 'Listen to the song that makes you happy';
+
+  @override
+  String get quest_happy_desc_7 =>
+      'Play the song that instantly makes you smile.';
+
+  @override
+  String get quest_happy_title_8 => 'Offer a smile to a stranger';
+
+  @override
+  String get quest_happy_desc_8 =>
+      'Intentionally smile at someone you don\'t know.';
+
+  @override
+  String get quest_happy_title_9 => 'Journal one reason';
+
+  @override
+  String get quest_happy_desc_9 => 'Write down the happiest part of your day.';
+
+  @override
+  String get quest_happy_title_10 => 'Give a \'High Five\'';
+
+  @override
+  String get quest_happy_desc_10 =>
+      'Ask someone for a \'high five\' or hug a loved one.';
+
+  @override
+  String get quest_sad_title_1 => 'Listen to your favorite song';
+
+  @override
+  String get quest_sad_desc_1 =>
+      'Put on a song that reminds you of good times.';
+
+  @override
+  String get quest_sad_title_2 => 'Call a friend';
+
+  @override
+  String get quest_sad_desc_2 => 'Connection always helps.';
+
+  @override
   String get quest_sad_title_3 => 'Be kind to yourself';
 
   @override
@@ -442,6 +395,88 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get quest_sad_desc_5 => 'Warm drinks help with emotional comfort.';
+
+  @override
+  String get quest_sad_title_6 => 'The 5-minute rule';
+
+  @override
+  String get quest_sad_desc_6 =>
+      'Allow yourself to be sad for only 5 minutes. Then, change your focus.';
+
+  @override
+  String get quest_sad_title_7 => 'Note 3 things from today';
+
+  @override
+  String get quest_sad_desc_7 =>
+      'Write down three things, no matter how small, that you are grateful for.';
+
+  @override
+  String get quest_sad_title_8 => 'Handle one small thing';
+
+  @override
+  String get quest_sad_desc_8 =>
+      'Clean up one small area (e.g., drawer, table). A small victory helps.';
+
+  @override
+  String get quest_sad_title_9 => 'Embrace yourself';
+
+  @override
+  String get quest_sad_desc_9 =>
+      'Take a warm bath or wrap yourself in a soft blanket.';
+
+  @override
+  String get quest_sad_title_10 => 'Listen to a Podcast';
+
+  @override
+  String get quest_sad_desc_10 =>
+      'Listen to an episode of a motivational or funny podcast.';
+
+  @override
+  String get quest_sad_title_11 => 'Take a short walk';
+
+  @override
+  String get quest_sad_desc_11 =>
+      'Go outside for 10 minutes. A change of scenery helps.';
+
+  @override
+  String get quest_sad_title_12 => 'Note your feeling';
+
+  @override
+  String get quest_sad_desc_12 =>
+      'Describe exactly what you feel. Naming it helps you process it.';
+
+  @override
+  String get quest_sad_title_13 => 'No Social Media';
+
+  @override
+  String get quest_sad_desc_13 => 'Take a 30-minute break from social media.';
+
+  @override
+  String get quest_sad_title_14 => 'Eat a healthy snack';
+
+  @override
+  String get quest_sad_desc_14 =>
+      'Eat a piece of fruit or something nutritious. Take care of your body.';
+
+  @override
+  String get quest_sad_title_15 => 'Help someone';
+
+  @override
+  String get quest_sad_desc_15 =>
+      'Send a message to a friend asking how they feel.';
+
+  @override
+  String get quest_relaxed_title_1 => 'Drink a glass of water';
+
+  @override
+  String get quest_relaxed_desc_1 => 'Hydration helps calm the nervous system.';
+
+  @override
+  String get quest_relaxed_title_2 => 'Meditate for 5 minutes';
+
+  @override
+  String get quest_relaxed_desc_2 =>
+      'Focus on your breath to re-anchor yourself.';
 
   @override
   String get quest_relaxed_title_3 => 'Visualize a calm place';
@@ -464,6 +499,89 @@ class AppLocalizationsEn extends AppLocalizations {
   String get quest_relaxed_desc_5 => 'Use aromatherapy to soothe your senses.';
 
   @override
+  String get quest_relaxed_title_6 => 'No screens';
+
+  @override
+  String get quest_relaxed_desc_6 =>
+      'Spend 30 minutes without looking at your phone, TV, or monitor.';
+
+  @override
+  String get quest_relaxed_title_7 => 'Listen to nature sounds';
+
+  @override
+  String get quest_relaxed_desc_7 =>
+      'Put on a recording of rain, waves, or a forest.';
+
+  @override
+  String get quest_relaxed_title_8 => 'Quick facial massage';
+
+  @override
+  String get quest_relaxed_desc_8 =>
+      'Massage your temples and forehead for 2 minutes.';
+
+  @override
+  String get quest_relaxed_title_9 => 'Total silence';
+
+  @override
+  String get quest_relaxed_desc_9 =>
+      'Sit in complete silence for 5 minutes, focusing on your breathing.';
+
+  @override
+  String get quest_relaxed_title_10 => 'Drink a warm beverage';
+
+  @override
+  String get quest_relaxed_desc_10 =>
+      'Make yourself a tea or hot chocolate, savoring every sip.';
+
+  @override
+  String get quest_relaxed_title_11 => 'Change position';
+
+  @override
+  String get quest_relaxed_desc_11 =>
+      'Lie down on the floor (on a mat) for 10 minutes. The change in perspective relaxes you.';
+
+  @override
+  String get quest_relaxed_title_12 => 'Look out the window';
+
+  @override
+  String get quest_relaxed_desc_12 =>
+      'Observe the landscape or the sky for 5 minutes without other thoughts.';
+
+  @override
+  String get quest_relaxed_title_13 => 'Gentle stretching';
+
+  @override
+  String get quest_relaxed_desc_13 =>
+      'Do a series of simple stretches for your neck, shoulders, and back.';
+
+  @override
+  String get quest_relaxed_title_14 => 'Visit a beautiful place online';
+
+  @override
+  String get quest_relaxed_desc_14 =>
+      'Look for images or clips of a place in the world that fascinates you.';
+
+  @override
+  String get quest_relaxed_title_15 => 'Think of a pleasant memory';
+
+  @override
+  String get quest_relaxed_desc_15 =>
+      'Revisit a happy moment from the past, recalling the details.';
+
+  @override
+  String get quest_energetic_title_1 => 'Do a set of squats';
+
+  @override
+  String get quest_energetic_desc_1 => 'Get your blood flowing quickly.';
+
+  @override
+  String get quest_energetic_title_2 => 'Write a list of crazy ideas';
+
+  @override
+  String get quest_energetic_desc_2 =>
+      'Use your energy for maximum creativity.';
+
+  @override
   String get quest_energetic_title_3 => 'Dance freely';
 
   @override
@@ -481,6 +599,90 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get quest_energetic_desc_5 => 'A short burst of outdoor movement.';
+
+  @override
+  String get quest_energetic_title_6 => 'Learn something new in 5 min';
+
+  @override
+  String get quest_energetic_desc_6 =>
+      'Use the energy to look up a new fact or a foreign word.';
+
+  @override
+  String get quest_energetic_title_7 => 'Quick DIY project';
+
+  @override
+  String get quest_energetic_desc_7 =>
+      'Take on a small repair or creation project that lasts a maximum of 30 minutes.';
+
+  @override
+  String get quest_energetic_title_8 => 'Tidy up the inbox';
+
+  @override
+  String get quest_energetic_desc_8 =>
+      'Delete or archive 10 unnecessary emails.';
+
+  @override
+  String get quest_energetic_title_9 => 'Targeted walk';
+
+  @override
+  String get quest_energetic_desc_9 =>
+      'Walk quickly to a fixed point (a tree, a building) and back.';
+
+  @override
+  String get quest_energetic_title_10 => 'Cook something new';
+
+  @override
+  String get quest_energetic_desc_10 =>
+      'Channel the energy into the kitchen and try a simple recipe.';
+
+  @override
+  String get quest_energetic_title_11 => 'Note 3 wild ideas';
+
+  @override
+  String get quest_energetic_desc_11 =>
+      'Quickly write down 3 unconventional ideas or concepts you could explore.';
+
+  @override
+  String get quest_energetic_title_12 => 'Short HIIT workout';
+
+  @override
+  String get quest_energetic_desc_12 =>
+      'Do a short (5-10 minute) high-intensity interval training session.';
+
+  @override
+  String get quest_energetic_title_13 => 'Call an old friend';
+
+  @override
+  String get quest_energetic_desc_13 =>
+      'Use your eloquence to catch up with a loved one.';
+
+  @override
+  String get quest_energetic_title_14 => 'Organize your files';
+
+  @override
+  String get quest_energetic_desc_14 =>
+      'Reorder or delete files on your computer desktop.';
+
+  @override
+  String get quest_energetic_title_15 => 'Express yourself artistically';
+
+  @override
+  String get quest_energetic_desc_15 =>
+      'Write a short poem, haiku, or quick poetry.';
+
+  @override
+  String get quest_motivated_title_1 => 'Set a micro-goal';
+
+  @override
+  String get quest_motivated_desc_1 =>
+      'Choose a task you can finish in 15 minutes.';
+
+  @override
+  String get quest_motivated_title_2 => 'Reorganize your workspace';
+
+  @override
+  String get quest_motivated_desc_2 =>
+      'A clean environment helps concentration.';
 
   @override
   String get quest_motivated_title_3 => 'Learn a new trick';
@@ -504,6 +706,160 @@ class AppLocalizationsEn extends AppLocalizations {
       'Clear planning gives you a sense of control.';
 
   @override
+  String get quest_motivated_title_6 => 'Visualize success';
+
+  @override
+  String get quest_motivated_desc_6 =>
+      'Close your eyes and imagine the desired outcome of your work.';
+
+  @override
+  String get quest_motivated_title_7 => 'Read an inspirational quote';
+
+  @override
+  String get quest_motivated_desc_7 =>
+      'Find a phrase that motivates you and write it on a post-it.';
+
+  @override
+  String get quest_motivated_title_8 => 'Make a 3-2-1 Plan';
+
+  @override
+  String get quest_motivated_desc_8 =>
+      'Name 3 big, 2 medium, 1 small tasks you will do today.';
+
+  @override
+  String get quest_motivated_title_9 => 'Learn a new word';
+
+  @override
+  String get quest_motivated_desc_9 =>
+      'Expand your vocabulary. Knowledge empowers you.';
+
+  @override
+  String get quest_motivated_title_10 => 'Recharge your physical battery';
+
+  @override
+  String get quest_motivated_desc_10 =>
+      'Do 10 squats or 10 push-ups to wake up your body.';
+
+  @override
+  String get quest_motivated_title_11 => 'Change your desktop background';
+
+  @override
+  String get quest_motivated_desc_11 =>
+      'Choose an image that inspires you and reminds you of a goal.';
+
+  @override
+  String get quest_motivated_title_12 => 'Eliminate a distraction';
+
+  @override
+  String get quest_motivated_desc_12 =>
+      'Identify the biggest distraction around you and remove it for 30 minutes.';
+
+  @override
+  String get quest_motivated_title_13 => 'Be a Mentor';
+
+  @override
+  String get quest_motivated_desc_13 =>
+      'Offer a solution or advice to someone who has a problem.';
+
+  @override
+  String get quest_motivated_title_14 => 'Prioritize what NOT to do';
+
+  @override
+  String get quest_motivated_desc_14 =>
+      'Write down 3 things you will *not* do today to focus on what is important.';
+
+  @override
+  String get quest_motivated_title_15 => 'Small Action Step';
+
+  @override
+  String get quest_motivated_desc_15 =>
+      'Take the first (smallest) step of a large task you have been putting off.';
+
+  @override
+  String get quest_stressed_title_1 => '5-minute breathing exercise';
+
+  @override
+  String get quest_stressed_desc_1 =>
+      'Practice the 4-7-8 deep breathing technique.';
+
+  @override
+  String get quest_stressed_title_2 => 'Write down all your worries';
+
+  @override
+  String get quest_stressed_desc_2 =>
+      'Move your thoughts from your head onto paper.';
+
+  @override
+  String get quest_stressed_title_6 => '4-7-8 Breathing';
+
+  @override
+  String get quest_stressed_desc_6 =>
+      'Inhale for 4 seconds, hold for 7, exhale for 8. Repeat 4 times.';
+
+  @override
+  String get quest_stressed_title_7 => 'Task shattering';
+
+  @override
+  String get quest_stressed_desc_7 =>
+      'Take the biggest stressful task and break it down into 3 small steps.';
+
+  @override
+  String get quest_stressed_title_8 => 'Go outside barefoot for 5 minutes';
+
+  @override
+  String get quest_stressed_desc_8 =>
+      'Touch the ground, grass, or rug with your feet. It helps with grounding.';
+
+  @override
+  String get quest_stressed_title_9 => 'Be mindful of your jaw';
+
+  @override
+  String get quest_stressed_desc_9 =>
+      'Intentionally relax your jaw and shoulders. Physical de-tensioning helps.';
+
+  @override
+  String get quest_stressed_title_10 => 'Listen to White Noise';
+
+  @override
+  String get quest_stressed_desc_10 =>
+      'Put on a track of white noise or ambient sounds to block your thoughts.';
+
+  @override
+  String get quest_stressed_title_11 => 'Make a \'Dump\' List';
+
+  @override
+  String get quest_stressed_desc_11 =>
+      'Write down all the things you have to do on a sheet of paper, and then tear it up.';
+
+  @override
+  String get quest_stressed_title_12 => 'Take a cold water break';
+
+  @override
+  String get quest_stressed_desc_12 =>
+      'Put cold water on your wrists or the back of your neck. Vagus nerve stimulation helps calm you.';
+
+  @override
+  String get quest_stressed_title_13 => 'Reduce blue light';
+
+  @override
+  String get quest_stressed_desc_13 =>
+      'If it\'s evening, use blue light filters or use warm lighting.';
+
+  @override
+  String get quest_stressed_title_14 => 'Allow yourself to delay a decision';
+
+  @override
+  String get quest_stressed_desc_14 =>
+      'Stress does not help with good decisions. Postpone a small decision until tomorrow.';
+
+  @override
+  String get quest_stressed_title_15 => 'Ask for Help (Delegate)';
+
+  @override
+  String get quest_stressed_desc_15 =>
+      'If possible, ask someone to take over a minor task from you.';
+
+  @override
   String get quest_stressed_title_3 => 'A walk without your phone';
 
   @override
@@ -522,6 +878,20 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get quest_stressed_desc_5 =>
       'Take a break from work and enjoy a warm drink.';
+
+  @override
+  String get quest_nostalgic_title_1 => 'Flip through an old photo';
+
+  @override
+  String get quest_nostalgic_desc_1 =>
+      'Relive a pleasant memory for a few minutes.';
+
+  @override
+  String get quest_nostalgic_title_2 => 'Write a letter (don\'t send it)';
+
+  @override
+  String get quest_nostalgic_desc_2 =>
+      'Put your feelings about the past down on paper.';
 
   @override
   String get quest_nostalgic_title_3 => 'Call someone from childhood';
@@ -544,6 +914,90 @@ class AppLocalizationsEn extends AppLocalizations {
       'Re-watch a cinematic production you miss.';
 
   @override
+  String get quest_nostalgic_title_6 => 'Rediscover an old object';
+
+  @override
+  String get quest_nostalgic_desc_6 =>
+      'Look for an object from your childhood that reminds you of a story.';
+
+  @override
+  String get quest_nostalgic_title_7 => 'Write an anecdote';
+
+  @override
+  String get quest_nostalgic_desc_7 =>
+      'Quickly write down the funniest or most memorable incident from your past.';
+
+  @override
+  String get quest_nostalgic_title_8 => 'Listen to a full album';
+
+  @override
+  String get quest_nostalgic_desc_8 =>
+      'Put on a music album that you used to listen to non-stop during a certain period.';
+
+  @override
+  String get quest_nostalgic_title_9 => 'Visit a cherished place';
+
+  @override
+  String get quest_nostalgic_desc_9 =>
+      'Go to or think about a place (school, park, old house) that is dear to you.';
+
+  @override
+  String get quest_nostalgic_title_10 => 'Relearn an old game';
+
+  @override
+  String get quest_nostalgic_desc_10 =>
+      'Play a board game or a classic video game you had forgotten.';
+
+  @override
+  String get quest_nostalgic_title_11 => 'Make a memory collage';
+
+  @override
+  String get quest_nostalgic_desc_11 =>
+      'Gather a few old photos and create a small physical or digital collection.';
+
+  @override
+  String get quest_nostalgic_title_12 => 'Create a time capsule';
+
+  @override
+  String get quest_nostalgic_desc_12 =>
+      'Write a list of 5 things you are doing now and hide it for the future.';
+
+  @override
+  String get quest_nostalgic_title_13 => 'Talk to a family member';
+
+  @override
+  String get quest_nostalgic_desc_13 =>
+      'Call an older person (parent, grandparent) and listen to a story from the past.';
+
+  @override
+  String get quest_nostalgic_title_14 => 'Take a nostalgic walk';
+
+  @override
+  String get quest_nostalgic_desc_14 =>
+      'Walk a route you frequently took in the past (to school, home).';
+
+  @override
+  String get quest_nostalgic_title_15 => 'Think of a lesson learned';
+
+  @override
+  String get quest_nostalgic_desc_15 =>
+      'What is the most valuable lesson you learned from your past? Write it down.';
+
+  @override
+  String get quest_focused_title_1 => 'Pomodoro Technique (25/5)';
+
+  @override
+  String get quest_focused_desc_1 =>
+      'Work intensely for 25 minutes, take a 5-minute break.';
+
+  @override
+  String get quest_focused_title_2 => 'Disable notifications';
+
+  @override
+  String get quest_focused_desc_2 =>
+      'Eliminate all distractions for the next hour.';
+
+  @override
   String get quest_focused_title_3 => 'Hydrate completely';
 
   @override
@@ -563,6 +1017,76 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get quest_focused_desc_5 =>
       'Refresh your mind with a breath of fresh air.';
+
+  @override
+  String get quest_focused_title_6 => 'Clean the desktop';
+
+  @override
+  String get quest_focused_desc_6 =>
+      'Hide or delete all unnecessary files from the screen.';
+
+  @override
+  String get quest_focused_title_7 => 'Single window';
+
+  @override
+  String get quest_focused_desc_7 =>
+      'Close all tabs and windows, leaving only the required application.';
+
+  @override
+  String get quest_focused_title_8 => 'Listen to background music';
+
+  @override
+  String get quest_focused_desc_8 =>
+      'Put on instrumental music or ambient sounds designed for concentration.';
+
+  @override
+  String get quest_focused_title_9 => 'Eat a brain snack';
+
+  @override
+  String get quest_focused_desc_9 =>
+      'Consume a handful of nuts or a piece of dark chocolate.';
+
+  @override
+  String get quest_focused_title_10 => 'The 5-minute method';
+
+  @override
+  String get quest_focused_desc_10 =>
+      'Work on a task you have been putting off for 5 minutes. The start is often the hardest part.';
+
+  @override
+  String get quest_focused_title_11 => 'Change the light source';
+
+  @override
+  String get quest_focused_desc_11 =>
+      'Make sure the light is optimal (natural or warm) for the work area.';
+
+  @override
+  String get quest_focused_title_12 => 'Set a reward';
+
+  @override
+  String get quest_focused_desc_12 =>
+      'Set a small reward that you receive after finishing the task.';
+
+  @override
+  String get quest_focused_title_13 => '2-minute break';
+
+  @override
+  String get quest_focused_desc_13 =>
+      'Take a 2-minute break where you stand up, stretch, and move your gaze away from the screen.';
+
+  @override
+  String get quest_focused_title_14 => 'Write \'Why?\'';
+
+  @override
+  String get quest_focused_desc_14 =>
+      'Remind yourself why you are doing this work. Clarity of purpose brings focus.';
+
+  @override
+  String get quest_focused_title_15 => 'Use airplane mode';
+
+  @override
+  String get quest_focused_desc_15 =>
+      'Activate airplane mode on your phone for a specific period of time.';
 
   @override
   String get accountTitle => 'My Profile';
@@ -627,4 +1151,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get exitAppButton => 'Exit Application';
+
+  @override
+  String get currentMoodTitlePrefix => 'Your mood:';
 }

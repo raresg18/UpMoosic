@@ -1,5 +1,3 @@
-// lib/models/quest_model.dart (sau unde ai salvat acest fișier)
-
 class QuestModel {
 
   final String titleKey;

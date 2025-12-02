@@ -70,7 +70,7 @@ class _JournalPageState extends State<JournalPage> {
 
   // Helper pentru a găsi culoarea dintr-un MoodName
   Color _getColorForMood(String moodName) {
-    final mood = getMoodModelByName(moodName);
+    final mood = MoodData.getMoodModelByName(moodName);
     return mood.color;
   }
 
@@ -206,7 +206,7 @@ class _JournalPageState extends State<JournalPage> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!; // 🎯 Instanța l10n
-    final allMoodsList = allMoodsListView;
+    final allMoodsList = MoodData.allMoodsListView;
 
     final isTodaySelected = isSameDay(_selectedDay, DateTime.now());
 

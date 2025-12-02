@@ -101,7 +101,7 @@ class HomePage extends StatelessWidget {
                 } else {
                   // Pe web, funcția exit() nu este suportată
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Funcția de ieșire nu este suportată pe Web/Chrome.')),
+                    const SnackBar(content: Text('Output function is not supported on Web/Chrome.')),
                   );
                 }
               },

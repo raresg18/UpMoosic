@@ -115,10 +115,10 @@ class MoodTrackerService {
 
     for (var entry in weeklyEntries) {
       // Căutăm MoodModel-ul pentru a obține culoarea
-      final moodModel = allMoodsListView.firstWhere(
+      final moodModel = MoodData.allMoodsListView.firstWhere(
             (m) => m.name == entry.moodName,
         // Fallback la 'Fericit' dacă numele nu e găsit
-        orElse: () => allMoodsListView.firstWhere((m) => m.name == 'Fericit'),
+        orElse: () => MoodData.allMoodsListView.firstWhere((m) => m.name == 'Fericit'),
       );
 
       final color = moodModel.color;

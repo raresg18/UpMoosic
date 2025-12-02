@@ -35,7 +35,7 @@ class PlaylistScreen extends StatelessWidget {
     // Obține instanța localizării
     final l10n = AppLocalizations.of(context)!;
 
-    final selectedMoodModel = getMoodModelById(mood);
+    final selectedMoodModel = MoodData.getMoodModelById(mood);
 
     // Definirea culorii temei (pentru butoane)
     final Color themePrimaryColor = Theme.of(context).colorScheme.primary;
