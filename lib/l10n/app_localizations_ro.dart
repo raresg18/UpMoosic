@@ -33,6 +33,10 @@ class AppLocalizationsRo extends AppLocalizations {
   String get suggestSongButton => 'Sugerează o piesă';
 
   @override
+  String get selectMoodMessage =>
+      'Te rog selectează o stare de spirit înainte de a continua.';
+
+  @override
   String get questFinished => 'Am finalizat! / Închide';
 
   @override
@@ -764,7 +768,7 @@ class AppLocalizationsRo extends AppLocalizations {
       'Identifică cea mai mare distragere din jurul tău și elimin-o pentru 30 de minute.';
 
   @override
-  String get quest_motivated_title_13 => 'Fii Mentor';
+  String get quest_motivated_title_13 => 'Fii mentor';
 
   @override
   String get quest_motivated_desc_13 =>
@@ -1166,4 +1170,25 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get currentMoodTitlePrefix => 'Starea ta:';
+
+  @override
+  String get developmentInfoTitle => 'Aplicație în Dezvoltare';
+
+  @override
+  String get developmentInfoMessage =>
+      'Cu ajutorul și răbdarea ta, această aplicație poate crește. Mulțumim pentru înțelegere!';
+
+  @override
+  String get okButtonLabel => 'OK';
+
+  @override
+  String get accountHistoryTitle => 'Istoricul Quest-urilor';
+
+  @override
+  String get noQuestsCompleted => 'Nu ai finalizat încă niciun Quest.';
+
+  @override
+  String questsCompletedLabel(Object count) {
+    return 'Ai finalizat $count Quest-uri.';
+  }
 }

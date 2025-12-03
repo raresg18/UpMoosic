@@ -7,8 +7,6 @@ import '../l10n/app_localizations.dart';
 import '../l10n/l10n_extension.dart';
 import 'mood_data.dart';
 import 'quest_model.dart';
-
-// 🎯 IMPORTURI CORECTATE PENTRU STATE MANAGEMENT
 import 'user_quest.dart';
 import 'quest_state.dart';
 
@@ -33,7 +31,6 @@ class QuestsPage extends StatelessWidget {
     final selectedMoodModel = MoodData.getMoodModelById(mood);
     final moodColor = selectedMoodModel.color;
 
-    // Traducem numele stării de spirit pentru a-l afișa (în snake_case)
     String translatedMoodName;
     switch (selectedMoodModel.name) {
       case 'Fericit': translatedMoodName = l10n.moodHappy; break;

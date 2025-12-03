@@ -9,7 +9,9 @@
   "saveMoodButton": "Save daily mood",
   "selectLanguageButton": "Select Language",
   "suggestSongButton": "Suggest a song",
-
+  statusCompleted": "Completed",
+  "statusActive": "Active",
+  "selectMoodMessage": "Please select a mood before continuing.",
   "questFinished": "I finished! / Close",
   "questMissionTitle": "Your Mission:",
   "musicRecommendationTitle": "Music Recommendation for {mood}",
@@ -488,5 +490,16 @@
      "deleteYes": "Yes, Delete",
      "deleteNo": "No, Cancel",
      "exitAppButton": "Exit Application",
-     "currentMoodTitlePrefix": "Your mood:"
+     "currentMoodTitlePrefix": "Your mood:",
+     "developmentInfoTitle": "App in Development",
+     "developmentInfoMessage": "With your help and patience, this application can grow. Thank you for your understanding!",
+     "okButtonLabel": "OK",
+     "accountHistoryTitle": "Quest History",
+       "noQuestsCompleted": "No Quests completed yet.",
+       "questsCompletedLabel": "You have completed {count} Quests.",
+       "@questsCompletedLabel": {
+         "placeholders": {
+           "count": {}
+         }
+       }
 }

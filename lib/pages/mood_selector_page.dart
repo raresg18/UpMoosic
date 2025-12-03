@@ -2,11 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'playlist_page.dart';
-// Importuri NOUĂ pentru arhitectura îmbunătățită
 import 'mood_data.dart';
 import 'mood_model.dart';
-// 🎯 Importul necesar pentru localizare
 import '../l10n/app_localizations.dart';
+import 'quest_service.dart';
 
 class MoodSelectorPage extends StatefulWidget {
   const MoodSelectorPage({super.key});
@@ -27,12 +26,16 @@ class _MoodSelectorPageState extends State<MoodSelectorPage> {
     });
   }
 
-  void _navigateToPlaylist() {
+  void _navigateToPlaylist() async {
     // 🎯 Obține l10n aici pentru SnackBar
     final l10n = AppLocalizations.of(context)!;
 
     if (_selectedMoodModel != null) {
-      // Trimitem ID-ul, deoarece PlaylistScreen așteaptă un int
+      // 1. 🛑 PAS CRUCIAL: Resetează Quest-ul salvat înainte de a naviga.
+      // Aceasta forțează generarea unui Quest nou la următoarea selecție de stare.
+      await QuestService.resetQuest();
+
+      // 2. Navigarea
       int moodId = _selectedMoodModel!.id;
       Navigator.push(
         context,
@@ -41,11 +44,10 @@ class _MoodSelectorPageState extends State<MoodSelectorPage> {
         ),
       );
     } else {
-      // 🎯 Mesajul de eroare tradus
+      // Afișează SnackBar dacă nicio stare nu este selectată
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(l10n.selectMoodError),
-          backgroundColor: Colors.redAccent,
         ),
       );
     }

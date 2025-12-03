@@ -10,9 +10,11 @@
   "selectLanguageButton": "Selectează Limba",
   "suggestSongButton": "Sugerează o piesă",
   "questButtonLabel": "Quest",
-
+  "selectMoodMessage": "Te rog selectează o stare de spirit înainte de a continua.",
   "questFinished": "Am finalizat! / Închide",
   "questMissionTitle": "Misiunea Ta:",
+  "statusCompleted": "Finalizat",
+  "statusActive": "Activ",
   "musicRecommendationTitle": "Recomandare Muzicală pentru {mood}",
   "@musicRecommendationTitle": {
     "placeholders": {
@@ -281,7 +283,7 @@
   "quest_motivated_desc_11": "Alege o imagine care te inspiră și te duce cu gândul la un obiectiv.",
   "quest_motivated_title_12": "Elimină o distragere",
   "quest_motivated_desc_12": "Identifică cea mai mare distragere din jurul tău și elimin-o pentru 30 de minute.",
-  "quest_motivated_title_13": "Fii Mentor",
+  "quest_motivated_title_13": "Fii mentor",
   "quest_motivated_desc_13": "Oferă o soluție sau un sfat cuiva care are o problemă.",
   "quest_motivated_title_14": "Prioritizează ce NU faci",
   "quest_motivated_desc_14": "Scrie pe o listă 3 lucruri pe care *nu* le vei face azi pentru a te concentra pe ce e important.",
@@ -406,5 +408,17 @@
   "deleteYes": "Da, Șterge",
   "deleteNo": "Nu, Anulează",
   "exitAppButton": "Ieșire din Aplicație",
-  "currentMoodTitlePrefix": "Starea ta:"
+  "currentMoodTitlePrefix": "Starea ta:",
+
+  "developmentInfoTitle": "Aplicație în Dezvoltare",
+  "developmentInfoMessage": "Cu ajutorul și răbdarea ta, această aplicație poate crește. Mulțumim pentru înțelegere!",
+  "okButtonLabel": "OK",
+  "accountHistoryTitle": "Istoricul Quest-urilor",
+    "noQuestsCompleted": "Nu ai finalizat încă niciun Quest.",
+    "questsCompletedLabel": "Ai finalizat {count} Quest-uri.",
+    "@questsCompletedLabel": {
+      "placeholders": {
+        "count": {}
+      }
+    }
 }

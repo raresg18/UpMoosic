@@ -146,6 +146,12 @@ abstract class AppLocalizations {
   /// **'Suggest a song'**
   String get suggestSongButton;
 
+  /// No description provided for @selectMoodMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a mood before continuing.'**
+  String get selectMoodMessage;
+
   /// No description provided for @questFinished.
   ///
   /// In en, this message translates to:
@@ -2113,6 +2119,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your mood:'**
   String get currentMoodTitlePrefix;
+
+  /// No description provided for @developmentInfoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'App in Development'**
+  String get developmentInfoTitle;
+
+  /// No description provided for @developmentInfoMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'With your help and patience, this application can grow. Thank you for your understanding!'**
+  String get developmentInfoMessage;
+
+  /// No description provided for @okButtonLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get okButtonLabel;
+
+  /// No description provided for @accountHistoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Quest History'**
+  String get accountHistoryTitle;
+
+  /// No description provided for @noQuestsCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'No Quests completed yet.'**
+  String get noQuestsCompleted;
+
+  /// No description provided for @questsCompletedLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'You have completed {count} Quests.'**
+  String questsCompletedLabel(Object count);
 }
 
 class _AppLocalizationsDelegate

@@ -3,6 +3,8 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/widgets.dart'; // NOU
+import '../l10n/app_localizations.dart';
 
 import 'user_quest.dart';
 

@@ -55,6 +55,27 @@ class _AccountPageState extends State<AccountPage> {
     );
   }
 
+  // 🎯 NOU: Metoda pentru Dialogul de Informații (Dezvoltare)
+  void _showInfoDialog(BuildContext context, AppLocalizations l10n) {
+    showDialog(
+      context: context,
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          title: Text(l10n.developmentInfoTitle), // Cheie adăugată anterior
+          content: Text(l10n.developmentInfoMessage), // Cheie adăugată anterior
+          actions: <Widget>[
+            TextButton(
+              child: Text(l10n.okButtonLabel), // Cheie adăugată anterior
+              onPressed: () {
+                Navigator.of(dialogContext).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   // ===============================================
   // METODA BUILD
   // ===============================================
@@ -70,6 +91,14 @@ class _AccountPageState extends State<AccountPage> {
         return Scaffold(
           appBar: AppBar(
             title: Text(l10n.accountTitle),
+            // 🎯 NOU: Adăugarea actions (Butonul Info)
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.info_outline), // Icoana 'i'
+                onPressed: () => _showInfoDialog(context, l10n), // Apel la metoda nouă
+              ),
+              const SizedBox(width: 10), // Spațiu opțional
+            ],
           ),
           body: SingleChildScrollView(
             child: Padding(
@@ -192,7 +221,7 @@ class _AccountPageState extends State<AccountPage> {
             ),
           ),
 
-          // 🎯 BUTONUL MUTAT ÎN BOTTOM NAVIGATION BAR PENTRU A FI FIXAT
+          // BUTONUL ȘTERGE ISTORIC
           bottomNavigationBar: Padding(
             padding: EdgeInsets.only(
               left: 20.0,

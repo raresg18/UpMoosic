@@ -33,6 +33,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get suggestSongButton => 'Suggest a song';
 
   @override
+  String get selectMoodMessage => 'Please select a mood before continuing.';
+
+  @override
   String get questFinished => 'I finished! / Close';
 
   @override
@@ -1154,4 +1157,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get currentMoodTitlePrefix => 'Your mood:';
+
+  @override
+  String get developmentInfoTitle => 'App in Development';
+
+  @override
+  String get developmentInfoMessage =>
+      'With your help and patience, this application can grow. Thank you for your understanding!';
+
+  @override
+  String get okButtonLabel => 'OK';
+
+  @override
+  String get accountHistoryTitle => 'Quest History';
+
+  @override
+  String get noQuestsCompleted => 'No Quests completed yet.';
+
+  @override
+  String questsCompletedLabel(Object count) {
+    return 'You have completed $count Quests.';
+  }
 }

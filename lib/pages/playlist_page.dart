@@ -4,12 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:math';
 import 'l10n_utils.dart';
-// Asigură-te că aceste importuri sunt corecte în directorul tău:
 import 'mood_data.dart';
 import 'song.dart';
 import 'quests_page.dart';
 import 'quest_model.dart';
 import '../l10n/app_localizations.dart';
+
+import 'quest_service.dart';
 
 class PlaylistScreen extends StatelessWidget {
   final int mood;
@@ -26,8 +27,6 @@ class PlaylistScreen extends StatelessWidget {
   // Culorile de bază
   final Color _appBarColor = const Color(0xFF455A64);
   final Color _backgroundColor = const Color(0xFFF7F4F9);
-
-
 
 
   @override
@@ -66,7 +65,7 @@ class PlaylistScreen extends StatelessWidget {
       elevation: 3,
     );
 
-    // --- Logica de Randomizare ---
+    // --- Logica de Randomizare (PĂSTREAZĂ DOAR Citatul și Melodia) ---
     final random = Random();
 
     // 1. Citatul
@@ -79,11 +78,7 @@ class PlaylistScreen extends StatelessWidget {
     final int songIndex = random.nextInt(songList.length);
     final Song selectedSong = songList[songIndex]; // 💡 Melodia aleasă
 
-    // 3. Quest-ul
-    final List<QuestModel> questList = selectedMoodModel.questsKeys;
-    final QuestModel selectedQuest = questList.isNotEmpty
-        ? questList[random.nextInt(questList.length)]
-        : const QuestModel(titleKey: "quest_none_title", descriptionKey: "quest_none_desc", emoji: "");
+    // 3. Quest-ul (❌ LOGICA DE RANDOMIZARE VECHE ELIMINATĂ)
     // ---------------------------------
 
 
@@ -189,11 +184,16 @@ class PlaylistScreen extends StatelessWidget {
               SizedBox(
                 width: 250,
                 child: ElevatedButton.icon(
-                  onPressed: () {
+                  // 🎯 Aici se apelează serviciul pentru a obține Quest-ul persistent
+                  onPressed: () async {
+                    // Așteaptă să obțină Quest-ul persistent pentru sesiunea curentă (sau generează unul nou)
+                    final persistentQuest = await QuestService.getOrCreateSessionQuest(mood);
+
+                    // Navighează la QuestsPage, trimițând Quest-ul obținut
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => QuestsPage(mood: mood, selectedQuest: selectedQuest),
+                        builder: (context) => QuestsPage(mood: mood, selectedQuest: persistentQuest),
                       ),
                     );
                   },

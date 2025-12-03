@@ -6,3 +6,4 @@ output-localization-file: app_localizations.dart
 output-class: AppLocalizations
 # 🎯 Aceasta este setarea cheie pentru a forța conversia din snake_case în camelCase.
 format-resource-ids: true
+untranslated-messages-file: untranslated_keys.txt
