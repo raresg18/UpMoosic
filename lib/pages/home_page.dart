@@ -84,28 +84,28 @@ class HomePage extends StatelessWidget {
                 );
               },
             ),
-            const SizedBox(height: 40),
-
-            // 🎯 BUTON NOU: IEȘIRE DIN APLICAȚIE
-            ElevatedButton.icon(
-              icon: const Icon(Icons.exit_to_app),
-              label: Text(l10n.exitAppButton),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red.shade700,
-                foregroundColor: Colors.white,
-              ),
-              onPressed: () {
-                // Verifică dacă aplicația rulează pe mobil/desktop (nu pe web)
-                if (Platform.isAndroid || Platform.isIOS || Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-                  exit(0); // Ieșire forțată din aplicație
-                } else {
-                  // Pe web, funcția exit() nu este suportată
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Output function is not supported on Web/Chrome.')),
-                  );
-                }
-              },
-            ),
+            // const SizedBox(height: 40),
+            //
+            // // 🎯 BUTON NOU: IEȘIRE DIN APLICAȚIE
+            // ElevatedButton.icon(
+            //   icon: const Icon(Icons.exit_to_app),
+            //   label: Text(l10n.exitAppButton),
+            //   style: ElevatedButton.styleFrom(
+            //     backgroundColor: Colors.red.shade700,
+            //     foregroundColor: Colors.white,
+            //   ),
+            //   onPressed: () {
+            //     // Verifică dacă aplicația rulează pe mobil/desktop (nu pe web)
+            //     if (Platform.isAndroid || Platform.isIOS || Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
+            //       exit(0); // Ieșire forțată din aplicație
+            //     } else {
+            //       // Pe web, funcția exit() nu este suportată
+            //       ScaffoldMessenger.of(context).showSnackBar(
+            //         const SnackBar(content: Text('Output function is not supported on Web/Chrome.')),
+            //       );
+            //     }
+            //   },
+            // ),
           ],
         ),
       ),

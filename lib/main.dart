@@ -1,17 +1,22 @@
-// main.dart (Versiune Finală cu Suport pentru Plugin-uri Native)
-
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'providers/language_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'providers/language_provider.dart';
+import 'providers/quest_state.dart';
 import 'pages/home_page.dart';
 import 'l10n/app_localizations.dart';
-import 'providers/quest_state.dart';
+import 'models/mood_entry.dart';
+import 'services/data_service.dart';
 
-// 🎯 MARCAT CA ASYNC
 void main() async {
-  // 🎯 NOU: NECESAR PENTRU shared_preferences ȘI ALTE PLUGIN-URI
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Hive.initFlutter();
+  Hive.registerAdapter(MoodEntryAdapter());
+  await Hive.openBox<MoodEntry>('journal_box');
+
+  await DataService.load(const Locale('ro'));
 
   runApp(
     MultiProvider(
@@ -29,14 +34,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // CORECTAT: Ascultă tipul LanguageProvider
     final provider = Provider.of<LanguageProvider>(context);
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'UpMoosic',
       locale: provider.locale,
-
       supportedLocales: const [
         Locale('ro', ''),
         Locale('en', ''),

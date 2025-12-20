@@ -91,6 +91,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get buttonSaveMood => 'Save Daily Mood';
 
   @override
+  String get analysisDominantLabel => 'Dominant:';
+
+  @override
+  String get analysisEntriesLabel => 'Entries:';
+
+  @override
   String get saveSuccess => 'Today\'s mood and note have been saved!';
 
   @override
@@ -332,13 +338,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get quest_happy_title_4 => 'Movement for joy';
 
   @override
-  String get quest_happy_desc_4 => 'Dance for 5 minutes to a fast song.';
+  String get quest_happy_desc_4 => 'Dance for 5 minutes to an upbeat song.';
 
   @override
-  String get quest_happy_title_5 => 'Find a funny moment';
+  String get quest_happy_title_5 => 'Look for a funny moment';
 
   @override
-  String get quest_happy_desc_5 => 'Watch a funny clip or read a joke.';
+  String get quest_happy_desc_5 => 'Watch a funny video clip or read a joke.';
 
   @override
   String get quest_happy_title_6 => 'Send a kind word';
@@ -388,10 +394,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get quest_sad_desc_2 => 'Connection always helps.';
 
   @override
-  String get quest_sad_title_3 => 'Be kind to yourself';
+  String get quest_sad_title_3 => 'Be gentle with yourself';
 
   @override
-  String get quest_sad_desc_3 => 'Allow yourself to cry if you need to.';
+  String get quest_sad_desc_3 => 'Allow yourself to cry if you feel the need.';
 
   @override
   String get quest_sad_title_4 => 'Pet an animal';
@@ -400,7 +406,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get quest_sad_desc_4 => 'Interacting with animals releases oxytocin.';
 
   @override
-  String get quest_sad_title_5 => 'Make a hot cup of tea';
+  String get quest_sad_title_5 => 'Make a warm tea';
 
   @override
   String get quest_sad_desc_5 => 'Warm drinks help with emotional comfort.';
@@ -488,21 +494,21 @@ class AppLocalizationsEn extends AppLocalizations {
       'Focus on your breath to re-anchor yourself.';
 
   @override
-  String get quest_relaxed_title_3 => 'Visualize a calm place';
+  String get quest_relaxed_title_3 => 'Visualize a calm Place';
 
   @override
   String get quest_relaxed_desc_3 =>
       'Close your eyes and imagine a place where you feel safe.';
 
   @override
-  String get quest_relaxed_title_4 => 'Don\'t read the news for an hour';
+  String get quest_relaxed_title_4 => 'Avoid Reading News for One Hour';
 
   @override
   String get quest_relaxed_desc_4 =>
-      'A break from the information flow is essential.';
+      'Taking a break from the information flow is essential.';
 
   @override
-  String get quest_relaxed_title_5 => 'Light a scented candle';
+  String get quest_relaxed_title_5 => 'Light a Scented Candle';
 
   @override
   String get quest_relaxed_desc_5 => 'Use aromatherapy to soothe your senses.';
@@ -595,10 +601,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get quest_energetic_desc_3 =>
-      'Put on some music and shake off the excess energy.';
+      'Put on some music and let your body release the excess energy.';
 
   @override
-  String get quest_energetic_title_4 => 'Sing loudly';
+  String get quest_energetic_title_4 => 'Sing out loud';
 
   @override
   String get quest_energetic_desc_4 => 'Use your voice to release energy.';
@@ -607,7 +613,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get quest_energetic_title_5 => 'Run or walk fast';
 
   @override
-  String get quest_energetic_desc_5 => 'A short burst of outdoor movement.';
+  String get quest_energetic_desc_5 => 'A short burst of movement outdoors.';
 
   @override
   String get quest_energetic_title_6 => 'Learn something new in 5 min';
@@ -705,7 +711,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get quest_motivated_desc_4 =>
-      'What advice would you give tomorrow\'s self?';
+      'What advice would you give tomorrow\'s you?';
 
   @override
   String get quest_motivated_title_5 => 'Plan the next week';
@@ -869,24 +875,25 @@ class AppLocalizationsEn extends AppLocalizations {
       'If possible, ask someone to take over a minor task from you.';
 
   @override
-  String get quest_stressed_title_3 => 'A walk without your phone';
+  String get quest_stressed_title_3 => 'Take a short walk';
 
   @override
   String get quest_stressed_desc_3 =>
-      'Focus on what you see and hear around you.';
+      'Go outside for 10 minutes. A change of scenery helps calm you.';
 
   @override
-  String get quest_stressed_title_4 => 'Take a warm shower/bath';
+  String get quest_stressed_title_4 => 'Take a warm shower';
 
   @override
-  String get quest_stressed_desc_4 => 'Warm water relaxes tense muscles.';
+  String get quest_stressed_desc_4 =>
+      'Use the warm water to relax your muscles.';
 
   @override
-  String get quest_stressed_title_5 => 'Stop and smell the coffee';
+  String get quest_stressed_title_5 => 'Sip a warm drink';
 
   @override
   String get quest_stressed_desc_5 =>
-      'Take a break from work and enjoy a warm drink.';
+      'Make yourself a calming herbal tea or a warm drink.';
 
   @override
   String get quest_nostalgic_title_1 => 'Flip through an old photo';
@@ -1014,18 +1021,17 @@ class AppLocalizationsEn extends AppLocalizations {
       'Drink a large glass of water. It aids cognitive function.';
 
   @override
-  String get quest_focused_title_4 => 'Set a single goal for the next hour';
+  String get quest_focused_title_4 => 'Fix one single goal for the next hour';
 
   @override
   String get quest_focused_desc_4 =>
       'Choose the most important task and ignore the rest.';
 
   @override
-  String get quest_focused_title_5 => 'Go outside for 5 minutes';
+  String get quest_focused_title_5 => 'Go out for 5 minutes of fresh air';
 
   @override
-  String get quest_focused_desc_5 =>
-      'Refresh your mind with a breath of fresh air.';
+  String get quest_focused_desc_5 => 'Refresh your mind with a breath of air.';
 
   @override
   String get quest_focused_title_6 => 'Clean the desktop';
@@ -1183,5 +1189,15 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String questsCompletedLabel(Object count) {
     return 'You have completed $count Quests.';
+  }
+
+  @override
+  String questStatusAccepted(Object date) {
+    return 'Accepted on $date';
+  }
+
+  @override
+  String questStatusCompleted(Object date) {
+    return 'Completed on $date';
   }
 }

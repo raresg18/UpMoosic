@@ -92,6 +92,12 @@ class AppLocalizationsRo extends AppLocalizations {
   String get buttonSaveMood => 'Salvează starea zilnică';
 
   @override
+  String get analysisDominantLabel => 'Dominant:';
+
+  @override
+  String get analysisEntriesLabel => 'Intrări:';
+
+  @override
   String get saveSuccess => 'Starea și notița de astăzi au fost salvate!';
 
   @override
@@ -168,147 +174,145 @@ class AppLocalizationsRo extends AppLocalizations {
   String get moodFocused => 'Focusat';
 
   @override
-  String get quote_happy_1 => 'Fericirea depinde de noi înșine.';
+  String get quote_happy_1 => 'Happiness depends upon ourselves.';
 
   @override
   String get quote_happy_2 =>
-      'Fericirea nu este ceva gata făcut. Ea vine din propriile tale acțiuni.';
+      'Happiness is not something readymade. It comes from your own actions.';
 
   @override
-  String get quote_happy_3 => 'Să fii tu însuți e tot ce contează.';
+  String get quote_happy_3 => 'Being yourself is all that matters.';
 
   @override
-  String get quote_happy_4 => 'Fii schimbarea pe care vrei să o vezi în lume.';
+  String get quote_happy_4 =>
+      'Be the change that you wish to see in the world.';
 
   @override
-  String get quote_happy_5 => 'O inimă fericită este un trup sănătos.';
+  String get quote_happy_5 => 'A happy heart is a good medicine.';
 
   @override
-  String get quote_sad_1 => 'Lacrimile vin din inimă, nu din creier.';
+  String get quote_sad_1 => 'Tears come from the heart, not from the brain.';
 
   @override
   String get quote_sad_2 =>
-      'Fiecare viață are o măsură de tristețe, iar uneori aceasta ne trezește.';
+      'Every life has a measure of sadness, and sometimes it awakens us.';
 
   @override
   String get quote_sad_3 =>
-      'Să te lași să fii trist e la fel de important ca să te lași să fii fericit.';
+      'Allowing yourself to be sad is just as important as allowing yourself to be happy.';
 
   @override
-  String get quote_sad_4 =>
-      'Nu poți vindeca nimic din ceea ce pretinzi că nu există.';
+  String get quote_sad_4 => 'You cannot heal what you pretend doesn\'t exist.';
 
   @override
-  String get quote_sad_5 => 'Este în regulă să nu fii bine.';
+  String get quote_sad_5 => 'It\'s okay not to be okay.';
 
   @override
-  String get quote_relaxed_1 => 'Respiră viitorul, expiră trecutul.';
+  String get quote_relaxed_1 => 'Breathe in the future, breathe out the past.';
 
   @override
   String get quote_relaxed_2 =>
-      'Cea mai mare armă împotriva stresului este capacitatea noastră de a alege un gând în locul altuia.';
+      'The greatest weapon against stress is our ability to choose one thought over another.';
 
   @override
-  String get quote_relaxed_3 => 'Calmarea minții aduce puterea interioară.';
+  String get quote_relaxed_3 => 'Calming the mind brings inner strength.';
 
   @override
   String get quote_relaxed_4 =>
-      'Lasă-ți mintea să se calmeze și inima să se deschidă.';
+      'Allow your mind to quiet and your heart to open.';
 
   @override
-  String get quote_relaxed_5 => 'Fii o insulă de calm în mijlocul haosului.';
+  String get quote_relaxed_5 => 'Be an island of calm in the middle of chaos.';
 
   @override
-  String get quote_energetic_1 =>
-      'Energiea și persistența cuceresc toate lucrurile.';
+  String get quote_energetic_1 => 'Energy and persistence conquer all things.';
 
   @override
   String get quote_energetic_2 =>
-      'Nu te opri când ești obosit, oprește-te când ai terminat.';
+      'Don\'t stop when you\'re tired, stop when you\'re done.';
 
   @override
-  String get quote_energetic_3 =>
-      'Fiecare zi este o pagină nouă. Fă-o energică!';
+  String get quote_energetic_3 => 'Every day is a new page. Make it energetic!';
 
   @override
   String get quote_energetic_4 =>
-      'Succesul nu este final; eșecul nu este fatal: curajul de a continua contează.';
+      'Success is not final; failure is not fatal: it is the courage to continue that counts.';
 
   @override
-  String get quote_energetic_5 => 'Limita este doar imaginația noastră.';
+  String get quote_energetic_5 => 'The only limit is our imagination.';
 
   @override
   String get quote_motivated_1 =>
-      'Motivația te face să începi. Obiceiul te face să continui.';
+      'Motivation gets you started. Habit keeps you going.';
 
   @override
   String get quote_motivated_2 =>
-      'O singură persoană cu o dorință este o forță de neoprit.';
+      'A single person with a desire is an unstoppable force.';
 
   @override
-  String get quote_motivated_3 => 'Secretul de a avansa este să începi.';
+  String get quote_motivated_3 =>
+      'The secret of getting ahead is getting started.';
 
   @override
-  String get quote_motivated_4 => 'Fii atât de bun încât nu te pot ignora.';
+  String get quote_motivated_4 => 'Be so good they can\'t ignore you.';
 
   @override
-  String get quote_motivated_5 => 'Fiecare maestru a fost cândva un dezastru.';
+  String get quote_motivated_5 => 'Every master was once a disaster.';
 
   @override
   String get quote_stressed_1 =>
-      'Nu poți controla tot ce se întâmplă. Controlează cum reacționezi.';
+      'You cannot control everything that happens. Control how you react.';
 
   @override
   String get quote_stressed_2 =>
-      'Ia o pauză. O minte obosită nu poate lua decizii bune.';
+      'Take a break. A tired mind cannot make good decisions.';
 
   @override
   String get quote_stressed_3 =>
-      'Acceptă ceea ce este, lasă să plece ceea ce a fost și ai încredere în ce va fi.';
+      'Accept what is, let go of what was, and have faith in what will be.';
 
   @override
-  String get quote_stressed_4 => 'Nu ești obligat să termini totul azi.';
+  String get quote_stressed_4 =>
+      'You are not obligated to finish everything today.';
 
   @override
   String get quote_stressed_5 =>
-      'Detașarea de rezultat este cheia păcii interioare.';
+      'Detachment from the outcome is the key to inner peace.';
 
   @override
-  String get quote_nostalgic_1 => 'Amintirile sunt comoara sufletului.';
+  String get quote_nostalgic_1 => 'Memories are the treasure of the soul.';
 
   @override
   String get quote_nostalgic_2 =>
-      'Adu-ți aminte că trecutul este o lecție, nu o pedeapsă.';
+      'Remember that the past is a lesson, not a punishment.';
 
   @override
-  String get quote_nostalgic_3 =>
-      'Nostalgia este durerea unei bucurii trecute.';
+  String get quote_nostalgic_3 => 'Nostalgia is the pain of a past joy.';
 
   @override
   String get quote_nostalgic_4 =>
-      'Timpul nu vindecă, dar ajută la reorganizarea amintirilor.';
+      'Time doesn\'t heal, but it helps reorganize memories.';
 
   @override
   String get quote_nostalgic_5 =>
-      'Amintirile sunt modul în care îți poți ține minte viața.';
+      'Memories are the way we keep track of our lives.';
 
   @override
-  String get quote_focused_1 => 'Concentrează-te pe a fi productiv, nu ocupat.';
+  String get quote_focused_1 => 'Focus on being productive, not busy.';
 
   @override
   String get quote_focused_2 =>
-      'Cheia succesului este să te concentrezi pe obiective, nu pe obstacole.';
+      'The key to success is to focus on goals, not obstacles.';
 
   @override
-  String get quote_focused_3 =>
-      'Unde se duce atenția ta, acolo se duce energia ta.';
+  String get quote_focused_3 => 'Where your attention goes, your energy flows.';
 
   @override
-  String get quote_focused_4 => 'Alege să nu fii distras.';
+  String get quote_focused_4 => 'Choose not to be distracted.';
 
   @override
   String get quote_focused_5 =>
-      'O minte neclintită în mijlocul furtunii aduce claritate.';
+      'A steady mind in the midst of a storm brings clarity.';
 
   @override
   String get quest_happy_title_1 => 'Împărtășește bucuria';
@@ -1196,5 +1200,15 @@ class AppLocalizationsRo extends AppLocalizations {
   @override
   String questsCompletedLabel(Object count) {
     return 'Ai finalizat $count Quest-uri.';
+  }
+
+  @override
+  String questStatusAccepted(Object date) {
+    return 'Acceptat pe $date';
+  }
+
+  @override
+  String questStatusCompleted(Object date) {
+    return 'Finalizat pe $date';
   }
 }

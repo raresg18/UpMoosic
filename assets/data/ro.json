@@ -1,101 +1,51 @@
 {
-  "@@locale": "ro",
-  "appName": "UpMoosic",
+  "quote_happy_1": "Fericirea depinde de noi înșine.",
+  "quote_happy_2": "Scopul vieții este să fii util și onorabil.",
+  "quote_happy_3": "Pentru fiecare minut de furie pierzi 60 de secunde de fericire.",
+  "quote_happy_4": "Fericirea nu este ceva gata făcut. Ea vine din propriile tale acțiuni.",
+  "quote_happy_5": "Fericirea este o alegere, nu un rezultat.",
 
-  "selectMoodPrompt": "Selectează starea de astăzi:",
-  "emotionalJournalButton": "Jurnal Emoțional",
-  "selectMoodQuestion": "Cum te simți azi?",
-  "selectMoodError": "Te rog selectează un mood înainte!",
-  "saveMoodButton": "Salvează starea zilnică",
-  "selectLanguageButton": "Selectează Limba",
-  "suggestSongButton": "Sugerează o piesă",
-  "questButtonLabel": "Quest",
-  "selectMoodMessage": "Te rog selectează o stare de spirit înainte de a continua.",
-  "questFinished": "Am finalizat! / Închide",
-  "questMissionTitle": "Misiunea Ta:",
-  "statusCompleted": "Finalizat",
-  "statusActive": "Activ",
-  "musicRecommendationTitle": "Recomandare Muzicală pentru {mood}",
-  "@musicRecommendationTitle": {
-    "placeholders": {
-      "mood": {}
-    }
-  },
-  "listenOnYoutube": "Ascultă pe YouTube",
-  "listenOnSpotify": "Ascultă pe Spotify",
-  "luckySongPrompt": "Melodia ta norocoasă:",
-  "analysisDominantLabel": "Dominant:",
-  "analysisEntriesLabel": "Intrări:",
+  "quote_sad_1": "Lacrimile vin din inimă, nu din creier.",
+  "quote_sad_2": "Este ok să nu fii ok uneori.",
+  "quote_sad_3": "Tristețea zboară pe aripile timpului.",
+  "quote_sad_4": "Întoarce-ți fața către soare și umbrele vor cădea în urma ta.",
+  "quote_sad_5": "Durerea este inevitabilă, suferința este opțională.",
 
-  "journalTitle": "Jurnal Emoțional & Calendar de Stări 🗓️",
-  "dailyNoteLabel": "Notițe pentru Jurnal (opțional)",
-  "journalNoteHint": "Ce s-a întâmplat astăzi?",
-  "journalNoteLabel": "Notițe Jurnal (opțional)",
-  "buttonUpdateMood": "Actualizează starea zilnică",
-  "buttonSaveMood": "Salvează starea zilnică",
-  "todayMoodIs": "Starea de astăzi este: {mood}! (Poți actualiza)",
-  "@todayMoodIs": {
-    "placeholders": {
-      "mood": {}
-    }
-  },
-  "selectTodayMood": "Selectează starea de astăzi:",
-  "saveSuccess": "Starea și notița de astăzi au fost salvate!",
-  "updateSuccess": "Starea și notița de astăzi au fost actualizate!",
-  "saveNoMood": "Selectează o stare înainte de a salva.",
-  "savePastDateError": "Poți salva starea doar pentru ziua curentă.",
+  "quote_relaxed_1": "Relaxează-te, nimic nu e sub control.",
+  "quote_relaxed_2": "Uneori cel mai productiv lucru pe care îl poți face este să te relaxezi.",
+  "quote_relaxed_3": "Calmul este superputerea ta.",
+  "quote_relaxed_4": "Respiră. Lasă totul să treacă.",
+  "quote_relaxed_5": "Pacea vine din interior. Nu o căuta în afară.",
 
-  "notSelected": "Neselectată",
-  "pastDayMoodWas": "Starea pe {day}/{month}/{year} a fost:",
-  "@pastDayMoodWas": {
-    "placeholders": {
-      "day": {},
-      "month": {},
-      "year": {}
-    }
-  },
-  "pastNoteLabel": "Notiță: \"{note}\"",
-  "@pastNoteLabel": {
-    "placeholders": {
-      "note": {}
-    }
-  },
-  "noRecordForDay": "Nu există înregistrare pentru {day}/{month}/{year}.",
-  "@noRecordForDay": {
-    "placeholders": {
-      "day": {},
-      "month": {},
-      "year": {}
-    }
-  },
+  "quote_focused_1": "Concentrează-te pe a fi productiv, nu ocupat.",
+  "quote_focused_2": "Succesul este suma eforturilor mici, repetate zi de zi.",
+  "quote_focused_3": "Cheia succesului este să te concentrezi pe scopuri, nu pe obstacole.",
+  "quote_focused_4": "Nu număra zilele. Fă zilele să conteze.",
+  "quote_focused_5": "Concentrează-te pe momentul prezent.",
 
-  "analysisTitle": "Analiza Săptămânală (Ultimele 7 zile):",
-  "weeklyAnalysisTitle": "Analiza Săptămânală (Ultimele 7 zile):",
-  "analysisLoading": "Se calculează...",
-  "weeklyColorLabel": "Culoarea Săptămânii: Hibrid",
-  "dominantMoodLabel": "Mood Dominant: {mood}",
-  "@dominantMoodLabel": {
-    "placeholders": {
-      "mood": {}
-    }
-  },
-  "entriesCountLabel": "Înregistrări în această perioadă: {count}",
-  "@entriesCountLabel": {
-    "placeholders": {
-      "count": {}
-    }
-  },
+  "quote_energetic_1": "Energia și perseverența cuceresc totul.",
+  "quote_energetic_2": "Lumea aparține celor energici.",
+  "quote_energetic_3": "Pasiunea este energie. Simte puterea care vine din a te concentra pe ceea ce te entuziasmează.",
+  "quote_energetic_4": "Fă azi ceva pentru care sinele tău din viitor îți va mulțumi.",
+  "quote_energetic_5": "Energia curge acolo unde se îndreaptă atenția.",
 
+  "quote_motivated_1": "Crede că poți și ești deja la jumătatea drumului.",
+  "quote_motivated_2": "Nu te uita la ceas; fă ce face el. Mergi înainte.",
+  "quote_motivated_3": "Singurul mod de a face lucruri mărețe este să iubești ceea ce faci.",
+  "quote_motivated_4": "Visează măreț și îndrăznește să eșuezi.",
+  "quote_motivated_5": "Acțiunea este cheia fundamentală a oricărui succes.",
 
-  "moodHappy": "Fericit",
-  "moodSad": "Trist",
-  "moodRelaxed": "Relaxat",
-  "moodStressed": "Stresat",
-  "moodEnergetic": "Energic",
-  "moodMotivated": "Motivat",
-  "moodNostalgic": "Nostalgic",
-  "moodFocused": "Focusat",
+  "quote_stressed_1": "Nu stresul ne omoară, ci reacția noastră la el.",
+  "quote_stressed_2": "Respiră adânc. E doar o zi proastă, nu o viață proastă.",
+  "quote_stressed_3": "Dă-i stresului aripi și lasă-l să zboare.",
+  "quote_stressed_4": "În tine există o liniște și un sanctuar unde te poți retrage oricând.",
+  "quote_stressed_5": "Stresul apare când ești 'aici', dar vrei să fii 'acolo'.",
 
+  "quote_nostalgic_1": "Nostalgia este un fișier care șterge părțile aspre ale zilelor bune de demult.",
+  "quote_nostalgic_2": "Amintirile sunt cheia nu către trecut, ci către viitor.",
+  "quote_nostalgic_3": "Nu realizam că ne construim amintiri, știam doar că ne distrăm.",
+  "quote_nostalgic_4": "Din când în când mi se face dor de un loc care nu mai există.",
+  "quote_nostalgic_5": "Viața aduce lacrimi, zâmbete și amintiri.",
 
   "quest_happy_title_1": "Împărtășește bucuria",
   "quest_happy_desc_1": "Trimite un mesaj pozitiv cuiva drag.",
@@ -333,56 +283,5 @@
   "quest_focused_title_14": "Scrie 'De ce?'",
   "quest_focused_desc_14": "Reamintește-ți de ce faci această muncă. Claritatea scopului aduce focus.",
   "quest_focused_title_15": "Folosește modul avion",
-  "quest_focused_desc_15": "Activează modul avion pe telefon pentru o perioadă specifică de timp.",
-
-  "accountTitle": "Profilul Meu",
-  "accountPageWelcome": "Bine ai venit pe pagina de profil!",
-  "account": "Cont",
-  "doQuestButton": "Acceptă Misiunea",
-  "closeButton": "Închide",
-  "activeQuestsTitle": "Misiuni Active",
-  "noActiveQuests": "Nu ai misiuni active. Alege una din ecranul principal!",
-  "mood": "Stare",
-  "questAcceptedMessage" : "Quest Acceptat",
-  "cancelQuestButton": "Anulează Misiunea",
-  "completeQuestButton": "Marchează ca Finalizat",
-  "completedQuestsTitle": "Istoric Misiuni Finalizate",
-  "noCompletedQuests": "Nu ai finalizat încă nicio misiune.",
-  "userScoreLabel": "Puncte din Quest: {score}",
-    "@userScoreLabel": {
-      "placeholders": {
-        "score": {}
-      }
-    },
-  "deleteHistoryButton": "Șterge Istoric Quest-uri",
-  "deleteConfirmationTitle": "Confirmă Ștergerea",
-  "deleteConfirmationMessage": "Ești sigur că vrei să ștergi definitiv TOATE quest-urile finalizate?",
-  "deleteYes": "Da, Șterge",
-  "deleteNo": "Nu, Anulează",
-  "exitAppButton": "Ieșire din Aplicație",
-  "currentMoodTitlePrefix": "Starea ta:",
-
-  "developmentInfoTitle": "Aplicație în Dezvoltare",
-  "developmentInfoMessage": "Cu ajutorul și răbdarea ta, această aplicație poate crește. Mulțumim pentru înțelegere!",
-  "okButtonLabel": "OK",
-  "accountHistoryTitle": "Istoricul Quest-urilor",
-    "noQuestsCompleted": "Nu ai finalizat încă niciun Quest.",
-    "questsCompletedLabel": "Ai finalizat {count} Quest-uri.",
-    "@questsCompletedLabel": {
-      "placeholders": {
-        "count": {}
-      }
-    },
-    "questStatusAccepted": "Acceptat pe {date}",
-      "@questStatusAccepted": {
-        "placeholders": {
-          "date": {}
-        }
-      },
-      "questStatusCompleted": "Finalizat pe {date}",
-      "@questStatusCompleted": {
-        "placeholders": {
-          "date": {}
-        }
-      }
+  "quest_focused_desc_15": "Activează modul avion pe telefon pentru o perioadă specifică de timp."
 }

@@ -1,7 +1,3 @@
-// journal_page.dart (Codul Complet cu L10N)
-
-import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -9,17 +5,9 @@ import '../l10n/app_localizations.dart';
 import '../data/mood_data.dart';
 import '../services/mood_tracker_service.dart';
 import '../models/mood_entry.dart';
-import '../models/mood_model.dart';
 
-
-// Extensie ajutătoare (helper)
 extension on String? {
   bool get isNullOrEmpty => this == null || this!.isEmpty;
-}
-
-// Helper function pentru a normaliza datele
-int getHashCode(DateTime key) {
-  return key.year * 10000 + key.month * 100 + key.day;
 }
 
 class JournalPage extends StatefulWidget {
@@ -32,25 +20,20 @@ class JournalPage extends StatefulWidget {
 class _JournalPageState extends State<JournalPage> {
   final MoodTrackerService _trackerService = MoodTrackerService();
 
-  // Starea pentru Calendar
   CalendarFormat _calendarFormat = CalendarFormat.week;
   DateTime _focusedDay = DateTime.now();
   DateTime _selectedDay = DateTime.now();
 
-  // Starea pentru Tracking & Analiză
   String? _selectedMoodName;
   bool _hasTrackedToday = false;
-  Map<DateTime, String> _moodMap = {}; // Hartă pentru Calendar (Dată -> Nume Stare)
+  Map<DateTime, String> _moodMap = {};
 
-  // Starea pentru Notițe
   final TextEditingController _noteController = TextEditingController();
   String? _selectedDayNote;
 
-  // Starea pentru Analiza Săptămânală
   Color _weeklyColor = Colors.grey;
-  String _dominantMood = 'loading'; // Rămâne 'loading' pentru a fi tradus în build
+  String _dominantMood = 'loading';
   int _entriesCount = 0;
-
 
   @override
   void initState() {
@@ -68,120 +51,130 @@ class _JournalPageState extends State<JournalPage> {
     super.dispose();
   }
 
-  // Helper pentru a găsi culoarea dintr-un MoodName
   Color _getColorForMood(String moodName) {
     final mood = MoodData.getMoodModelByName(moodName);
     return mood.color;
   }
 
-  // Găsește întreaga MoodEntry pentru o zi normalizată (an, lună, zi)
-  Future<MoodEntry?> _getEntryForDay(DateTime day) async {
-    final prefs = await SharedPreferences.getInstance();
-    final jsonList = prefs.getStringList('dailyMoods') ?? [];
-    final fullEntries = jsonList.map((jsonString) => MoodEntry.fromJson(jsonDecode(jsonString))).toList();
-
-    final normalizedDay = DateTime(day.year, day.month, day.day);
-
-    try {
-      return fullEntries.firstWhere((entry) {
-        final entryDateKey = DateTime(entry.date.year, entry.date.month, entry.date.day);
-        return entryDateKey.isAtSameMomentAs(normalizedDay);
-      });
-    } catch (e) {
-      return null;
+  String _getLocalizedMoodName(BuildContext context, String baseName) {
+    final l10n = AppLocalizations.of(context)!;
+    switch (baseName) {
+      case 'Fericit':
+      case 'Happy':
+        return l10n.moodHappy;
+      case 'Trist':
+      case 'Sad':
+        return l10n.moodSad;
+      case 'Relaxat':
+      case 'Relaxed':
+        return l10n.moodRelaxed;
+      case 'Energetic':
+        return l10n.moodEnergetic;
+      case 'Motivat':
+      case 'Motivated':
+        return l10n.moodMotivated;
+      case 'Stresat':
+      case 'Stressed':
+        return l10n.moodStressed;
+      case 'Nostalgic':
+        return l10n.moodNostalgic;
+      case 'Focusat':
+      case 'Focused':
+        return l10n.moodFocused;
+      default:
+        return baseName;
     }
   }
 
+  MoodEntry? _getEntryForDay(DateTime day) {
+    return _trackerService.getDailyMood(day);
+  }
 
   Future<void> _loadInitialData() async {
-    final tracked = await _trackerService.hasTrackedToday();
-    final moodMap = await _trackerService.getMoodMap();
+    final allEntries = _trackerService.getAllMoodEntries();
+
+    final Map<DateTime, String> newMoodMap = {};
+    for (var entry in allEntries) {
+      final dateKey = DateTime(entry.date.year, entry.date.month, entry.date.day);
+      newMoodMap[dateKey] = entry.moodName;
+    }
+
+    final today = DateTime.now();
+    final todayEntry = _trackerService.getDailyMood(today);
+    final tracked = todayEntry != null;
+
     final analysis = await _trackerService.getWeeklyAnalysis();
 
+    final selectedEntry = _getEntryForDay(_selectedDay);
+
     final normalizedSelectedDay = DateTime(_selectedDay.year, _selectedDay.month, _selectedDay.day);
-    final selectedEntry = await _getEntryForDay(_selectedDay);
-
-    String? determinedMoodName;
-    final savedMoodForSelectedDay = moodMap[normalizedSelectedDay];
-
-    if (savedMoodForSelectedDay != null) {
-      determinedMoodName = savedMoodForSelectedDay;
-    }
-    else {
-      determinedMoodName = null;
-    }
+    final savedMoodForSelectedDay = newMoodMap[normalizedSelectedDay];
 
     setState(() {
       _hasTrackedToday = tracked;
-      _moodMap = moodMap;
-
-      // Aplicăm starea determinată
-      _selectedMoodName = determinedMoodName;
-
-      // Notița se setează din Entry-ul complet
+      _moodMap = newMoodMap;
+      _selectedMoodName = savedMoodForSelectedDay;
       _selectedDayNote = selectedEntry?.note;
 
-      final isTodaySelected = isSameDay(_selectedDay, DateTime.now());
-      // Dacă este ziua curentă, populăm controller-ul
-      if (isTodaySelected) {
+      if (isSameDay(_selectedDay, today)) {
         _noteController.text = selectedEntry?.note ?? '';
       } else {
-        _noteController.text = ''; // Curățăm câmpul pentru zilele din trecut
+        _noteController.text = '';
       }
 
-      // Analiza Săptămânală
-      _weeklyColor = analysis['hybridColor'] as Color;
-      // 'loading' va fi tradus în build
-      _dominantMood = analysis['dominantMood'] as String? ?? 'loading';
-      _entriesCount = analysis['entriesCount'] as int;
+      if (analysis.isNotEmpty) {
+        _weeklyColor = (analysis['hybridColor'] as Color?) ?? Colors.grey;
+        _dominantMood = (analysis['dominantMood'] as String?) ?? 'loading';
+        _entriesCount = (analysis['entriesCount'] as int?) ?? 0;
+      } else {
+        _weeklyColor = Colors.grey;
+        _dominantMood = 'loading';
+        _entriesCount = 0;
+      }
     });
   }
 
   void _onMoodSelected(String moodName) {
-    final isTodaySelected = isSameDay(_selectedDay, DateTime.now());
-
     setState(() {
       _selectedMoodName = moodName;
     });
-
-    if (isTodaySelected) {
-      _trackerService.saveLastSelectedJournalMood(moodName);
-    }
   }
 
   Future<void> _saveMood() async {
-    final l10n = AppLocalizations.of(context)!; // Obținem l10n aici
+    final l10n = AppLocalizations.of(context)!;
     final todayNormalized = DateTime.now();
-    final today = DateTime(todayNormalized.year, todayNormalized.month, todayNormalized.day);
     final normalizedSelectedDay = DateTime(_selectedDay.year, _selectedDay.month, _selectedDay.day);
     final noteText = _noteController.text.trim();
 
-    if (!_selectedMoodName.isNullOrEmpty && normalizedSelectedDay.isAtSameMomentAs(today)) {
-
-      await _trackerService.saveDailyMood(_selectedMoodName!, note: noteText);
-
-      // 🎯 FOLOSIM L10N PENTRU SNACKBAR
-      final String message = !_hasTrackedToday ? l10n.saveSuccess : l10n.updateSuccess;
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(message)),
+    if (!_selectedMoodName.isNullOrEmpty && isSameDay(normalizedSelectedDay, todayNormalized)) {
+      final newEntry = MoodEntry(
+        moodName: _selectedMoodName!,
+        date: DateTime.now(),
+        note: noteText.isNotEmpty ? noteText : null,
       );
 
+      await _trackerService.saveDailyMood(newEntry);
+
+      final String message = !_hasTrackedToday ? l10n.saveSuccess : l10n.updateSuccess;
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(message)),
+        );
+      }
+
       await _loadInitialData();
-    } else if (normalizedSelectedDay.isAtSameMomentAs(today) && _selectedMoodName.isNullOrEmpty) {
+    } else if (isSameDay(normalizedSelectedDay, todayNormalized) && _selectedMoodName.isNullOrEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        // 🎯 FOLOSIM L10N
-        SnackBar(content: Text(l10n.saveNoMood), backgroundColor: Colors.orange),
+        SnackBar(content: Text(l10n.selectMoodError), backgroundColor: Colors.orange),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        // 🎯 FOLOSIM L10N
-        SnackBar(content: Text(l10n.savePastDateError), backgroundColor: Colors.red),
+        const SnackBar(content: Text("Nu poți edita zilele din trecut."), backgroundColor: Colors.red),
       );
     }
   }
 
-  // Funcție care decide ce widget mic să afișeze sub o anumită dată
   List<Widget> _getEventsForDay(DateTime day) {
     final normalizedDay = DateTime(day.year, day.month, day.day);
     final moodName = _moodMap[normalizedDay];
@@ -205,23 +198,26 @@ class _JournalPageState extends State<JournalPage> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!; // 🎯 Instanța l10n
+    final l10n = AppLocalizations.of(context)!;
     final allMoodsList = MoodData.allMoodsListView;
-
     final isTodaySelected = isSameDay(_selectedDay, DateTime.now());
-
     final normalizedSelectedDay = DateTime(_selectedDay.year, _selectedDay.month, _selectedDay.day);
     final hasEntryForSelectedDay = _moodMap.containsKey(normalizedSelectedDay);
 
-    // 🎯 Traducem mood-ul dominant dacă este 'loading'
-    final String displayedDominantMood = _dominantMood == 'loading'
-        ? l10n.analysisLoading
-        : _dominantMood;
+    String displayedDominantMood = _dominantMood;
+    if (_dominantMood != 'loading') {
+      displayedDominantMood = _getLocalizedMoodName(context, _dominantMood);
+    } else {
+      displayedDominantMood = l10n.analysisLoading ?? 'Loading...';
+    }
 
+    String? currentDisplayMoodName;
+    if (_selectedMoodName != null) {
+      currentDisplayMoodName = _getLocalizedMoodName(context, _selectedMoodName!);
+    }
 
     return Scaffold(
       appBar: AppBar(
-        // 🎯 Titlu AppBar
         title: Text(l10n.journalTitle),
         backgroundColor: Colors.blueGrey.shade700,
         foregroundColor: Colors.white,
@@ -231,8 +227,6 @@ class _JournalPageState extends State<JournalPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
-            // 1. Calendarul de Stări
             TableCalendar(
               firstDay: DateTime.utc(2023, 1, 1),
               lastDay: DateTime.utc(2030, 12, 31),
@@ -274,16 +268,13 @@ class _JournalPageState extends State<JournalPage> {
             const Divider(),
             const SizedBox(height: 20),
 
-
-            // 2. Zona de Tracking Zilnic (Vizibilă doar pentru ziua de azi)
             if (isTodaySelected)
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    // 🎯 Mesajul de stare
-                    _hasTrackedToday && _selectedMoodName != null
-                        ? l10n.todayMoodIs(_selectedMoodName!)
+                    _hasTrackedToday && currentDisplayMoodName != null
+                        ? l10n.todayMoodIs(currentDisplayMoodName)
                         : l10n.selectTodayMood,
                     style: TextStyle(
                       fontSize: 18,
@@ -295,32 +286,30 @@ class _JournalPageState extends State<JournalPage> {
                   ),
                   const SizedBox(height: 10),
 
-                  // Selecția Stării
                   Wrap(
                     spacing: 10.0,
                     runSpacing: 10.0,
                     children: allMoodsList.map((moodModel) {
                       final isSelected = moodModel.name == _selectedMoodName;
+                      final translatedName = _getLocalizedMoodName(context, moodModel.name);
+
                       return MoodChip(
-                        moodName: moodModel.name,
+                        displayMoodName: translatedName,
                         emoji: moodModel.emoji,
                         color: moodModel.color,
                         isSelected: isSelected,
                         onTap: () => _onMoodSelected(moodModel.name),
-                        l10n: l10n, // 🎯 TRIMITE L10N CĂTRE CHIP PENTRU TRADUCERE
                       );
                     }).toList(),
                   ),
 
                   const SizedBox(height: 20),
 
-                  // Câmpul de Notițe de Jurnal (Editabil doar azi)
                   TextFormField(
                     controller: _noteController,
                     maxLines: 4,
                     maxLength: 500,
                     decoration: InputDecoration(
-                      // 🎯 Label și Hint
                       labelText: l10n.journalNoteLabel,
                       hintText: l10n.journalNoteHint,
                       border: const OutlineInputBorder(),
@@ -332,12 +321,10 @@ class _JournalPageState extends State<JournalPage> {
 
                   const SizedBox(height: 20),
 
-                  // Butonul de Salvare/Actualizare (Vizibil doar azi)
                   ElevatedButton.icon(
                     onPressed: _selectedMoodName != null ? _saveMood : null,
                     icon: const Icon(Icons.check_circle_outline),
-                    // 🎯 Label Buton
-                    label: Text(_hasTrackedToday ? l10n.buttonUpdateMood : l10n.buttonSaveMood),
+                    label: Text(_hasTrackedToday ? l10n.saveMoodButton : l10n.saveMoodButton),
                     style: ElevatedButton.styleFrom(
                       minimumSize: const Size(double.infinity, 50),
                       backgroundColor: Colors.indigo,
@@ -348,7 +335,6 @@ class _JournalPageState extends State<JournalPage> {
                 ],
               )
             else
-            // Afișează starea și notița pentru data selectată, dacă există
               Padding(
                 padding: const EdgeInsets.only(bottom: 20.0),
                 child: hasEntryForSelectedDay
@@ -356,14 +342,12 @@ class _JournalPageState extends State<JournalPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      // 🎯 Mesaj pentru ziua din trecut
-                      l10n.pastDayMoodWas(_selectedDay.day, _selectedDay.month, _selectedDay.year),
+                      'Starea din ${_selectedDay.day}.${_selectedDay.month}.${_selectedDay.year}:',
                       style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                     ),
                     const SizedBox(height: 5),
                     Text(
-                      // 🎯 Numele stării selectate
-                      '${_selectedMoodName ?? l10n.notSelected}',
+                      currentDisplayMoodName ?? l10n.selectMoodError,
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -374,16 +358,14 @@ class _JournalPageState extends State<JournalPage> {
                       Padding(
                         padding: const EdgeInsets.only(top: 10.0),
                         child: Text(
-                          // 🎯 Etichetă notiță
-                          l10n.pastNoteLabel(_selectedDayNote!),
+                          _selectedDayNote!,
                           style: const TextStyle(fontSize: 14, fontStyle: FontStyle.italic, color: Colors.black54),
                         ),
                       ),
                   ],
                 )
                     : Text(
-                  // 🎯 Mesaj fără înregistrare
-                  l10n.noRecordForDay(_selectedDay.day, _selectedDay.month, _selectedDay.year),
+                  "Nu există date pentru această zi.",
                   style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.grey),
                 ),
               ),
@@ -391,10 +373,8 @@ class _JournalPageState extends State<JournalPage> {
             const Divider(),
             const SizedBox(height: 20),
 
-            // 3. Secțiunea Analiză Săptămânală
-            // 🎯 Titlu analiză
             Text(
-              l10n.analysisTitle,
+              l10n.analysisTitle ?? 'Weekly Analysis',
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 10),
@@ -415,23 +395,19 @@ class _JournalPageState extends State<JournalPage> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // 🎯 Culoarea Săptămânii
                       Text(
-                        l10n.weeklyColorLabel,
+                        l10n.weeklyColorLabel ?? 'Culoare Hibridă',
                         style: TextStyle(
                             fontSize: 16,
                             color: _weeklyColor.withOpacity(0.9),
-                            fontWeight: FontWeight.bold
-                        ),
+                            fontWeight: FontWeight.bold),
                       ),
-                      // 🎯 Mood Dominant
                       Text(
-                        l10n.dominantMoodLabel(displayedDominantMood),
+                        "${l10n.analysisDominantLabel} $displayedDominantMood",
                         style: const TextStyle(fontSize: 14, color: Colors.black54),
                       ),
-                      // 🎯 Număr Înregistrări
                       Text(
-                        l10n.entriesCountLabel(_entriesCount),
+                        "${l10n.analysisEntriesLabel} $_entriesCount",
                         style: const TextStyle(fontSize: 14, color: Colors.black54),
                       ),
                     ],
@@ -446,42 +422,21 @@ class _JournalPageState extends State<JournalPage> {
   }
 }
 
-// =================================================================
-// 🎯 MODIFICĂRI ÎN MOODCHIP (Pentru a afișa numele stării tradus)
-// =================================================================
-
 class MoodChip extends StatelessWidget {
-  final String moodName; // Aceasta este cheia (ex: 'Fericit')
+  final String displayMoodName;
   final String emoji;
   final bool isSelected;
   final VoidCallback onTap;
   final Color color;
-  final AppLocalizations l10n; // 🎯 NOU: Primește instanța localizării
 
   const MoodChip({
     super.key,
-    required this.moodName,
+    required this.displayMoodName,
     required this.emoji,
     required this.isSelected,
     required this.onTap,
     required this.color,
-    required this.l10n, // 🎯 Adaugă în constructor
   });
-
-  // Helper pentru a traduce numele stării (folosind camelCase)
-  String get _translatedMoodName {
-    switch (moodName) {
-      case 'Fericit': return l10n.moodHappy;
-      case 'Trist': return l10n.moodSad;
-      case 'Relaxat': return l10n.moodRelaxed;
-      case 'Energetic': return l10n.moodEnergetic;
-      case 'Motivat': return l10n.moodMotivated;
-      case 'Stresat': return l10n.moodStressed;
-      case 'Nostalgic': return l10n.moodNostalgic;
-      case 'Focusat': return l10n.moodFocused;
-      default: return moodName; // Fallback
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -516,7 +471,7 @@ class MoodChip extends StatelessWidget {
             ),
             const SizedBox(width: 8),
             Text(
-              _translatedMoodName, // 🎯 AFIȘEAZĂ NUMELE TRADUS
+              displayMoodName,
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,

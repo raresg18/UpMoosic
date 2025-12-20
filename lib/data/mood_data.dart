@@ -6,17 +6,15 @@ import 'dart:collection';
 import '../models/song.dart';
 import '../models/quest_model.dart';
 
-// 🎯 Clasa MoodData incapsulează datele statice și logica de bază (SRP)
 class MoodData {
 
-  // --- Structura unificată CU CULORI și Liste de Citate/URL-uri ---
   static final List<MoodModel> allMoods = [
     MoodModel(
       id: 1,
-      type: Mood.happy, // 🎯 FIX: Adăugat 'type'
+      type: Mood.happy,
       name: 'Fericit',
       emoji: '😊',
-      color: const Color(0xFFFFCC00), // Galben Intens
+      color: const Color(0xFFFFCC00),
       quotesKeys: [
         "quote_happy_1", "quote_happy_2", "quote_happy_3", "quote_happy_4", "quote_happy_5",
       ],
@@ -42,10 +40,10 @@ class MoodData {
     ),
     MoodModel(
       id: 2,
-      type: Mood.sad, // 🎯 FIX: Adăugat 'type'
+      type: Mood.sad,
       name: 'Trist',
       emoji: '😢',
-      color: const Color(0xFF0077B6), // Albastru Închis
+      color: const Color(0xFF0077B6),
       quotesKeys: [
         "quote_sad_1", "quote_sad_2", "quote_sad_3", "quote_sad_4", "quote_sad_5",
       ],
@@ -76,10 +74,10 @@ class MoodData {
     ),
     MoodModel(
       id: 3,
-      type: Mood.relaxed, // 🎯 FIX: Adăugat 'type'
+      type: Mood.relaxed,
       name: 'Relaxat',
       emoji: '🧘‍♂️',
-      color: const Color(0xFF38B000), // Verde Mediu
+      color: const Color(0xFF38B000),
       quotesKeys: [
         "quote_relaxed_1", "quote_relaxed_2", "quote_relaxed_3", "quote_relaxed_4", "quote_relaxed_5",
       ],

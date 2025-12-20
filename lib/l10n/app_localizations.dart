@@ -254,6 +254,18 @@ abstract class AppLocalizations {
   /// **'Save Daily Mood'**
   String get buttonSaveMood;
 
+  /// No description provided for @analysisDominantLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Dominant:'**
+  String get analysisDominantLabel;
+
+  /// No description provided for @analysisEntriesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Entries:'**
+  String get analysisEntriesLabel;
+
   /// No description provided for @saveSuccess.
   ///
   /// In en, this message translates to:
@@ -671,19 +683,19 @@ abstract class AppLocalizations {
   /// No description provided for @quest_happy_desc_4.
   ///
   /// In en, this message translates to:
-  /// **'Dance for 5 minutes to a fast song.'**
+  /// **'Dance for 5 minutes to an upbeat song.'**
   String get quest_happy_desc_4;
 
   /// No description provided for @quest_happy_title_5.
   ///
   /// In en, this message translates to:
-  /// **'Find a funny moment'**
+  /// **'Look for a funny moment'**
   String get quest_happy_title_5;
 
   /// No description provided for @quest_happy_desc_5.
   ///
   /// In en, this message translates to:
-  /// **'Watch a funny clip or read a joke.'**
+  /// **'Watch a funny video clip or read a joke.'**
   String get quest_happy_desc_5;
 
   /// No description provided for @quest_happy_title_6.
@@ -773,13 +785,13 @@ abstract class AppLocalizations {
   /// No description provided for @quest_sad_title_3.
   ///
   /// In en, this message translates to:
-  /// **'Be kind to yourself'**
+  /// **'Be gentle with yourself'**
   String get quest_sad_title_3;
 
   /// No description provided for @quest_sad_desc_3.
   ///
   /// In en, this message translates to:
-  /// **'Allow yourself to cry if you need to.'**
+  /// **'Allow yourself to cry if you feel the need.'**
   String get quest_sad_desc_3;
 
   /// No description provided for @quest_sad_title_4.
@@ -797,7 +809,7 @@ abstract class AppLocalizations {
   /// No description provided for @quest_sad_title_5.
   ///
   /// In en, this message translates to:
-  /// **'Make a hot cup of tea'**
+  /// **'Make a warm tea'**
   String get quest_sad_title_5;
 
   /// No description provided for @quest_sad_desc_5.
@@ -953,7 +965,7 @@ abstract class AppLocalizations {
   /// No description provided for @quest_relaxed_title_3.
   ///
   /// In en, this message translates to:
-  /// **'Visualize a calm place'**
+  /// **'Visualize a calm Place'**
   String get quest_relaxed_title_3;
 
   /// No description provided for @quest_relaxed_desc_3.
@@ -965,19 +977,19 @@ abstract class AppLocalizations {
   /// No description provided for @quest_relaxed_title_4.
   ///
   /// In en, this message translates to:
-  /// **'Don\'t read the news for an hour'**
+  /// **'Avoid Reading News for One Hour'**
   String get quest_relaxed_title_4;
 
   /// No description provided for @quest_relaxed_desc_4.
   ///
   /// In en, this message translates to:
-  /// **'A break from the information flow is essential.'**
+  /// **'Taking a break from the information flow is essential.'**
   String get quest_relaxed_desc_4;
 
   /// No description provided for @quest_relaxed_title_5.
   ///
   /// In en, this message translates to:
-  /// **'Light a scented candle'**
+  /// **'Light a Scented Candle'**
   String get quest_relaxed_title_5;
 
   /// No description provided for @quest_relaxed_desc_5.
@@ -1139,13 +1151,13 @@ abstract class AppLocalizations {
   /// No description provided for @quest_energetic_desc_3.
   ///
   /// In en, this message translates to:
-  /// **'Put on some music and shake off the excess energy.'**
+  /// **'Put on some music and let your body release the excess energy.'**
   String get quest_energetic_desc_3;
 
   /// No description provided for @quest_energetic_title_4.
   ///
   /// In en, this message translates to:
-  /// **'Sing loudly'**
+  /// **'Sing out loud'**
   String get quest_energetic_title_4;
 
   /// No description provided for @quest_energetic_desc_4.
@@ -1163,7 +1175,7 @@ abstract class AppLocalizations {
   /// No description provided for @quest_energetic_desc_5.
   ///
   /// In en, this message translates to:
-  /// **'A short burst of outdoor movement.'**
+  /// **'A short burst of movement outdoors.'**
   String get quest_energetic_desc_5;
 
   /// No description provided for @quest_energetic_title_6.
@@ -1331,7 +1343,7 @@ abstract class AppLocalizations {
   /// No description provided for @quest_motivated_desc_4.
   ///
   /// In en, this message translates to:
-  /// **'What advice would you give tomorrow\'s self?'**
+  /// **'What advice would you give tomorrow\'s you?'**
   String get quest_motivated_desc_4;
 
   /// No description provided for @quest_motivated_title_5.
@@ -1613,37 +1625,37 @@ abstract class AppLocalizations {
   /// No description provided for @quest_stressed_title_3.
   ///
   /// In en, this message translates to:
-  /// **'A walk without your phone'**
+  /// **'Take a short walk'**
   String get quest_stressed_title_3;
 
   /// No description provided for @quest_stressed_desc_3.
   ///
   /// In en, this message translates to:
-  /// **'Focus on what you see and hear around you.'**
+  /// **'Go outside for 10 minutes. A change of scenery helps calm you.'**
   String get quest_stressed_desc_3;
 
   /// No description provided for @quest_stressed_title_4.
   ///
   /// In en, this message translates to:
-  /// **'Take a warm shower/bath'**
+  /// **'Take a warm shower'**
   String get quest_stressed_title_4;
 
   /// No description provided for @quest_stressed_desc_4.
   ///
   /// In en, this message translates to:
-  /// **'Warm water relaxes tense muscles.'**
+  /// **'Use the warm water to relax your muscles.'**
   String get quest_stressed_desc_4;
 
   /// No description provided for @quest_stressed_title_5.
   ///
   /// In en, this message translates to:
-  /// **'Stop and smell the coffee'**
+  /// **'Sip a warm drink'**
   String get quest_stressed_title_5;
 
   /// No description provided for @quest_stressed_desc_5.
   ///
   /// In en, this message translates to:
-  /// **'Take a break from work and enjoy a warm drink.'**
+  /// **'Make yourself a calming herbal tea or a warm drink.'**
   String get quest_stressed_desc_5;
 
   /// No description provided for @quest_nostalgic_title_1.
@@ -1865,7 +1877,7 @@ abstract class AppLocalizations {
   /// No description provided for @quest_focused_title_4.
   ///
   /// In en, this message translates to:
-  /// **'Set a single goal for the next hour'**
+  /// **'Fix one single goal for the next hour'**
   String get quest_focused_title_4;
 
   /// No description provided for @quest_focused_desc_4.
@@ -1877,13 +1889,13 @@ abstract class AppLocalizations {
   /// No description provided for @quest_focused_title_5.
   ///
   /// In en, this message translates to:
-  /// **'Go outside for 5 minutes'**
+  /// **'Go out for 5 minutes of fresh air'**
   String get quest_focused_title_5;
 
   /// No description provided for @quest_focused_desc_5.
   ///
   /// In en, this message translates to:
-  /// **'Refresh your mind with a breath of fresh air.'**
+  /// **'Refresh your mind with a breath of air.'**
   String get quest_focused_desc_5;
 
   /// No description provided for @quest_focused_title_6.
@@ -2167,6 +2179,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You have completed {count} Quests.'**
   String questsCompletedLabel(Object count);
+
+  /// No description provided for @questStatusAccepted.
+  ///
+  /// In en, this message translates to:
+  /// **'Accepted on {date}'**
+  String questStatusAccepted(Object date);
+
+  /// No description provided for @questStatusCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed on {date}'**
+  String questStatusCompleted(Object date);
 }
 
 class _AppLocalizationsDelegate

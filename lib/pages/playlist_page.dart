@@ -1,21 +1,27 @@
-// lib/pages/playlist_page.dart
-
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'dart:math';
-import '../l10n/l10n_utils.dart';
+// Nu mai avem nevoie de dart:math aici
+
+import '../l10n/l10n_extension.dart';
 import '../data/mood_data.dart';
 import '../models/song.dart';
 import 'quests_page.dart';
-import '../models/quest_model.dart';
 import '../l10n/app_localizations.dart';
-
 import '../services/quest_service.dart';
 
 class PlaylistScreen extends StatelessWidget {
   final int mood;
 
-  const PlaylistScreen({super.key, required this.mood});
+  // 🎯 DATE PRIMITE (NU MAI GENERĂM AICI)
+  final Song song;
+  final String quoteKey;
+
+  const PlaylistScreen({
+    super.key,
+    required this.mood,
+    required this.song,
+    required this.quoteKey,
+  });
 
   Future<void> _launchUrl(String url) async {
     final uri = Uri.parse(url);
@@ -24,22 +30,16 @@ class PlaylistScreen extends StatelessWidget {
     }
   }
 
-  // Culorile de bază
   final Color _appBarColor = const Color(0xFF455A64);
   final Color _backgroundColor = const Color(0xFFF7F4F9);
 
-
   @override
   Widget build(BuildContext context) {
-    // Obține instanța localizării
     final l10n = AppLocalizations.of(context)!;
 
     final selectedMoodModel = MoodData.getMoodModelById(mood);
-
-    // Definirea culorii temei (pentru butoane)
     final Color themePrimaryColor = Theme.of(context).colorScheme.primary;
 
-    // --- Traducerea numelui stării de spirit ---
     final String moodNameKey = selectedMoodModel.name;
     String translatedMoodName;
     switch (moodNameKey) {
@@ -54,7 +54,6 @@ class PlaylistScreen extends StatelessWidget {
       default: translatedMoodName = moodNameKey;
     }
 
-
     final Color buttonBackgroundColor = Colors.white;
 
     final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
@@ -65,26 +64,14 @@ class PlaylistScreen extends StatelessWidget {
       elevation: 3,
     );
 
-    // --- Logica de Randomizare (PĂSTREAZĂ DOAR Citatul și Melodia) ---
-    final random = Random();
+    // 🎯 NU MAI AVEM LOGICĂ RANDOM AICI.
+    // Folosim direct variabilele primite: 'song' și 'quoteKey'
 
-    // 1. Citatul
-    final int quoteIndex = random.nextInt(selectedMoodModel.quotesKeys.length);
-    final String quoteKey = selectedMoodModel.quotesKeys[quoteIndex];
-    final String translatedQuote = l10n.getQuote(quoteKey);
-
-    // 2. Melodia
-    final List<Song> songList = selectedMoodModel.playlist;
-    final int songIndex = random.nextInt(songList.length);
-    final Song selectedSong = songList[songIndex]; // 💡 Melodia aleasă
-
-    // 3. Quest-ul (❌ LOGICA DE RANDOMIZARE VECHE ELIMINATĂ)
-    // ---------------------------------
-
+    // Traducem citatul primit
+    final String translatedQuote = l10n.dynamicString(quoteKey);
 
     return Scaffold(
       appBar: AppBar(
-        // Titlul barei (numele stării tradus)
         title: Text(translatedMoodName),
         backgroundColor: _appBarColor,
         foregroundColor: Colors.white,
@@ -115,17 +102,15 @@ class PlaylistScreen extends StatelessWidget {
 
               // Melodia Aleasă (Titlu)
               Text(
-                l10n.luckySongPrompt, // "Melodia ta norocoasă:"
+                l10n.luckySongPrompt,
                 style: TextStyle(fontSize: 16, color: Colors.grey.shade600),
               ),
               const SizedBox(height: 5),
 
-              // 🟢 CORECȚIA: AFIȘEAZĂ TITLUL ȘI ARTISTUL PE RÂNDURI SEPARATE
               Column(
                 children: [
-                  // TITLUL MELODIEI
                   Text(
-                    selectedSong.title,
+                    song.title, // 🎯 Folosim piesa primită
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 24,
@@ -133,19 +118,17 @@ class PlaylistScreen extends StatelessWidget {
                       color: selectedMoodModel.color,
                     ),
                   ),
-                  const SizedBox(height: 4), // Spațiere mică între titlu și artist
-                  // ARTISTUL
+                  const SizedBox(height: 4),
                   Text(
-                    selectedSong.artist,
+                    song.artist, // 🎯 Folosim piesa primită
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 18,
-                      color: selectedMoodModel.color.withOpacity(0.8), // Artistul e puțin mai estompat
+                      color: selectedMoodModel.color.withOpacity(0.8),
                     ),
                   ),
                 ],
               ),
-              // -----------------------------------------------------------
 
               const SizedBox(height: 60),
 
@@ -153,7 +136,7 @@ class PlaylistScreen extends StatelessWidget {
               SizedBox(
                 width: 250,
                 child: ElevatedButton.icon(
-                  onPressed: () => _launchUrl(selectedSong.youtubeUrl),
+                  onPressed: () => _launchUrl(song.youtubeUrl),
                   icon: const Icon(Icons.video_library),
                   label: Text(l10n.listenOnYoutube),
                   style: buttonStyle.copyWith(
@@ -168,7 +151,7 @@ class PlaylistScreen extends StatelessWidget {
               SizedBox(
                 width: 250,
                 child: ElevatedButton.icon(
-                  onPressed: () => _launchUrl(selectedSong.spotifyUrl),
+                  onPressed: () => _launchUrl(song.spotifyUrl),
                   icon: const Icon(Icons.headset),
                   label: Text(l10n.listenOnSpotify),
                   style: buttonStyle.copyWith(
@@ -184,12 +167,11 @@ class PlaylistScreen extends StatelessWidget {
               SizedBox(
                 width: 250,
                 child: ElevatedButton.icon(
-                  // 🎯 Aici se apelează serviciul pentru a obține Quest-ul persistent
                   onPressed: () async {
-                    // Așteaptă să obțină Quest-ul persistent pentru sesiunea curentă (sau generează unul nou)
+                    // Serviciul QuestService va returna același quest dacă nu a fost resetat
+                    // (Resetarea se face acum doar în MoodSelectorPage la schimbarea stării)
                     final persistentQuest = await QuestService.getOrCreateSessionQuest(mood);
 
-                    // Navighează la QuestsPage, trimițând Quest-ul obținut
                     Navigator.push(
                       context,
                       MaterialPageRoute(

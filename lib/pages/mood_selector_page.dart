@@ -1,9 +1,9 @@
-// lib/pages/mood_selector_page.dart
-
 import 'package:flutter/material.dart';
+import 'dart:math'; // 🎯 Import necesar pentru Random
 import 'playlist_page.dart';
 import '../data/mood_data.dart';
 import '../models/mood_model.dart';
+import '../models/song.dart'; // 🎯 Import necesar pentru tipul Song
 import '../l10n/app_localizations.dart';
 import '../services/quest_service.dart';
 
@@ -15,9 +15,14 @@ class MoodSelectorPage extends StatefulWidget {
 }
 
 class _MoodSelectorPageState extends State<MoodSelectorPage> {
-  // Vom stoca numele stării selectate și referința la MoodModel
   String? _selectedMoodName;
   MoodModel? _selectedMoodModel;
+
+  // 🎯 MEMORIE LOCALĂ (CACHE)
+  // Reținem ce am generat ultima dată ca să nu se schimbe dacă revenim
+  int? _lastMoodId;
+  Song? _cachedSong;
+  String? _cachedQuoteKey;
 
   void _onMoodSelected(MoodModel mood) {
     setState(() {
@@ -27,24 +32,46 @@ class _MoodSelectorPageState extends State<MoodSelectorPage> {
   }
 
   void _navigateToPlaylist() async {
-    // 🎯 Obține l10n aici pentru SnackBar
     final l10n = AppLocalizations.of(context)!;
 
     if (_selectedMoodModel != null) {
-      // 1. 🛑 PAS CRUCIAL: Resetează Quest-ul salvat înainte de a naviga.
-      // Aceasta forțează generarea unui Quest nou la următoarea selecție de stare.
-      await QuestService.resetQuest();
+      final int currentMoodId = _selectedMoodModel!.id;
+      final random = Random();
 
-      // 2. Navigarea
-      int moodId = _selectedMoodModel!.id;
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => PlaylistScreen(mood: moodId),
-        ),
-      );
+      // 🎯 LOGICA DE PERSISTENȚĂ
+      // Verificăm dacă userul a selectat o stare DIFERITĂ față de ultima dată
+      if (_lastMoodId != currentMoodId) {
+        // 1. Resetăm Quest-ul doar dacă s-a schimbat starea
+        await QuestService.resetQuest();
+
+        // 2. Generăm o melodie nouă pentru noua stare
+        final songList = _selectedMoodModel!.playlist;
+        _cachedSong = songList[random.nextInt(songList.length)];
+
+        // 3. Generăm un citat nou pentru noua stare
+        final quotes = _selectedMoodModel!.quotesKeys;
+        _cachedQuoteKey = quotes[random.nextInt(quotes.length)];
+
+        // 4. Actualizăm ID-ul curent
+        _lastMoodId = currentMoodId;
+      }
+      // DACA _lastMoodId == currentMoodId, nu facem nimic,
+      // rămânem cu _cachedSong și _cachedQuoteKey vechi (ceea ce vrei tu)
+
+      // Navigăm și trimitem datele deja calculate (sau memorate)
+      if (mounted) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => PlaylistScreen(
+              mood: currentMoodId,
+              song: _cachedSong!,        // Trimitem piesa memorată
+              quoteKey: _cachedQuoteKey!, // Trimitem citatul memorat
+            ),
+          ),
+        );
+      }
     } else {
-      // Afișează SnackBar dacă nicio stare nu este selectată
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(l10n.selectMoodError),
@@ -53,31 +80,27 @@ class _MoodSelectorPageState extends State<MoodSelectorPage> {
     }
   }
 
-  // 🎯 Funcție ajutătoare pentru a mapa numele fix la cheia de localizare tradusă
   String getTranslatedMoodName(AppLocalizations l10n, String moodNameKey) {
     switch (moodNameKey) {
-    // ⚠️ Cheile din mood_data.dart trebuie să fie EXACT așa (Fericit, Trist, etc.)
       case 'Fericit': return l10n.moodHappy;
       case 'Trist': return l10n.moodSad;
       case 'Relaxat': return l10n.moodRelaxed;
-      case 'Energetic': return l10n.moodEnergetic; // <-- NOU
-      case 'Motivat': return l10n.moodMotivated;   // <-- NOU
-      case 'Stresat': return l10n.moodStressed;    // <-- NOU
-      case 'Nostalgic': return l10n.moodNostalgic; // <-- NOU
-      case 'Focusat': return l10n.moodFocused;     // <-- NOU
-      default: return moodNameKey; // Fallback
+      case 'Energetic': return l10n.moodEnergetic;
+      case 'Motivat': return l10n.moodMotivated;
+      case 'Stresat': return l10n.moodStressed;
+      case 'Nostalgic': return l10n.moodNostalgic;
+      case 'Focusat': return l10n.moodFocused;
+      default: return moodNameKey;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    // 🎯 Obține instanța localizării
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF0F4F8), // Background-ul tău
+      backgroundColor: const Color(0xFFF0F4F8),
       appBar: AppBar(
-        // 🎯 Titlul tradus
         title: Text(
           l10n.selectMoodQuestion,
           style: const TextStyle(
@@ -95,28 +118,23 @@ class _MoodSelectorPageState extends State<MoodSelectorPage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const Spacer(),
-              // Păstrăm layout-ul tău centrat cu Wrap
               Wrap(
                 alignment: WrapAlignment.center,
                 spacing: 12.0,
                 runSpacing: 12.0,
-                // Iterăm prin noua listă de MoodModel-uri
                 children: MoodData.allMoodsListView.map((moodModel) {
                   final isSelected = moodModel.name == _selectedMoodName;
 
                   return MoodChip(
-                    // 🎯 Trimitem numele tradus
                     moodName: getTranslatedMoodName(l10n, moodModel.name),
                     emoji: moodModel.emoji,
                     isSelected: isSelected,
-                    onTap: () => _onMoodSelected(moodModel), // Trimitem MoodModel
+                    onTap: () => _onMoodSelected(moodModel),
                   );
                 }).toList(),
               ),
               const Spacer(),
-              // Butonul Sugerează o piesă
               ElevatedButton(
-                // Butonul devine inactiv dacă nu e selectat niciun mood
                 onPressed: _selectedMoodModel != null ? _navigateToPlaylist : null,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF4A4E69),
@@ -127,7 +145,7 @@ class _MoodSelectorPageState extends State<MoodSelectorPage> {
                   elevation: 2,
                 ),
                 child: Text(
-                  l10n.suggestSongButton, // 🎯 Textul butonului tradus
+                  l10n.suggestSongButton,
                   style: const TextStyle(
                       fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
                 ),
@@ -141,7 +159,6 @@ class _MoodSelectorPageState extends State<MoodSelectorPage> {
   }
 }
 
-// Widgetul MoodChip (păstrat din template-ul tău)
 class MoodChip extends StatelessWidget {
   final String moodName;
   final String emoji;
@@ -189,12 +206,10 @@ class MoodChip extends StatelessWidget {
             ),
             const SizedBox(width: 8),
             Text(
-              // moodName este deja tradus
               moodName,
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
-                // Culorile din template-ul tău
                 color: isSelected ? Colors.white : const Color(0xFF4A4E69),
               ),
             ),

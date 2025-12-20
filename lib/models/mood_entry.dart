@@ -1,26 +1,24 @@
-import 'package:flutter/material.dart'; // Nu e neapărat necesar aici, dar e bine să fie
+import 'package:hive/hive.dart';
 
-class MoodEntry {
+// Această linie va fi roșie până rulăm comanda de generare (Pasul 3)
+part 'mood_entry.g.dart';
+
+@HiveType(typeId: 0) // Fiecare model trebuie să aibă un ID unic (0, 1, 2...)
+class MoodEntry extends HiveObject {
+
+  @HiveField(0)
   final String moodName;
+
+  @HiveField(1)
   final DateTime date;
-  final String? note; // NOU: Notiță opțională
 
-  MoodEntry({required this.moodName, required this.date, this.note}); // Adaugă 'note' la constructor
+  @HiveField(2)
+  final String? note;
 
-  // Ne ajută să salvăm obiectul ca format Map/JSON.
-  // Adaugă 'note' la serializare.
-  Map<String, dynamic> toJson() => {
-    'moodName': moodName,
-    'date': date.toIso8601String(),
-    'note': note, // Adaugă notița aici
-  };
+  MoodEntry({
+    required this.moodName,
+    required this.date,
+    this.note,
+  });
 
-  // Ne ajută să recreăm obiectul MoodEntry din string-ul JSON salvat.
-  // Adaugă 'note' la deserializare, cu o valoare implicită dacă lipsește (pentru compatibilitatea datelor vechi).
-  factory MoodEntry.fromJson(Map<String, dynamic> json) => MoodEntry(
-    moodName: json['moodName'] as String,
-    date: DateTime.parse(json['date'] as String),
-    // Folosim operatorul ?? pentru a asigura o valoare implicită dacă 'note' lipsește
-    note: json['note'] as String?,
-  );
 }
