@@ -2,11 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'pages/language_provider.dart';
+import 'providers/language_provider.dart';
 import 'package:provider/provider.dart';
 import 'pages/home_page.dart';
 import 'l10n/app_localizations.dart';
-import 'pages/quest_state.dart';
+import 'providers/quest_state.dart';
 
 // 🎯 MARCAT CA ASYNC
 void main() async {

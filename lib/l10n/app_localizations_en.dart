@@ -33,6 +33,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get suggestSongButton => 'Suggest a song';
 
   @override
+  String get statusCompleted => 'Completed';
+
+  @override
+  String get statusActive => 'Active';
+
+  @override
   String get selectMoodMessage => 'Please select a mood before continuing.';
 
   @override

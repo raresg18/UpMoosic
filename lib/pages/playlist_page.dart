@@ -3,14 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:math';
-import 'l10n_utils.dart';
-import 'mood_data.dart';
-import 'song.dart';
+import '../l10n/l10n_utils.dart';
+import '../data/mood_data.dart';
+import '../models/song.dart';
 import 'quests_page.dart';
-import 'quest_model.dart';
+import '../models/quest_model.dart';
 import '../l10n/app_localizations.dart';
 
-import 'quest_service.dart';
+import '../services/quest_service.dart';
 
 class PlaylistScreen extends StatelessWidget {
   final int mood;

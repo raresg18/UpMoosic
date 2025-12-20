@@ -146,6 +146,18 @@ abstract class AppLocalizations {
   /// **'Suggest a song'**
   String get suggestSongButton;
 
+  /// No description provided for @statusCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get statusCompleted;
+
+  /// No description provided for @statusActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get statusActive;
+
   /// No description provided for @selectMoodMessage.
   ///
   /// In en, this message translates to:

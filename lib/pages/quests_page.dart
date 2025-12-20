@@ -5,10 +5,10 @@ import 'package:provider/provider.dart'; // NECESAR PENTRU PROVIDER
 
 import '../l10n/app_localizations.dart';
 import '../l10n/l10n_extension.dart';
-import 'mood_data.dart';
-import 'quest_model.dart';
-import 'user_quest.dart';
-import 'quest_state.dart';
+import '../data/mood_data.dart';
+import '../models/quest_model.dart';
+import '../models/user_quest.dart';
+import '../providers/quest_state.dart';
 
 
 class QuestsPage extends StatelessWidget {

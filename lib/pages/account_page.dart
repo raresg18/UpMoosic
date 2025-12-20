@@ -5,8 +5,8 @@ import '../l10n/l10n_extension.dart';
 
 // 🎯 IMPORTURI APLICATE EXACT CUM AI CERUT
 // NOTĂ: Dacă aceste importuri dau erori, ar trebui să le corectezi cu '../models/user_quest.dart'
-import 'user_quest.dart';
-import 'quest_state.dart';
+import '../models/user_quest.dart';
+import '../providers/quest_state.dart';
 
 
 // 1. CLASA PUBLICĂ (Stateful)

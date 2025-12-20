@@ -2,10 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'playlist_page.dart';
-import 'mood_data.dart';
-import 'mood_model.dart';
+import '../data/mood_data.dart';
+import '../models/mood_model.dart';
 import '../l10n/app_localizations.dart';
-import 'quest_service.dart';
+import '../services/quest_service.dart';
 
 class MoodSelectorPage extends StatefulWidget {
   const MoodSelectorPage({super.key});

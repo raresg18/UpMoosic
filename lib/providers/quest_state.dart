@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/widgets.dart'; // NOU
 import '../l10n/app_localizations.dart';
 
-import 'user_quest.dart';
+import '../models/user_quest.dart';
 
 class QuestState extends ChangeNotifier {
   // Cheile de stocare

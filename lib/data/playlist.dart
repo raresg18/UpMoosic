@@ -1,4 +1,4 @@
-import 'song.dart';
+import '../models/song.dart';
 
 // Here I created separated playlists for differrent moods
 

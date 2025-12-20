@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../l10n/app_localizations.dart';
-import 'mood_data.dart';
-import 'mood_tracker_service.dart';
-import 'mood_entry.dart';
-import 'mood_model.dart';
+import '../data/mood_data.dart';
+import '../services/mood_tracker_service.dart';
+import '../models/mood_entry.dart';
+import '../models/mood_model.dart';
 
 
 // Extensie ajutătoare (helper)

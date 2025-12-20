@@ -33,6 +33,12 @@ class AppLocalizationsRo extends AppLocalizations {
   String get suggestSongButton => 'Sugerează o piesă';
 
   @override
+  String get statusCompleted => 'Finalizat';
+
+  @override
+  String get statusActive => 'Activ';
+
+  @override
   String get selectMoodMessage =>
       'Te rog selectează o stare de spirit înainte de a continua.';
 

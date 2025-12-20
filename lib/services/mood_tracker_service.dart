@@ -4,9 +4,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 
-import 'mood_entry.dart';      // Asigură-te că acest fișier există
-import 'mood_data.dart';       // Asigură-te că acest fișier există și are culorile
-import 'mood_model.dart';      // Asigură-te că acest fișier există
+import '../models/mood_entry.dart';      // Asigură-te că acest fișier există
+import '../data/mood_data.dart';       // Asigură-te că acest fișier există și are culorile
+import '../models/mood_model.dart';      // Asigură-te că acest fișier există
 
 class MoodTrackerService {
   static const String _key = 'dailyMoods';

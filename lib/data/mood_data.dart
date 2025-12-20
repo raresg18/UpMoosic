@@ -1,10 +1,10 @@
 // lib/data/mood_data.dart
 
 import 'package:flutter/material.dart';
-import 'mood_model.dart';
+import '../models/mood_model.dart';
 import 'dart:collection';
-import 'song.dart';
-import 'quest_model.dart';
+import '../models/song.dart';
+import '../models/quest_model.dart';
 
 // 🎯 Clasa MoodData incapsulează datele statice și logica de bază (SRP)
 class MoodData {

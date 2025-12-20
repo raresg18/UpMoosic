@@ -3,8 +3,8 @@
 import 'dart:convert';
 import 'dart:math';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'quest_model.dart';
-import 'mood_data.dart';
+import '../models/quest_model.dart';
+import '../data/mood_data.dart';
 
 class QuestService {
   static const String _storageKey = 'current_session_quest';
