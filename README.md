@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-# aupmoosic
+# upmoosic
 
 A new Flutter project.
 
