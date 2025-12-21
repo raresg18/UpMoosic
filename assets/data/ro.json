@@ -283,5 +283,18 @@
   "quest_focused_title_14": "Scrie 'De ce?'",
   "quest_focused_desc_14": "Reamintește-ți de ce faci această muncă. Claritatea scopului aduce focus.",
   "quest_focused_title_15": "Folosește modul avion",
-  "quest_focused_desc_15": "Activează modul avion pe telefon pentru o perioadă specifică de timp."
+  "quest_focused_desc_15": "Activează modul avion pe telefon pentru o perioadă specifică de timp.",
+  "settings_title": "Setări Notificări",
+  "settings_time_label": "Ora Notificării",
+  "settings_notif_active": "Notificare setată pentru ora",
+  "settings_notif_inactive": "Notificări dezactivate.",
+  "notif_title": "UpMoosic Jurnal",
+  "notif_body": "Este timpul pentru momentul tău de liniște. Cum te simți azi?",
+  "channel_name": "Notificări Zilnice",
+  "channel_desc": "Canal pentru notificări zilnice de jurnal",
+  "settings_page_title": "Setări",
+  "settings_section_notif": "Notificări",
+  "settings_daily_notif": "Notificări zilnice",
+  "settings_close": "Închide"
+
 }

@@ -64,7 +64,7 @@ class QuestState extends ChangeNotifier {
 
     _completedQuests.add(completed);
 
-    _totalScore += 100;
+    _totalScore += 10;
 
     _saveData();
   }

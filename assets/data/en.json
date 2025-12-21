@@ -309,5 +309,17 @@
   "quest_focused_title_14": "Write 'Why?'",
   "quest_focused_desc_14": "Remind yourself why you are doing this work. Clarity of purpose brings focus.",
   "quest_focused_title_15": "Use airplane mode",
-  "quest_focused_desc_15": "Activate airplane mode on your phone for a specific period of time."
+  "quest_focused_desc_15": "Activate airplane mode on your phone for a specific period of time.",
+  "settings_title": "Notification Settings",
+  "settings_daily_notif": "Daily Notification",
+  "settings_time_label": "Notification Time",
+  "settings_close": "Close",
+  "settings_notif_active": "Notification set for",
+  "settings_notif_inactive": "Notifications disabled.",
+  "notif_title": "UpMoosic Journal",
+  "notif_body": "It's time for your quiet moment. How are you feeling today?",
+  "channel_name": "Daily Notifications",
+  "channel_desc": "Channel for daily journal notifications",
+  "settings_page_title": "Settings",
+  "settings_section_notif": "Notifications"
 }
