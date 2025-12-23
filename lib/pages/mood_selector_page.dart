@@ -55,18 +55,14 @@ class _MoodSelectorPageState extends State<MoodSelectorPage> {
         // 4. Actualizăm ID-ul curent
         _lastMoodId = currentMoodId;
       }
-      // DACA _lastMoodId == currentMoodId, nu facem nimic,
-      // rămânem cu _cachedSong și _cachedQuoteKey vechi (ceea ce vrei tu)
-
-      // Navigăm și trimitem datele deja calculate (sau memorate)
       if (mounted) {
         Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => PlaylistScreen(
               mood: currentMoodId,
-              song: _cachedSong!,        // Trimitem piesa memorată
-              quoteKey: _cachedQuoteKey!, // Trimitem citatul memorat
+              song: _cachedSong!,
+              quoteKey: _cachedQuoteKey!,
             ),
           ),
         );

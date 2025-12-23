@@ -607,6 +607,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Living Symphony'**
   String get rankLivingSymphony;
+
+  /// No description provided for @statisticsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mood Statistics'**
+  String get statisticsTitle;
+
+  /// No description provided for @noDataStats.
+  ///
+  /// In en, this message translates to:
+  /// **'Not enough data for the chart.'**
+  String get noDataStats;
+
+  /// No description provided for @moodDistribution.
+  ///
+  /// In en, this message translates to:
+  /// **'Mood Distribution'**
+  String get moodDistribution;
+
+  /// No description provided for @totalEntries.
+  ///
+  /// In en, this message translates to:
+  /// **'Total entries:'**
+  String get totalEntries;
 }
 
 class _AppLocalizationsDelegate

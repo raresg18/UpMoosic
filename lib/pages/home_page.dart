@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'dart:io'; // 🎯 NOU: Import necesar pentru funcția exit()
-
+import 'dart:io';
+import 'statistics_page.dart';
 import 'language_selector_page.dart';
 import 'mood_selector_page.dart';
 import 'journal_page.dart';
-import '../l10n/app_localizations.dart'; // Import localizare
+import '../l10n/app_localizations.dart';
 import 'account_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -12,15 +12,16 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Obține localizarea
     final l10n = AppLocalizations.of(context)!;
+
+    // Definim un stil comun pentru butoanele mari (opțional, pentru consistență perfectă)
+    // Dar momentan le lăsăm cum ai cerut, doar aliniate.
 
     return Scaffold(
       appBar: AppBar(
         title: const Text("UpMoosic"),
         backgroundColor: Colors.blueGrey.shade700,
         foregroundColor: Colors.white,
-
         actions: [
           IconButton(
             icon: const Icon(Icons.account_circle),
@@ -33,8 +34,6 @@ class HomePage extends StatelessWidget {
                 ),
               );
             },
-            // Dacă ai rezolvat erorile L10N, poți reactiva acest tooltip:
-            // tooltip: l10n.account,
           ),
           const SizedBox(width: 8),
         ],
@@ -67,7 +66,26 @@ class HomePage extends StatelessWidget {
                 );
               },
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 18),
+
+            // 📊 Buton 4: Statistici (Acum arată la fel ca Jurnalul, dar e Teal)
+            ElevatedButton.icon(
+              icon: const Icon(Icons.pie_chart),
+              label: Text(l10n.statisticsTitle),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.teal.shade600, // Culoare distinctă
+                foregroundColor: Colors.white,         // Text alb
+                // Am scos dimensiunile fixe și fontul custom
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const StatisticsPage()),
+                );
+              },
+            ),
+
+            const SizedBox(height: 16),
 
             // Buton 3: Jurnal Emoțional
             ElevatedButton.icon(
@@ -84,28 +102,6 @@ class HomePage extends StatelessWidget {
                 );
               },
             ),
-            // const SizedBox(height: 40),
-            //
-            // // 🎯 BUTON NOU: IEȘIRE DIN APLICAȚIE
-            // ElevatedButton.icon(
-            //   icon: const Icon(Icons.exit_to_app),
-            //   label: Text(l10n.exitAppButton),
-            //   style: ElevatedButton.styleFrom(
-            //     backgroundColor: Colors.red.shade700,
-            //     foregroundColor: Colors.white,
-            //   ),
-            //   onPressed: () {
-            //     // Verifică dacă aplicația rulează pe mobil/desktop (nu pe web)
-            //     if (Platform.isAndroid || Platform.isIOS || Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-            //       exit(0); // Ieșire forțată din aplicație
-            //     } else {
-            //       // Pe web, funcția exit() nu este suportată
-            //       ScaffoldMessenger.of(context).showSnackBar(
-            //         const SnackBar(content: Text('Output function is not supported on Web/Chrome.')),
-            //       );
-            //     }
-            //   },
-            // ),
           ],
         ),
       ),

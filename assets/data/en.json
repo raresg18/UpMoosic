@@ -321,5 +321,11 @@
   "channel_name": "Daily Notifications",
   "channel_desc": "Channel for daily journal notifications",
   "settings_page_title": "Settings",
-  "settings_section_notif": "Notifications"
+  "settings_section_notif": "Notifications",
+  "rank_desc_0": "You've just started knowing yourself better. Every step counts!",
+  "rank_desc_1": "You're on the right track! You're starting to build healthy habits.",
+  "rank_desc_2": "You are bravely exploring the world of your emotions. Well done!",
+  "rank_desc_3": "You've gained enviable consistency. You're close to mastery!",
+  "rank_desc_4": "You've reached a high level of self-awareness. You are an inspiration!",
+  "rank_keep_going": "Keep doing quests to improve it!"
 }

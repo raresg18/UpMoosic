@@ -288,4 +288,16 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get rankLivingSymphony => 'Simfonie Vie';
+
+  @override
+  String get statisticsTitle => 'Statistici Stare';
+
+  @override
+  String get noDataStats => 'Nu există suficiente date pentru grafic.';
+
+  @override
+  String get moodDistribution => 'Distribuția Stărilor';
+
+  @override
+  String get totalEntries => 'Total intrări:';
 }

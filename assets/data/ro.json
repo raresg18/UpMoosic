@@ -295,6 +295,12 @@
   "settings_page_title": "Setări",
   "settings_section_notif": "Notificări",
   "settings_daily_notif": "Notificări zilnice",
-  "settings_close": "Închide"
+  "settings_close": "Închide",
+  "rank_desc_0": "Abia ai început să te cunoști mai bine. Fiecare pas contează!",
+  "rank_desc_1": "Ești pe drumul cel bun! Începi să îți formezi obiceiuri sănătoase.",
+  "rank_desc_2": "Explorezi cu curaj lumea emoțiilor tale. Bravo!",
+  "rank_desc_3": "Ai căpătat o statornicie de invidiat. Ești aproape de măiestrie!",
+  "rank_desc_4": "Ai atins un nivel înalt de autocunoaștere. Ești o sursă de inspirație!",
+  "rank_keep_going": "Continuă să faci quest-uri pentru a-l îmbunătăți!"
 
 }

@@ -188,6 +188,75 @@ class _AccountPageState extends State<AccountPage> {
     );
   }
 
+  void _showRankDetails(BuildContext context, int totalPoints, String rankName) {
+    final l10n = AppLocalizations.of(context)!;
+
+    String descriptionKey;
+    // Folosim formatul din JSON (snake_case)
+    if (totalPoints < 100) {
+      descriptionKey = "rank_desc_0";
+    } else if (totalPoints < 300) {
+      descriptionKey = "rank_desc_1";
+    } else if (totalPoints < 600) {
+      descriptionKey = "rank_desc_2";
+    } else if (totalPoints < 1000) {
+      descriptionKey = "rank_desc_3";
+    } else {
+      descriptionKey = "rank_desc_4";
+    }
+
+    // Acum dynamicString va căuta în JSON
+    String description = l10n.dynamicString(descriptionKey);
+    // Și aici folosim cheia din JSON
+    String encouragement = l10n.dynamicString("rank_keep_going");
+
+    showDialog(
+      context: context,
+      builder: (BuildContext ctx) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          title: Row(
+            children: [
+              Icon(Icons.military_tech, color: RankData.getRankColor(totalPoints)),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(
+                  rankName,
+                  style: TextStyle(
+                    color: RankData.getRankColor(totalPoints),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                description,
+                style: const TextStyle(fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 16),
+              Text(
+                encouragement,
+                style: TextStyle(fontSize: 14, color: Colors.grey[600], fontStyle: FontStyle.italic),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(ctx).pop(),
+              child: const Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
@@ -238,19 +307,37 @@ class _AccountPageState extends State<AccountPage> {
 
                         // 🎯 RANK-UL
                         const SizedBox(height: 10),
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                          decoration: BoxDecoration(
-                            color: RankData.getRankColor(totalPoints).withOpacity(0.1),
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(color: RankData.getRankColor(totalPoints), width: 1.5),
-                          ),
-                          child: Text(
+                        GestureDetector(
+                          onTap: () => _showRankDetails(
+                            context,
+                            totalPoints,
                             RankData.getRankName(totalPoints, l10n),
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: RankData.getRankColor(totalPoints),
+                          ),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                            decoration: BoxDecoration(
+                              color: RankData.getRankColor(totalPoints).withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(color: RankData.getRankColor(totalPoints), width: 1.5),
+                            ),
+                            child: Row( // Am pus un Row ca să adăugăm și o mică iconiță de "info"
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  RankData.getRankName(totalPoints, l10n),
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: RankData.getRankColor(totalPoints),
+                                  ),
+                                ),
+                                const SizedBox(width: 8),
+                                Icon(
+                                    Icons.info_outline,
+                                    size: 18,
+                                    color: RankData.getRankColor(totalPoints)
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -344,21 +431,40 @@ class _AccountPageState extends State<AccountPage> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
+                                  // 🔴 BUTON ANULARE (Compact)
                                   ElevatedButton.icon(
-                                    icon: const Icon(Icons.remove_circle, color: Colors.white, size: 20),
-                                    label: Text(l10n.cancelQuestButton),
+                                    // 1. Iconiță mai mică (18 vs 24)
+                                    icon: const Icon(Icons.remove_circle, color: Colors.white, size: 18),
+                                    // 2. Text mai mic (font 13)
+                                    label: Text(
+                                      l10n.cancelQuestButton,
+                                      style: const TextStyle(fontSize: 13),
+                                    ),
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.red.shade400,
                                       foregroundColor: Colors.white,
+                                      // 3. Padding redus (mai puțin spațiu gol)
+                                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                      // 4. Permite butonului să fie mai mic decât standardul minim
+                                      minimumSize: Size.zero,
+                                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                                     ),
                                     onPressed: () => questState.removeQuest(quest),
                                   ),
+
+                                  // 🟢 BUTON FINALIZARE (Compact)
                                   ElevatedButton.icon(
-                                    icon: const Icon(Icons.done_all, color: Colors.white, size: 20),
-                                    label: Text(l10n.completeQuestButton),
+                                    icon: const Icon(Icons.done_all, color: Colors.white, size: 18),
+                                    label: Text(
+                                      l10n.completeQuestButton,
+                                      style: const TextStyle(fontSize: 13),
+                                    ),
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.green,
                                       foregroundColor: Colors.white,
+                                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                      minimumSize: Size.zero,
+                                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                                     ),
                                     onPressed: () => questState.completeQuest(quest),
                                   ),

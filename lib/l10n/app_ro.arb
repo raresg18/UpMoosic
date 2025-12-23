@@ -150,5 +150,9 @@
     "rankBalancedListener": "Ascultător în Echilibru",
     "rankRhythmExplorer": "Explorator de Ritmuri",
     "rankMoodComposer": "Compozitor de Stări",
-    "rankLivingSymphony": "Simfonie Vie"
-  }
+    "rankLivingSymphony": "Simfonie Vie",
+    "statisticsTitle": "Statistici Stare",
+    "noDataStats": "Nu există suficiente date pentru grafic.",
+    "moodDistribution": "Distribuția Stărilor",
+    "totalEntries": "Total intrări:"
+}

@@ -288,4 +288,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get rankLivingSymphony => 'Living Symphony';
+
+  @override
+  String get statisticsTitle => 'Mood Statistics';
+
+  @override
+  String get noDataStats => 'Not enough data for the chart.';
+
+  @override
+  String get moodDistribution => 'Mood Distribution';
+
+  @override
+  String get totalEntries => 'Total entries:';
 }

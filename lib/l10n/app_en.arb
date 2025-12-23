@@ -150,5 +150,9 @@
    "rankBalancedListener": "Balanced Listener",
    "rankRhythmExplorer": "Rhythm Explorer",
    "rankMoodComposer": "Mood Composer",
-   "rankLivingSymphony": "Living Symphony"
+   "rankLivingSymphony": "Living Symphony",
+   "statisticsTitle": "Mood Statistics",
+   "noDataStats": "Not enough data for the chart.",
+   "moodDistribution": "Mood Distribution",
+   "totalEntries": "Total entries:"
 }
