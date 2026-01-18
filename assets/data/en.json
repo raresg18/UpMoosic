@@ -327,5 +327,6 @@
   "rank_desc_2": "You are bravely exploring the world of your emotions. Well done!",
   "rank_desc_3": "You've gained enviable consistency. You're close to mastery!",
   "rank_desc_4": "You've reached a high level of self-awareness. You are an inspiration!",
-  "rank_keep_going": "Keep doing quests to improve it!"
+  "rank_keep_going": "Keep doing quests to improve it!",
+  "settings_permission_required": "Notification permission is required!"
 }

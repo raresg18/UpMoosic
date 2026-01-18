@@ -108,28 +108,51 @@ class _AccountPageState extends State<AccountPage> {
                     contentPadding: EdgeInsets.zero,
                     title: Text(l10n.dynamicString('settings_daily_notif')),
                     value: isEnabled,
-                    onChanged: (bool value) {
-                      setStateDialog(() {
-                        isEnabled = value;
-                      });
-                      box.put('reminder_enabled', value);
+                    onChanged: (bool value) async { // ⚠️ Adaugă async aici
+                      if (value) {
+                        // 🟢 Când activează: CEREM PERMISIUNEA ÎNTÂI
+                        bool granted = await NotificationService().requestPermissions();
 
-                      if (!value) {
+                        if (granted) {
+                          // Dacă a dat voie, salvăm și programăm
+                          setStateDialog(() {
+                            isEnabled = true;
+                          });
+                          box.put('reminder_enabled', true);
+
+                          NotificationService().scheduleDailyNotification(
+                            selectedTime.hour,
+                            selectedTime.minute,
+                            l10n.dynamicString('notif_title'),
+                            l10n.dynamicString('notif_body'),
+                            'daily_channel_id', // ID unic canal
+                            l10n.dynamicString('channel_name'),
+                          );
+
+                          if (context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text("${l10n.dynamicString('settings_notif_active')} ${selectedTime.format(context)}!")),
+                            );
+                          }
+                        } else {
+                          setStateDialog(() { isEnabled = false; });
+                          if (context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(l10n.dynamicString('settings_permission_required'))
+                              ),
+                            );
+                          }
+                        }
+                      } else {
+                        // 🔴 Când dezactivează
+                        setStateDialog(() {
+                          isEnabled = false;
+                        });
+                        box.put('reminder_enabled', false);
                         NotificationService().cancelNotifications();
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text(l10n.dynamicString('settings_notif_inactive'))),
-                        );
-                      } else {
-                        NotificationService().scheduleDailyNotification(
-                          selectedTime.hour,
-                          selectedTime.minute,
-                          l10n.dynamicString('notif_title'),
-                          l10n.dynamicString('notif_body'),
-                          l10n.dynamicString('channel_name'),
-                          l10n.dynamicString('channel_desc'),
-                        );
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text("${l10n.dynamicString('settings_notif_active')} ${selectedTime.format(context)}!")),
                         );
                       }
                     },

@@ -8,14 +8,23 @@ import 'pages/home_page.dart';
 import 'l10n/app_localizations.dart';
 import 'models/mood_entry.dart';
 import 'services/data_service.dart';
+import 'services/notification_service.dart'; // 🔔 IMPORT NOU
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // 1. Inițializare Hive
   await Hive.initFlutter();
   Hive.registerAdapter(MoodEntryAdapter());
-  await Hive.openBox<MoodEntry>('journal_box');
 
+  // 2. Deschidem cutiile de date
+  await Hive.openBox<MoodEntry>('journal_box');
+  await Hive.openBox('settings'); // ⚠️ OBLIGATORIU pentru a salva ora notificării
+
+  // 3. Inițializăm Sistemul de Notificări (Cere permisiuni, setează timezones)
+  await NotificationService().init();
+
+  // 4. Încărcăm datele vechi (JSON)
   await DataService.load(const Locale('ro'));
 
   runApp(
