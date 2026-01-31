@@ -10,11 +10,9 @@ class LanguageSelectorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Obține provider-ul și localizarea
     final languageProvider = Provider.of<LanguageProvider>(context, listen: false);
     final l10n = AppLocalizations.of(context)!;
 
-    // Stilul butoanelor (Fundal alb, Text/Icoană mov, Umbră)
     final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
       backgroundColor: Colors.white,
       foregroundColor: Theme.of(context).colorScheme.primary,
@@ -32,7 +30,6 @@ class LanguageSelectorPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        // NOTĂ: După selectarea limbii, textul de aici (și al butoanelor) se va schimba
         title: Text(l10n.selectLanguageButton),
         backgroundColor: Colors.blueGrey.shade700,
         foregroundColor: Colors.white,
@@ -51,11 +48,8 @@ class LanguageSelectorPage extends StatelessWidget {
                       lang['name'] as String,
                     ),
                     onPressed: () {
-                      // 🎯 Schimbă limba în provider
                       languageProvider.setLocale(lang['locale'] as Locale);
 
-                      // ❌ ELIMINAT: Navigator.pop(context);
-                      // Pagina rămâne deschisă după selecție.
                     },
                   ),
                   const SizedBox(height: 20),

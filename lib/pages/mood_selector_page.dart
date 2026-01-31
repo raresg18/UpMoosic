@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'dart:math'; // 🎯 Import necesar pentru Random
+import 'dart:math';
 import 'playlist_page.dart';
 import '../data/mood_data.dart';
 import '../models/mood_model.dart';
-import '../models/song.dart'; // 🎯 Import necesar pentru tipul Song
+import '../models/song.dart';
 import '../l10n/app_localizations.dart';
 import '../services/quest_service.dart';
 
@@ -18,8 +18,6 @@ class _MoodSelectorPageState extends State<MoodSelectorPage> {
   String? _selectedMoodName;
   MoodModel? _selectedMoodModel;
 
-  // 🎯 MEMORIE LOCALĂ (CACHE)
-  // Reținem ce am generat ultima dată ca să nu se schimbe dacă revenim
   int? _lastMoodId;
   Song? _cachedSong;
   String? _cachedQuoteKey;
@@ -38,21 +36,15 @@ class _MoodSelectorPageState extends State<MoodSelectorPage> {
       final int currentMoodId = _selectedMoodModel!.id;
       final random = Random();
 
-      // 🎯 LOGICA DE PERSISTENȚĂ
-      // Verificăm dacă userul a selectat o stare DIFERITĂ față de ultima dată
       if (_lastMoodId != currentMoodId) {
-        // 1. Resetăm Quest-ul doar dacă s-a schimbat starea
         await QuestService.resetQuest();
 
-        // 2. Generăm o melodie nouă pentru noua stare
         final songList = _selectedMoodModel!.playlist;
         _cachedSong = songList[random.nextInt(songList.length)];
 
-        // 3. Generăm un citat nou pentru noua stare
         final quotes = _selectedMoodModel!.quotesKeys;
         _cachedQuoteKey = quotes[random.nextInt(quotes.length)];
 
-        // 4. Actualizăm ID-ul curent
         _lastMoodId = currentMoodId;
       }
       if (mounted) {

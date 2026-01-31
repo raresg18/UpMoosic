@@ -9,10 +9,9 @@ class RankData {
     if (points >= 500) return "${l10n.rankRhythmExplorer} 🥁";
     if (points >= 200) return "${l10n.rankBalancedListener} 🎧";
     if (points >= 100) return "${l10n.rankBeginnerSpirit} 🎵";
-    return "${l10n.rankShyNote} 🎹"; // 0 - 99 puncte
+    return "${l10n.rankShyNote} 🎹";
   }
 
-  // Culorile rămân la fel (nu depind de limbă)
   static Color getRankColor(int points) {
     if (points >= 2500) return Colors.amber.shade700;
     if (points >= 1000) return Colors.purple.shade400;

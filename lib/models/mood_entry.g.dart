@@ -1,10 +1,5 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'mood_entry.dart';
-
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
 
 class MoodEntryAdapter extends TypeAdapter<MoodEntry> {
   @override

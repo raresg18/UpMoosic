@@ -7,7 +7,7 @@ class Song {
   final String youtubeUrl;
   final String spotifyUrl;
 
-// here it is the class Constructor
+//here it is the class Constructor
   Song({
     required this.title,
     required this.artist,

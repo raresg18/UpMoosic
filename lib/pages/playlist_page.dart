@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-// Nu mai avem nevoie de dart:math aici
-
 import '../l10n/l10n_extension.dart';
 import '../data/mood_data.dart';
 import '../models/song.dart';
@@ -12,7 +10,6 @@ import '../services/quest_service.dart';
 class PlaylistScreen extends StatelessWidget {
   final int mood;
 
-  // 🎯 DATE PRIMITE (NU MAI GENERĂM AICI)
   final Song song;
   final String quoteKey;
 
@@ -63,11 +60,6 @@ class PlaylistScreen extends StatelessWidget {
       ),
       elevation: 3,
     );
-
-    // 🎯 NU MAI AVEM LOGICĂ RANDOM AICI.
-    // Folosim direct variabilele primite: 'song' și 'quoteKey'
-
-    // Traducem citatul primit
     final String translatedQuote = l10n.dynamicString(quoteKey);
 
     return Scaffold(
@@ -84,7 +76,6 @@ class PlaylistScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
 
-              // Citatul
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Text(
@@ -100,7 +91,6 @@ class PlaylistScreen extends StatelessWidget {
 
               const SizedBox(height: 50),
 
-              // Melodia Aleasă (Titlu)
               Text(
                 l10n.luckySongPrompt,
                 style: TextStyle(fontSize: 16, color: Colors.grey.shade600),
@@ -110,7 +100,7 @@ class PlaylistScreen extends StatelessWidget {
               Column(
                 children: [
                   Text(
-                    song.title, // 🎯 Folosim piesa primită
+                    song.title,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 24,
@@ -120,7 +110,7 @@ class PlaylistScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    song.artist, // 🎯 Folosim piesa primită
+                    song.artist,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 18,
@@ -132,7 +122,6 @@ class PlaylistScreen extends StatelessWidget {
 
               const SizedBox(height: 60),
 
-              // 1. Buton YouTube
               SizedBox(
                 width: 250,
                 child: ElevatedButton.icon(
@@ -147,7 +136,6 @@ class PlaylistScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
 
-              // 2. Buton Spotify
               SizedBox(
                 width: 250,
                 child: ElevatedButton.icon(
@@ -163,13 +151,10 @@ class PlaylistScreen extends StatelessWidget {
 
               const SizedBox(height: 20),
 
-              // 3. Butonul QUEST
               SizedBox(
                 width: 250,
                 child: ElevatedButton.icon(
                   onPressed: () async {
-                    // Serviciul QuestService va returna același quest dacă nu a fost resetat
-                    // (Resetarea se face acum doar în MoodSelectorPage la schimbarea stării)
                     final persistentQuest = await QuestService.getOrCreateSessionQuest(mood);
 
                     Navigator.push(

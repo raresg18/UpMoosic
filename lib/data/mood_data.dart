@@ -3,10 +3,9 @@
 import 'package:flutter/material.dart';
 import 'dart:collection';
 import '../models/mood_model.dart';
-import '../models/song.dart'; // Importăm modelul Song
+import '../models/song.dart';
 import '../models/quest_model.dart';
 
-// 👇 IMPORTUL MAGIC: Asta aduce listele mari (playlistHappy, playlistSad etc.)
 import 'playlist.dart';
 
 class MoodData {
@@ -21,7 +20,6 @@ class MoodData {
       quotesKeys: [
         "quote_happy_1", "quote_happy_2", "quote_happy_3", "quote_happy_4", "quote_happy_5",
       ],
-      // 👇 AICI ESTE SCHIMBAREA: Folosim variabila din playlist.dart
       playlist: playlistHappy,
       questsKeys: [
         QuestModel(titleKey: "quest_happy_title_1", descriptionKey: "quest_happy_desc_1", emoji: '💌'),
@@ -45,7 +43,6 @@ class MoodData {
       quotesKeys: [
         "quote_sad_1", "quote_sad_2", "quote_sad_3", "quote_sad_4", "quote_sad_5",
       ],
-      // 👇 FOLOSIM LISTA MARE
       playlist: playlistSad,
       questsKeys: [
         QuestModel(titleKey: "quest_sad_title_1", descriptionKey: "quest_sad_desc_1", emoji: '🎧'),
@@ -74,7 +71,6 @@ class MoodData {
       quotesKeys: [
         "quote_relaxed_1", "quote_relaxed_2", "quote_relaxed_3", "quote_relaxed_4", "quote_relaxed_5",
       ],
-      // 👇 FOLOSIM LISTA MARE
       playlist: playlistRelaxed,
       questsKeys: [
         QuestModel(titleKey: "quest_relaxed_title_1", descriptionKey: "quest_relaxed_desc_1", emoji: '💧'),
@@ -103,7 +99,6 @@ class MoodData {
       quotesKeys: [
         "quote_energetic_1", "quote_energetic_2", "quote_energetic_3", "quote_energetic_4", "quote_energetic_5",
       ],
-      // 👇 FOLOSIM LISTA MARE
       playlist: playlistEnergetic,
       questsKeys: [
         QuestModel(titleKey: "quest_energetic_title_1", descriptionKey: "quest_energetic_desc_1", emoji: '🏋️'),
@@ -132,7 +127,6 @@ class MoodData {
       quotesKeys: [
         "quote_motivated_1", "quote_motivated_2", "quote_motivated_3", "quote_motivated_4", "quote_motivated_5",
       ],
-      // 👇 FOLOSIM LISTA MARE
       playlist: playlistMotivated,
       questsKeys: [
         QuestModel(titleKey: "quest_motivated_title_1", descriptionKey: "quest_motivated_desc_1", emoji: '⏱️'),
@@ -161,7 +155,6 @@ class MoodData {
       quotesKeys: [
         "quote_stressed_1", "quote_stressed_2", "quote_stressed_3", "quote_stressed_4", "quote_stressed_5",
       ],
-      // 👇 FOLOSIM LISTA MARE
       playlist: playlistStressed,
       questsKeys: [
         QuestModel(titleKey: "quest_stressed_title_1", descriptionKey: "quest_stressed_desc_1", emoji: '🧘'),
@@ -190,7 +183,6 @@ class MoodData {
       quotesKeys: [
         "quote_nostalgic_1", "quote_nostalgic_2", "quote_nostalgic_3", "quote_nostalgic_4", "quote_nostalgic_5",
       ],
-      // 👇 FOLOSIM LISTA MARE
       playlist: playlistNostalgic,
       questsKeys: [
         QuestModel(titleKey: "quest_nostalgic_title_1", descriptionKey: "quest_nostalgic_desc_1", emoji: '📸'),
@@ -219,7 +211,6 @@ class MoodData {
       quotesKeys: [
         'quote_focused_1', "quote_focused_2", "quote_focused_3", "quote_focused_4", "quote_focused_5",
       ],
-      // 👇 FOLOSIM LISTA MARE
       playlist: playlistFocused,
       questsKeys: [
         QuestModel(titleKey: "quest_focused_title_1", descriptionKey: "quest_focused_desc_1", emoji: '🍅'),

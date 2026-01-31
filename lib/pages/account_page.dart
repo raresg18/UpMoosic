@@ -6,7 +6,7 @@ import '../l10n/l10n_extension.dart';
 import '../models/user_quest.dart';
 import '../providers/quest_state.dart';
 import '../services/notification_service.dart';
-import '../data/rank_data.dart'; // 🎯 Importăm RankData
+import '../data/rank_data.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({super.key});
@@ -16,7 +16,6 @@ class AccountPage extends StatefulWidget {
 }
 
 class _AccountPageState extends State<AccountPage> {
-  // 🎯 1. Ținem minte care quest-uri sunt deschise pentru a ascunde butoanele
   final Set<String> _expandedQuestKeys = {};
 
   void _confirmDeleteHistory(BuildContext context, AppLocalizations l10n) {
@@ -108,13 +107,11 @@ class _AccountPageState extends State<AccountPage> {
                     contentPadding: EdgeInsets.zero,
                     title: Text(l10n.dynamicString('settings_daily_notif')),
                     value: isEnabled,
-                    onChanged: (bool value) async { // ⚠️ Adaugă async aici
+                    onChanged: (bool value) async {
                       if (value) {
-                        // 🟢 Când activează: CEREM PERMISIUNEA ÎNTÂI
                         bool granted = await NotificationService().requestPermissions();
 
                         if (granted) {
-                          // Dacă a dat voie, salvăm și programăm
                           setStateDialog(() {
                             isEnabled = true;
                           });
@@ -145,7 +142,6 @@ class _AccountPageState extends State<AccountPage> {
                           }
                         }
                       } else {
-                        // 🔴 Când dezactivează
                         setStateDialog(() {
                           isEnabled = false;
                         });
@@ -228,9 +224,7 @@ class _AccountPageState extends State<AccountPage> {
       descriptionKey = "rank_desc_4";
     }
 
-    // Acum dynamicString va căuta în JSON
     String description = l10n.dynamicString(descriptionKey);
-    // Și aici folosim cheia din JSON
     String encouragement = l10n.dynamicString("rank_keep_going");
 
     showDialog(
@@ -328,7 +322,6 @@ class _AccountPageState extends State<AccountPage> {
                           style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.indigo),
                         ),
 
-                        // 🎯 RANK-UL
                         const SizedBox(height: 10),
                         GestureDetector(
                           onTap: () => _showRankDetails(
@@ -343,7 +336,7 @@ class _AccountPageState extends State<AccountPage> {
                               borderRadius: BorderRadius.circular(20),
                               border: Border.all(color: RankData.getRankColor(totalPoints), width: 1.5),
                             ),
-                            child: Row( // Am pus un Row ca să adăugăm și o mică iconiță de "info"
+                            child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Text(
@@ -369,9 +362,6 @@ class _AccountPageState extends State<AccountPage> {
                   ),
                   const SizedBox(height: 40),
 
-                  // ---------------------------------------------------
-                  // 🎯 QUEST-URI ACTIVE
-                  // ---------------------------------------------------
                   Text(
                     l10n.activeQuestsTitle,
                     style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
@@ -396,32 +386,26 @@ class _AccountPageState extends State<AccountPage> {
                         final descriptionKey = quest.questKey.replaceFirst('title', 'desc');
                         final translatedDescription = l10n.dynamicString(descriptionKey);
 
-                        // Verificăm dacă acest card este deschis
                         final bool isExpanded = _expandedQuestKeys.contains(quest.questKey);
 
                         return Card(
                           margin: const EdgeInsets.only(bottom: 8),
                           child: ExpansionTile(
-                            key: Key(quest.questKey), // Cheie unică pentru stabilitate
+                            key: Key(quest.questKey),
                             leading: const Icon(Icons.star_half, color: Colors.amber),
                             title: Text(translatedQuestTitle, style: const TextStyle(fontWeight: FontWeight.bold)),
                             subtitle: Text('${l10n.mood}: ${quest.moodName}'),
 
-                            // 🎯 2. Logica pentru trailing (Partea dreaptă)
-                            // Dacă e deschis -> null (arată săgeata default sau nimic)
-                            // Dacă e închis -> Arată butoanele
                             trailing: isExpanded
                                 ? null
                                 : Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                // Buton FINALIZARE (Dubla bifă)
                                 IconButton(
                                   icon: const Icon(Icons.done_all, color: Colors.green),
                                   tooltip: l10n.completeQuestButton,
                                   onPressed: () => questState.completeQuest(quest),
                                 ),
-                                // Buton ANULARE (Minus roșu)
                                 IconButton(
                                   icon: const Icon(Icons.remove_circle, color: Colors.red),
                                   tooltip: l10n.cancelQuestButton,
@@ -430,7 +414,6 @@ class _AccountPageState extends State<AccountPage> {
                               ],
                             ),
 
-                            // 🎯 3. Ascultăm schimbarea stării (Deschis/Închis)
                             onExpansionChanged: (bool expanded) {
                               setState(() {
                                 if (expanded) {
@@ -450,15 +433,11 @@ class _AccountPageState extends State<AccountPage> {
                               ),
                               const SizedBox(height: 20),
 
-                              // Butoanele MARI care apar doar când e deschis
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  // 🔴 BUTON ANULARE (Compact)
                                   ElevatedButton.icon(
-                                    // 1. Iconiță mai mică (18 vs 24)
                                     icon: const Icon(Icons.remove_circle, color: Colors.white, size: 18),
-                                    // 2. Text mai mic (font 13)
                                     label: Text(
                                       l10n.cancelQuestButton,
                                       style: const TextStyle(fontSize: 13),
@@ -466,16 +445,13 @@ class _AccountPageState extends State<AccountPage> {
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.red.shade400,
                                       foregroundColor: Colors.white,
-                                      // 3. Padding redus (mai puțin spațiu gol)
                                       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                                      // 4. Permite butonului să fie mai mic decât standardul minim
                                       minimumSize: Size.zero,
                                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                                     ),
                                     onPressed: () => questState.removeQuest(quest),
                                   ),
 
-                                  // 🟢 BUTON FINALIZARE (Compact)
                                   ElevatedButton.icon(
                                     icon: const Icon(Icons.done_all, color: Colors.white, size: 18),
                                     label: Text(
@@ -501,9 +477,6 @@ class _AccountPageState extends State<AccountPage> {
 
                   const SizedBox(height: 40),
 
-                  // ---------------------------------------------------
-                  // 🎯 QUEST-URI FINALIZATE (Aici rămâne simplu)
-                  // ---------------------------------------------------
                   Text(
                     l10n.completedQuestsTitle,
                     style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.green),

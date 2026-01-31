@@ -2,10 +2,9 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 import 'package:flutter/material.dart';
-import 'dart:io'; // Import necesar pentru Platform.isAndroid etc.
+import 'dart:io';
 
 class NotificationService {
-  // Singleton pattern
   static final NotificationService _instance = NotificationService._internal();
   factory NotificationService() => _instance;
   NotificationService._internal();
@@ -14,14 +13,11 @@ class NotificationService {
   FlutterLocalNotificationsPlugin();
 
   Future<void> init() async {
-    // 1. Inițializăm Timezone (CRITIC pentru notificări programate)
     tz.initializeTimeZones();
 
-    // 2. Setări Android
     const AndroidInitializationSettings initializationSettingsAndroid =
     AndroidInitializationSettings('@mipmap/ic_launcher');
 
-    // 3. Setări iOS
     const DarwinInitializationSettings initializationSettingsDarwin =
     DarwinInitializationSettings(
       requestSoundPermission: false,
@@ -42,18 +38,13 @@ class NotificationService {
     );
   }
 
-  // 🎯 Funcție pentru a cere permisiuni
   Future<bool> requestPermissions() async {
-    // 🖥️ PE WINDOWS: Returnăm TRUE (mințim că e ok).
-    // De ce? Ca să rămână butonul din setări "Aprins" (verde).
-    // Dacă returnăm false, butonul se stinge singur și dă eroare.
     if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
       return true;
     }
 
     bool? isGranted = false;
 
-    // 🤖 Logica Android
     if (Platform.isAndroid) {
       final androidImplementation = flutterLocalNotificationsPlugin
           .resolvePlatformSpecificImplementation<
@@ -63,7 +54,6 @@ class NotificationService {
         isGranted = await androidImplementation.requestNotificationsPermission();
       }
     }
-    // 🍎 Logica iOS (folosim else if pentru claritate)
     else if (Platform.isIOS) {
       final iosImplementation = flutterLocalNotificationsPlugin
           .resolvePlatformSpecificImplementation<
@@ -84,16 +74,13 @@ class NotificationService {
   Future<void> scheduleDailyNotification(
       int hour, int minute, String title, String body, String channelId, String channelName) async {
 
-    // 🛑 STOP: Pe Windows ieșim din funcție AICI.
-    // Nu apelăm 'zonedSchedule' ca să nu primim erori.
     if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
       debugPrint("🖥️ Windows detectat: Notificarea nu a fost programată (comportament corect).");
       return;
     }
 
-    // Codul care rulează DOAR pe Android și iOS
     await flutterLocalNotificationsPlugin.zonedSchedule(
-      0, // ID unic
+      0,
       title,
       body,
       _nextInstanceOfTime(hour, minute),

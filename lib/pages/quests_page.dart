@@ -44,7 +44,6 @@ class QuestsPage extends StatelessWidget {
       default: translatedMoodName = selectedMoodModel.name;
     }
 
-    // Stilul Butoanelor (general)
     final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
       padding: const EdgeInsets.symmetric(vertical: 15),
       shape: RoundedRectangleBorder(
@@ -70,7 +69,6 @@ class QuestsPage extends StatelessWidget {
             children: <Widget>[
 
               Text(
-                // 🎯 FIX: Folosește cheia de localizare 'currentMoodTitlePrefix'
                 '${l10n.currentMoodTitlePrefix} ${selectedMoodModel.emoji} ${translatedMoodName}',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.grey.shade700),
@@ -78,7 +76,6 @@ class QuestsPage extends StatelessWidget {
 
               const SizedBox(height: 40),
 
-              // Cardul Misiunii
               QuestCard(
                 quest: selectedQuest,
                 moodColor: moodColor,
@@ -87,36 +84,27 @@ class QuestsPage extends StatelessWidget {
 
               const SizedBox(height: 60),
 
-              // Rândul cu cele două butoane de acțiune
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  // 1. Butonul "Acceptă Misiunea"
                   Expanded(
                     child: ElevatedButton.icon(
                       onPressed: () {
-                        // 1. Accesăm QuestState fără să ascultăm modificările (listen: false)
                         final questState = Provider.of<QuestState>(context, listen: false);
 
-                        // 2. Creăm obiectul UserQuest
                         final acceptedQuest = UserQuest(
-                          // Folosim selectedMoodModel.name pentru că trebuie să fie cheia
-                          // din .arb (Fericit, Trist, etc.) sau numele complet
-                          moodName: translatedMoodName, // Folosim numele TRADUS pentru afișare mai ușoară
+                          moodName: translatedMoodName,
                           questKey: selectedQuest.titleKey,
                           acceptedDate: DateTime.now(),
                         );
 
-                        // 3. ADĂUGĂM QUEST-UL ÎN STATE MANAGER
                         questState.addQuest(acceptedQuest);
 
-                        // 4. Închide pagina actuală (QuestPage)
                         Navigator.pop(context);
 
-                        // 5. (Opțional) Afișează un Snackbar de confirmare pe pagina anterioară
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text(l10n.questAcceptedMessage), // 🎯 NOUĂ CHEIE ARB
+                            content: Text(l10n.questAcceptedMessage),
                             duration: const Duration(seconds: 2),
                           ),
                         );
@@ -132,12 +120,10 @@ class QuestsPage extends StatelessWidget {
                   ),
 
                   const SizedBox(width: 15),
-
-                  // 2. Butonul "Închide" (Close)
                   Expanded(
                     child: OutlinedButton.icon(
                       onPressed: () {
-                        Navigator.pop(context); // Doar închide pagina
+                        Navigator.pop(context);
                       },
                       icon: const Icon(Icons.close),
                       label: Text(l10n.closeButton),
@@ -161,12 +147,8 @@ class QuestsPage extends StatelessWidget {
   }
 }
 
-// =================================================================
-// WIDGETUL QUEST CARD (Rămâne neschimbat)
-// =================================================================
 
 class QuestCard extends StatelessWidget {
-// ... (Clasa QuestCard rămâne la fel)
   final QuestModel quest;
   final Color moodColor;
   final AppLocalizations l10n;

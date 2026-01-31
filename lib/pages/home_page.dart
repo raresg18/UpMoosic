@@ -13,10 +13,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-
-    // Definim un stil comun pentru butoanele mari (opțional, pentru consistență perfectă)
-    // Dar momentan le lăsăm cum ai cerut, doar aliniate.
-
     return Scaffold(
       appBar: AppBar(
         title: const Text("UpMoosic"),
@@ -42,7 +38,6 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Buton 1: Selectează Limba
             ElevatedButton.icon(
               icon: const Icon(Icons.language),
               label: Text(l10n.selectLanguageButton),
@@ -55,7 +50,6 @@ class HomePage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // Buton 2: Sugerează o piesă (Mood Selector)
             ElevatedButton.icon(
               icon: const Icon(Icons.music_note),
               label: Text(l10n.suggestSongButton),
@@ -68,14 +62,12 @@ class HomePage extends StatelessWidget {
             ),
             const SizedBox(height: 18),
 
-            // 📊 Buton 4: Statistici (Acum arată la fel ca Jurnalul, dar e Teal)
             ElevatedButton.icon(
               icon: const Icon(Icons.pie_chart),
               label: Text(l10n.statisticsTitle),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal.shade600, // Culoare distinctă
-                foregroundColor: Colors.white,         // Text alb
-                // Am scos dimensiunile fixe și fontul custom
+                backgroundColor: Colors.teal.shade600,
+                foregroundColor: Colors.white,
               ),
               onPressed: () {
                 Navigator.push(
@@ -87,7 +79,6 @@ class HomePage extends StatelessWidget {
 
             const SizedBox(height: 16),
 
-            // Buton 3: Jurnal Emoțional
             ElevatedButton.icon(
               icon: const Icon(Icons.calendar_today),
               label: Text(l10n.emotionalJournalButton),

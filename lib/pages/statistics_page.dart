@@ -6,7 +6,7 @@ import '../l10n/app_localizations.dart';
 import '../services/mood_tracker_service.dart';
 import '../models/mood_entry.dart';
 import '../data/mood_data.dart';
-import '../models/mood_model.dart'; // Import necesar pentru Enum Mood
+import '../models/mood_model.dart';
 
 class StatisticsPage extends StatefulWidget {
   const StatisticsPage({super.key});
@@ -40,17 +40,14 @@ class _StatisticsPageState extends State<StatisticsPage> {
     });
   }
 
-  // 🎯 FUNCȚIE NOUĂ: Traduce numele stării în funcție de limba curentă
   String _getTranslatedMoodName(BuildContext context, String storedMoodName) {
     final l10n = AppLocalizations.of(context)!;
 
-    // 1. Găsim modelul original bazat pe numele stocat
     final moodModel = MoodData.allMoods.firstWhere(
           (m) => m.name == storedMoodName,
       orElse: () => MoodData.allMoods[0],
     );
 
-    // 2. Returnăm traducerea bazată pe TIPUL stării (Mood enum)
     switch (moodModel.type) {
       case Mood.happy: return l10n.moodHappy;
       case Mood.sad: return l10n.moodSad;
@@ -60,7 +57,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
       case Mood.stressed: return l10n.moodStressed;
       case Mood.nostalgic: return l10n.moodNostalgic;
       case Mood.focused: return l10n.moodFocused;
-      default: return storedMoodName; // Fallback
+      default: return storedMoodName;
     }
   }
 
@@ -89,7 +86,6 @@ class _StatisticsPageState extends State<StatisticsPage> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            // --- CARD GRAFIC ---
             Card(
               elevation: 4,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
@@ -103,7 +99,6 @@ class _StatisticsPageState extends State<StatisticsPage> {
                     ),
                     const SizedBox(height: 20),
 
-                    // GRAFICUL PIE CHART
                     SizedBox(
                       height: 250,
                       child: PieChart(
@@ -123,9 +118,8 @@ class _StatisticsPageState extends State<StatisticsPage> {
 
             const SizedBox(height: 20),
 
-            // --- LISTA LEGENDĂ (Actualizată cu traduceri) ---
             ..._moodCounts.entries.map((entry) {
-              final moodName = entry.key; // Numele stocat în DB (ex: "Fericit")
+              final moodName = entry.key;
               final count = entry.value;
               final percentage = (count / _totalEntries * 100).toStringAsFixed(1);
 
@@ -134,7 +128,6 @@ class _StatisticsPageState extends State<StatisticsPage> {
                 orElse: () => MoodData.allMoods[0],
               );
 
-              // 🎯 AICI FOLOSIM FUNCȚIA DE TRADUCERE
               final translatedName = _getTranslatedMoodName(context, moodName);
 
               return Card(
@@ -145,7 +138,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                     child: Text(moodModel.emoji, style: const TextStyle(fontSize: 20)),
                   ),
                   title: Text(
-                    translatedName, // Folosim numele tradus, nu cel din DB
+                    translatedName,
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   trailing: Text(
