@@ -1,7 +1,7 @@
 <<<<<<< HEAD
-# upmoosic
+# UpMoosic
 
-A new Flutter project.
+It is a Flutter project meant to help and improve your everyday life. 
 
 ## Getting Started
 
