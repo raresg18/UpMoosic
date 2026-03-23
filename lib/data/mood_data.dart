@@ -169,7 +169,7 @@ class MoodData {
         QuestModel(titleKey: "quest_stressed_title_10", descriptionKey: "quest_stressed_desc_10", emoji: '🔊'),
         QuestModel(titleKey: "quest_stressed_title_11", descriptionKey: "quest_stressed_desc_11", emoji: '🗑️'),
         QuestModel(titleKey: "quest_stressed_title_12", descriptionKey: "quest_stressed_desc_12", emoji: '🧊'),
-        QuestModel(titleKey: "quest_stressed_title_13", descriptionKey: "quest_stressed_desc_13", emoji: ' dimmed'),
+        QuestModel(titleKey: "quest_stressed_title_13", descriptionKey: "quest_stressed_desc_13", emoji: '🌙'),
         QuestModel(titleKey: "quest_stressed_title_14", descriptionKey: "quest_stressed_desc_14", emoji: '⏸️'),
         QuestModel(titleKey: "quest_stressed_title_15", descriptionKey: "quest_stressed_desc_15", emoji: '🙋'),
       ],

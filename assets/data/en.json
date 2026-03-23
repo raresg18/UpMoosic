@@ -1,4 +1,9 @@
 {
+  "home_tagline": "Start exploring what today brings",
+  "greeting_morning": "Good Morning!",
+  "greeting_afternoon": "Good Afternoon!",
+  "greeting_evening": "Good Evening!",
+
   "quote_happy_1": "Happiness depends upon ourselves.",
   "quote_happy_2": "The purpose of life is to be useful and honorable.",
   "quote_happy_3": "For every minute you are angry you lose sixty seconds of happiness.",
@@ -327,6 +332,7 @@
   "rank_desc_2": "You are bravely exploring the world of your emotions. Well done!",
   "rank_desc_3": "You've gained enviable consistency. You're close to mastery!",
   "rank_desc_4": "You've reached a high level of self-awareness. You are an inspiration!",
+  "rank_desc_5": "You're a master regarding your skill of knowing yourself, keep it up!",
   "rank_keep_going": "Keep doing quests to improve it!",
   "settings_permission_required": "Notification permission is required!"
 }

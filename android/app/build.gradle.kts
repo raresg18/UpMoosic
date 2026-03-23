@@ -13,7 +13,6 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
 
-        // 👇 FIX 1: Sintaxa corectă pentru Kotlin (cu "is" și "=")
         isCoreLibraryDesugaringEnabled = true
     }
 
@@ -22,7 +21,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.aupmoosic" // Verifică dacă e ID-ul corect
+        applicationId = "com.example.aupmoosic"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
@@ -40,12 +39,10 @@ flutter {
     source = "../.."
 }
 
-// 👇 FIX 2: Adăugăm blocul dependencies (care lipsea)
 dependencies {
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
 }
 
-// 👇 FIX 3: Rezolvarea conflictelor de versiuni (Sintaxa Kotlin)
 configurations.all {
     resolutionStrategy {
         force("androidx.browser:browser:1.8.0")

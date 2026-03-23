@@ -7,6 +7,7 @@ import '../models/user_quest.dart';
 import '../providers/quest_state.dart';
 import '../services/notification_service.dart';
 import '../data/rank_data.dart';
+import 'language_selector_page.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({super.key});
@@ -136,7 +137,7 @@ class _AccountPageState extends State<AccountPage> {
                           if (context.mounted) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                content: Text(l10n.dynamicString('settings_permission_required'))
+                                  content: Text(l10n.dynamicString('settings_permission_required'))
                               ),
                             );
                           }
@@ -542,15 +543,34 @@ class _AccountPageState extends State<AccountPage> {
               right: 20.0,
               bottom: MediaQuery.of(context).padding.bottom + 10.0,
             ),
-            child: ElevatedButton.icon(
-              icon: const Icon(Icons.delete_forever),
-              label: Text(l10n.deleteHistoryButton),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red[700],
-                foregroundColor: Colors.white,
-                minimumSize: const Size(double.infinity, 50),
-              ),
-              onPressed: () => _confirmDeleteHistory(context, l10n),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ElevatedButton.icon(
+                  icon: const Icon(Icons.language),
+                  label: Text(l10n.selectLanguageButton),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blueGrey.shade600,
+                    foregroundColor: Colors.white,
+                    minimumSize: const Size(double.infinity, 50),
+                  ),
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const LanguageSelectorPage()),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                ElevatedButton.icon(
+                  icon: const Icon(Icons.delete_forever),
+                  label: Text(l10n.deleteHistoryButton),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red[700],
+                    foregroundColor: Colors.white,
+                    minimumSize: const Size(double.infinity, 50),
+                  ),
+                  onPressed: () => _confirmDeleteHistory(context, l10n),
+                ),
+              ],
             ),
           ),
         );

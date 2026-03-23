@@ -1,6 +1,7 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 
@@ -33,7 +34,7 @@ class NotificationService {
     await flutterLocalNotificationsPlugin.initialize(
       initializationSettings,
       onDidReceiveNotificationResponse: (NotificationResponse response) {
-        debugPrint("Notificare apăsată: ${response.payload}");
+        if (kDebugMode) debugPrint("Notificare apăsată: ${response.payload}");
       },
     );
   }
@@ -75,7 +76,7 @@ class NotificationService {
       int hour, int minute, String title, String body, String channelId, String channelName) async {
 
     if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-      debugPrint("🖥️ Windows detectat: Notificarea nu a fost programată (comportament corect).");
+      if (kDebugMode) debugPrint("🖥️ Windows detectat: Notificarea nu a fost programată (comportament corect).");
       return;
     }
 
@@ -101,7 +102,7 @@ class NotificationService {
       matchDateTimeComponents: DateTimeComponents.time,
     );
 
-    debugPrint("🔔 Notificare programată zilnic la $hour:$minute");
+    if (kDebugMode) debugPrint("🔔 Notificare programată zilnic la $hour:$minute");
   }
 
   Future<void> cancelNotifications() async {
@@ -110,7 +111,7 @@ class NotificationService {
     }
 
     await flutterLocalNotificationsPlugin.cancelAll();
-    debugPrint("🔕 Toate notificările au fost anulate.");
+    if (kDebugMode) debugPrint("🔕 Toate notificările au fost anulate.");
   }
 
   tz.TZDateTime _nextInstanceOfTime(int hour, int minute) {

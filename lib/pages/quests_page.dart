@@ -112,9 +112,9 @@ class QuestsPage extends StatelessWidget {
                       icon: const Icon(Icons.check_circle_outline),
                       label: Text(l10n.doQuestButton),
                       style: buttonStyle.copyWith(
-                        backgroundColor: MaterialStateProperty.all(_mainButtonColor),
-                        foregroundColor: MaterialStateProperty.all(Colors.white),
-                        padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 12)),
+                        backgroundColor: WidgetStateProperty.all(_mainButtonColor),
+                        foregroundColor: WidgetStateProperty.all(Colors.white),
+                        padding: WidgetStateProperty.all(const EdgeInsets.symmetric(vertical: 12)),
                       ),
                     ),
                   ),

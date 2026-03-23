@@ -129,8 +129,8 @@ class PlaylistScreen extends StatelessWidget {
                   icon: const Icon(Icons.video_library),
                   label: Text(l10n.listenOnYoutube),
                   style: buttonStyle.copyWith(
-                    backgroundColor: MaterialStateProperty.all(buttonBackgroundColor),
-                    foregroundColor: MaterialStateProperty.all(themePrimaryColor),
+                    backgroundColor: WidgetStateProperty.all(buttonBackgroundColor),
+                    foregroundColor: WidgetStateProperty.all(themePrimaryColor),
                   ),
                 ),
               ),
@@ -143,8 +143,8 @@ class PlaylistScreen extends StatelessWidget {
                   icon: const Icon(Icons.headset),
                   label: Text(l10n.listenOnSpotify),
                   style: buttonStyle.copyWith(
-                    backgroundColor: MaterialStateProperty.all(buttonBackgroundColor),
-                    foregroundColor: MaterialStateProperty.all(themePrimaryColor),
+                    backgroundColor: WidgetStateProperty.all(buttonBackgroundColor),
+                    foregroundColor: WidgetStateProperty.all(themePrimaryColor),
                   ),
                 ),
               ),
@@ -167,8 +167,8 @@ class PlaylistScreen extends StatelessWidget {
                   icon: const Icon(Icons.task_alt),
                   label: Text(l10n.questButtonLabel),
                   style: buttonStyle.copyWith(
-                    backgroundColor: MaterialStateProperty.all(buttonBackgroundColor),
-                    foregroundColor: MaterialStateProperty.all(themePrimaryColor),
+                    backgroundColor: WidgetStateProperty.all(buttonBackgroundColor),
+                    foregroundColor: WidgetStateProperty.all(themePrimaryColor),
                   ),
                 ),
               ),
