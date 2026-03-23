@@ -8,6 +8,7 @@ import '../providers/quest_state.dart';
 import '../services/notification_service.dart';
 import '../data/rank_data.dart';
 import 'language_selector_page.dart';
+import '../providers/language_provider.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({super.key});
@@ -81,6 +82,7 @@ class _AccountPageState extends State<AccountPage> {
     bool isEnabled = box.get('reminder_enabled', defaultValue: false);
     int hour = box.get('reminder_hour', defaultValue: 20);
     int minute = box.get('reminder_minute', defaultValue: 0);
+    bool showLanguageOptions = false;
 
     TimeOfDay selectedTime = TimeOfDay(hour: hour, minute: minute);
 
@@ -193,6 +195,53 @@ class _AccountPageState extends State<AccountPage> {
                         }
                       },
                     ),
+
+                  // Language section
+                  const SizedBox(height: 16),
+                  Text(
+                    l10n.dynamicString('settings_section_language'),
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  ),
+                  const Divider(),
+                  ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    leading: const Icon(Icons.language),
+                    title: Text(l10n.selectLanguageButton),
+                    trailing: Icon(
+                      showLanguageOptions
+                          ? Icons.keyboard_arrow_up
+                          : Icons.keyboard_arrow_down,
+                    ),
+                    onTap: () {
+                      setStateDialog(() {
+                        showLanguageOptions = !showLanguageOptions;
+                      });
+                    },
+                  ),
+                  if (showLanguageOptions) ...[
+                    _LanguageOption(
+                      flag: '🇷🇴',
+                      label: 'Română',
+                      locale: const Locale('ro'),
+                      l10n: l10n,
+                      onSelected: () {
+                        setStateDialog(() => showLanguageOptions = false);
+                      },
+                    ),
+                    _LanguageOption(
+                      flag: '🇬🇧',
+                      label: 'English',
+                      locale: const Locale('en'),
+                      l10n: l10n,
+                      onSelected: () {
+                        setStateDialog(() => showLanguageOptions = false);
+                      },
+                    ),
+                  ],
                 ],
               ),
               actions: [
@@ -543,38 +592,61 @@ class _AccountPageState extends State<AccountPage> {
               right: 20.0,
               bottom: MediaQuery.of(context).padding.bottom + 10.0,
             ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ElevatedButton.icon(
-                  icon: const Icon(Icons.language),
-                  label: Text(l10n.selectLanguageButton),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blueGrey.shade600,
-                    foregroundColor: Colors.white,
-                    minimumSize: const Size(double.infinity, 50),
-                  ),
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => const LanguageSelectorPage()),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                ElevatedButton.icon(
-                  icon: const Icon(Icons.delete_forever),
-                  label: Text(l10n.deleteHistoryButton),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red[700],
-                    foregroundColor: Colors.white,
-                    minimumSize: const Size(double.infinity, 50),
-                  ),
-                  onPressed: () => _confirmDeleteHistory(context, l10n),
-                ),
-              ],
+            child: ElevatedButton.icon(
+              icon: const Icon(Icons.delete_forever),
+              label: Text(l10n.deleteHistoryButton),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red[700],
+                foregroundColor: Colors.white,
+                minimumSize: const Size(double.infinity, 50),
+              ),
+              onPressed: () => _confirmDeleteHistory(context, l10n),
             ),
           ),
         );
       },
+    );
+  }
+}
+
+class _LanguageOption extends StatelessWidget {
+  final String flag;
+  final String label;
+  final Locale locale;
+  final AppLocalizations l10n;
+  final VoidCallback onSelected;
+
+  const _LanguageOption({
+    required this.flag,
+    required this.label,
+    required this.locale,
+    required this.l10n,
+    required this.onSelected,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      borderRadius: BorderRadius.circular(8),
+      onTap: () {
+        final provider = Provider.of<LanguageProvider>(context, listen: false);
+        provider.setLocale(locale);
+        onSelected();
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+        child: Row(
+          children: [
+            const SizedBox(width: 8),
+            Text(flag, style: const TextStyle(fontSize: 20)),
+            const SizedBox(width: 12),
+            Text(
+              label,
+              style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

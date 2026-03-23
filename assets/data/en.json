@@ -334,5 +334,6 @@
   "rank_desc_4": "You've reached a high level of self-awareness. You are an inspiration!",
   "rank_desc_5": "You're a master regarding your skill of knowing yourself, keep it up!",
   "rank_keep_going": "Keep doing quests to improve it!",
-  "settings_permission_required": "Notification permission is required!"
+  "settings_permission_required": "Notification permission is required!",
+  "settings_section_language": "Language"
 }
