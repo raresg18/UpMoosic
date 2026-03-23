@@ -407,6 +407,10 @@ class _AccountPageState extends State<AccountPage> {
                             ),
                           ),
                         ),
+
+                        // ── Progress to next rank ──────────────────
+                        const SizedBox(height: 16),
+                        _RankProgressBar(totalPoints: totalPoints, l10n: l10n),
                       ],
                     ),
                   ),
@@ -646,6 +650,90 @@ class _LanguageOption extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _RankProgressBar extends StatelessWidget {
+  final int totalPoints;
+  final AppLocalizations l10n;
+
+  const _RankProgressBar({required this.totalPoints, required this.l10n});
+
+  // Returns {current threshold, next threshold, next rank name}
+  Map<String, dynamic> _getProgressInfo() {
+    if (totalPoints < 100) {
+      return {'from': 0, 'to': 100, 'nextRank': '${l10n.rankBeginnerSpirit} 🎵'};
+    } else if (totalPoints < 200) {
+      return {'from': 100, 'to': 200, 'nextRank': '${l10n.rankBalancedListener} 🎧'};
+    } else if (totalPoints < 500) {
+      return {'from': 200, 'to': 500, 'nextRank': '${l10n.rankRhythmExplorer} 🥁'};
+    } else if (totalPoints < 1000) {
+      return {'from': 500, 'to': 1000, 'nextRank': '${l10n.rankMoodComposer} 🎼'};
+    } else if (totalPoints < 2500) {
+      return {'from': 1000, 'to': 2500, 'nextRank': '${l10n.rankLivingSymphony} 🎻'};
+    } else {
+      return {'from': 2500, 'to': 2500, 'nextRank': null};
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final info = _getProgressInfo();
+    final bool isMaxRank = info['nextRank'] == null;
+
+    if (isMaxRank) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24),
+        child: Text(
+          '🏆 ${l10n.dynamicString('rank_max_reached')}',
+          style: const TextStyle(
+            fontSize: 13,
+            fontWeight: FontWeight.w600,
+            color: Colors.amber,
+          ),
+          textAlign: TextAlign.center,
+        ),
+      );
+    }
+
+    final int from = info['from'] as int;
+    final int to = info['to'] as int;
+    final String nextRank = info['nextRank'] as String;
+    final int pointsLeft = to - totalPoints;
+    final double progress = (totalPoints - from) / (to - from);
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                l10n.dynamicString('rank_points_left').replaceAll('{n}', '$pointsLeft'),
+                style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+              ),
+              Text(
+                nextRank,
+                style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+              ),
+            ],
+          ),
+          const SizedBox(height: 6),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: LinearProgressIndicator(
+              value: progress.clamp(0.0, 1.0),
+              minHeight: 8,
+              backgroundColor: Colors.grey.shade200,
+              valueColor: AlwaysStoppedAnimation<Color>(
+                RankData.getRankColor(to),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
