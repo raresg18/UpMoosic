@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../l10n/app_localizations.dart';
 import '../data/mood_data.dart';
+import '../l10n/l10n_extension.dart';
 import '../services/mood_tracker_service.dart';
 import '../models/mood_entry.dart';
 
@@ -175,6 +177,84 @@ class _JournalPageState extends State<JournalPage> {
     }
   }
 
+  Future<void> _deleteDay() async {
+    final l10n = AppLocalizations.of(context)!;
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text(l10n.dynamicString('journal_delete_title')),
+        content: Text(l10n.dynamicString('journal_delete_confirm')),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(false),
+            child: Text(l10n.deleteNo),
+          ),
+          TextButton(
+            style: TextButton.styleFrom(foregroundColor: Colors.red),
+            onPressed: () => Navigator.of(ctx).pop(true),
+            child: Text(l10n.deleteYes),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed == true) {
+      await _trackerService.deleteMood(_selectedDay);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(l10n.dynamicString('journal_delete_success'))),
+        );
+        await _loadInitialData();
+      }
+    }
+  }
+
+  Future<void> _exportJournal() async {
+    final l10n = AppLocalizations.of(context)!;
+    final allEntries = _trackerService.getAllMoodEntries();
+
+    if (allEntries.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(l10n.dynamicString('journal_export_empty'))),
+      );
+      return;
+    }
+
+    allEntries.sort((a, b) => a.date.compareTo(b.date));
+
+    final buffer = StringBuffer();
+    buffer.writeln('📓 UpMoosic — ${l10n.dynamicString('journal_export_title')}');
+    buffer.writeln('─────────────────────────────');
+
+    for (final entry in allEntries) {
+      final d = entry.date;
+      buffer.writeln('📅 ${d.day}.${d.month}.${d.year}');
+      final localMood = _getLocalizedMoodName(context, entry.moodName);
+      buffer.writeln('   ${_getMoodEmoji(entry.moodName)} $localMood');
+      if (entry.note != null && entry.note!.isNotEmpty) {
+        buffer.writeln('   📝 ${entry.note}');
+      }
+      buffer.writeln();
+    }
+
+    final text = buffer.toString();
+    await Clipboard.setData(ClipboardData(text: text));
+
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(l10n.dynamicString('journal_export_success')),
+          duration: const Duration(seconds: 3),
+        ),
+      );
+    }
+  }
+
+  String _getMoodEmoji(String moodName) {
+    final model = MoodData.getMoodModelByName(moodName);
+    return model.emoji;
+  }
+
   List<Widget> _getEventsForDay(DateTime day) {
     final normalizedDay = DateTime(day.year, day.month, day.day);
     final moodName = _moodMap[normalizedDay];
@@ -221,6 +301,13 @@ class _JournalPageState extends State<JournalPage> {
         title: Text(l10n.journalTitle),
         backgroundColor: Colors.blueGrey.shade700,
         foregroundColor: Colors.white,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.ios_share_rounded),
+            tooltip: l10n.dynamicString('journal_export_button'),
+            onPressed: _exportJournal,
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
@@ -362,6 +449,22 @@ class _JournalPageState extends State<JournalPage> {
                           style: const TextStyle(fontSize: 14, fontStyle: FontStyle.italic, color: Colors.black54),
                         ),
                       ),
+                    const SizedBox(height: 16),
+                    OutlinedButton.icon(
+                      onPressed: _deleteDay,
+                      icon: const Icon(Icons.delete_outline, color: Colors.red),
+                      label: Text(
+                        l10n.dynamicString('journal_delete_button'),
+                        style: const TextStyle(color: Colors.red),
+                      ),
+                      style: OutlinedButton.styleFrom(
+                        side: const BorderSide(color: Colors.red),
+                        minimumSize: const Size(double.infinity, 44),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
                   ],
                 )
                     : Text(

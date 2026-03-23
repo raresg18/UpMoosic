@@ -204,7 +204,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          const SizedBox(height: 180),
+          const SizedBox(height: 40),
           // ── Buttons ────────────────────────────────────────────
           Expanded(
             child: Center(

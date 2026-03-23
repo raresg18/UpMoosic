@@ -4,11 +4,24 @@
   "greeting_afternoon": "Good Afternoon!",
   "greeting_evening": "Good Evening!",
   "surprise_me_button": "Surprise Me",
+
+  "journal_delete_button": "Delete this day",
+  "journal_delete_title": "Delete entry",
+  "journal_delete_confirm": "Are you sure you want to delete this day's mood?",
+  "journal_delete_success": "Entry deleted successfully.",
+  "journal_export_button": "Export journal",
+  "journal_export_title": "Mood Journal",
+  "journal_export_empty": "No entries to export yet.",
+  "journal_export_success": "Journal copied to clipboard!",
+  "rank_points_left": "{n} points until next rank:",
+  "rank_max_reached": "You've reached the highest rank!",
+
   "quote_happy_1": "Happiness depends upon ourselves.",
   "quote_happy_2": "The purpose of life is to be useful and honorable.",
   "quote_happy_3": "For every minute you are angry you lose sixty seconds of happiness.",
   "quote_happy_4": "Happiness is not something ready-made. It comes from your own actions.",
   "quote_happy_5": "Happiness is a choice, not a result.",
+
 
   "quote_sad_1": "Tears come from the heart and not from the brain.",
   "quote_sad_2": "It's okay not to be okay sometimes.",
