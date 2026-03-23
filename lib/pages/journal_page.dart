@@ -172,7 +172,7 @@ class _JournalPageState extends State<JournalPage> {
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Nu poți edita zilele din trecut."), backgroundColor: Colors.red),
+        SnackBar(content: Text(l10n.savePastDateError), backgroundColor: Colors.red),
       );
     }
   }
@@ -237,8 +237,7 @@ class _JournalPageState extends State<JournalPage> {
       buffer.writeln();
     }
 
-    final text = buffer.toString();
-    await Clipboard.setData(ClipboardData(text: text));
+    await Clipboard.setData(ClipboardData(text: buffer.toString()));
 
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -251,8 +250,7 @@ class _JournalPageState extends State<JournalPage> {
   }
 
   String _getMoodEmoji(String moodName) {
-    final model = MoodData.getMoodModelByName(moodName);
-    return model.emoji;
+    return MoodData.getMoodModelByName(moodName).emoji;
   }
 
   List<Widget> _getEventsForDay(DateTime day) {
@@ -411,7 +409,7 @@ class _JournalPageState extends State<JournalPage> {
                   ElevatedButton.icon(
                     onPressed: _selectedMoodName != null ? _saveMood : null,
                     icon: const Icon(Icons.check_circle_outline),
-                    label: Text(_hasTrackedToday ? l10n.saveMoodButton : l10n.saveMoodButton),
+                    label: Text(_hasTrackedToday ? l10n.buttonUpdateMood : l10n.buttonSaveMood),
                     style: ElevatedButton.styleFrom(
                       minimumSize: const Size(double.infinity, 50),
                       backgroundColor: Colors.indigo,
@@ -429,7 +427,7 @@ class _JournalPageState extends State<JournalPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Starea din ${_selectedDay.day}.${_selectedDay.month}.${_selectedDay.year}:',
+                      l10n.pastDayMoodWas(_selectedDay.day, _selectedDay.month, _selectedDay.year),
                       style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                     ),
                     const SizedBox(height: 5),
@@ -468,7 +466,7 @@ class _JournalPageState extends State<JournalPage> {
                   ],
                 )
                     : Text(
-                  "Nu există date pentru această zi.",
+                  l10n.noRecordForDay(_selectedDay.day, _selectedDay.month, _selectedDay.year),
                   style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.grey),
                 ),
               ),

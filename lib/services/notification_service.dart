@@ -89,7 +89,7 @@ class NotificationService {
         android: AndroidNotificationDetails(
           channelId,
           channelName,
-          channelDescription: 'Canal pentru notificări zilnice',
+          channelDescription: body,
           importance: Importance.max,
           priority: Priority.high,
           icon: '@mipmap/ic_launcher',

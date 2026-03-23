@@ -196,7 +196,7 @@ class _AccountPageState extends State<AccountPage> {
                       },
                     ),
 
-                  // Language section
+                  // ── Language section ───────────────────────────
                   const SizedBox(height: 16),
                   Text(
                     l10n.dynamicString('settings_section_language'),
@@ -227,19 +227,13 @@ class _AccountPageState extends State<AccountPage> {
                       flag: '🇷🇴',
                       label: 'Română',
                       locale: const Locale('ro'),
-                      l10n: l10n,
-                      onSelected: () {
-                        setStateDialog(() => showLanguageOptions = false);
-                      },
+                      onSelected: () => setStateDialog(() => showLanguageOptions = false),
                     ),
                     _LanguageOption(
                       flag: '🇬🇧',
                       label: 'English',
                       locale: const Locale('en'),
-                      l10n: l10n,
-                      onSelected: () {
-                        setStateDialog(() => showLanguageOptions = false);
-                      },
+                      onSelected: () => setStateDialog(() => showLanguageOptions = false),
                     ),
                   ],
                 ],
@@ -261,17 +255,18 @@ class _AccountPageState extends State<AccountPage> {
     final l10n = AppLocalizations.of(context)!;
 
     String descriptionKey;
-    // Folosim formatul din JSON (snake_case)
     if (totalPoints < 100) {
-      descriptionKey = "rank_desc_0";
-    } else if (totalPoints < 300) {
-      descriptionKey = "rank_desc_1";
-    } else if (totalPoints < 600) {
-      descriptionKey = "rank_desc_2";
+      descriptionKey = "rank_desc_0"; // Shy Note
+    } else if (totalPoints < 200) {
+      descriptionKey = "rank_desc_1"; // Beginner Spirit
+    } else if (totalPoints < 500) {
+      descriptionKey = "rank_desc_2"; // Balanced Listener
     } else if (totalPoints < 1000) {
-      descriptionKey = "rank_desc_3";
+      descriptionKey = "rank_desc_3"; // Rhythm Explorer
+    } else if (totalPoints < 2500) {
+      descriptionKey = "rank_desc_4"; // Mood Composer
     } else {
-      descriptionKey = "rank_desc_4";
+      descriptionKey = "rank_desc_5"; // Living Symphony
     }
 
     String description = l10n.dynamicString(descriptionKey);
@@ -407,12 +402,13 @@ class _AccountPageState extends State<AccountPage> {
                             ),
                           ),
                         ),
-
-                        // ── Progress to next rank ──────────────────
-                        const SizedBox(height: 16),
-                        _RankProgressBar(totalPoints: totalPoints, l10n: l10n),
                       ],
                     ),
+                  ),
+                  const SizedBox(height: 12),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: _RankProgressBar(totalPoints: totalPoints, l10n: l10n),
                   ),
                   const SizedBox(height: 40),
 
@@ -613,47 +609,7 @@ class _AccountPageState extends State<AccountPage> {
   }
 }
 
-class _LanguageOption extends StatelessWidget {
-  final String flag;
-  final String label;
-  final Locale locale;
-  final AppLocalizations l10n;
-  final VoidCallback onSelected;
-
-  const _LanguageOption({
-    required this.flag,
-    required this.label,
-    required this.locale,
-    required this.l10n,
-    required this.onSelected,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(8),
-      onTap: () {
-        final provider = Provider.of<LanguageProvider>(context, listen: false);
-        provider.setLocale(locale);
-        onSelected();
-      },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-        child: Row(
-          children: [
-            const SizedBox(width: 8),
-            Text(flag, style: const TextStyle(fontSize: 20)),
-            const SizedBox(width: 12),
-            Text(
-              label,
-              style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+// ── Rank Progress Bar ──────────────────────────────────────────────────────────
 
 class _RankProgressBar extends StatelessWidget {
   final int totalPoints;
@@ -661,7 +617,6 @@ class _RankProgressBar extends StatelessWidget {
 
   const _RankProgressBar({required this.totalPoints, required this.l10n});
 
-  // Returns {current threshold, next threshold, next rank name}
   Map<String, dynamic> _getProgressInfo() {
     if (totalPoints < 100) {
       return {'from': 0, 'to': 100, 'nextRank': '${l10n.rankBeginnerSpirit} 🎵'};
@@ -684,17 +639,14 @@ class _RankProgressBar extends StatelessWidget {
     final bool isMaxRank = info['nextRank'] == null;
 
     if (isMaxRank) {
-      return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
-        child: Text(
-          '🏆 ${l10n.dynamicString('rank_max_reached')}',
-          style: const TextStyle(
-            fontSize: 13,
-            fontWeight: FontWeight.w600,
-            color: Colors.amber,
-          ),
-          textAlign: TextAlign.center,
+      return Text(
+        '🏆 ${l10n.dynamicString('rank_max_reached')}',
+        style: const TextStyle(
+          fontSize: 13,
+          fontWeight: FontWeight.w600,
+          color: Colors.amber,
         ),
+        textAlign: TextAlign.center,
       );
     }
 
@@ -702,38 +654,76 @@ class _RankProgressBar extends StatelessWidget {
     final int to = info['to'] as int;
     final String nextRank = info['nextRank'] as String;
     final int pointsLeft = to - totalPoints;
-    final double progress = (totalPoints - from) / (to - from);
+    final double progress = ((totalPoints - from) / (to - from)).clamp(0.0, 1.0);
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                l10n.dynamicString('rank_points_left').replaceAll('{n}', '$pointsLeft'),
-                style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
-              ),
-              Text(
-                nextRank,
-                style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
-              ),
-            ],
-          ),
-          const SizedBox(height: 6),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: LinearProgressIndicator(
-              value: progress.clamp(0.0, 1.0),
-              minHeight: 8,
-              backgroundColor: Colors.grey.shade200,
-              valueColor: AlwaysStoppedAnimation<Color>(
-                RankData.getRankColor(to),
-              ),
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              l10n.dynamicString('rank_points_left').replaceAll('{n}', '$pointsLeft'),
+              style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+            ),
+            Text(
+              nextRank,
+              style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+            ),
+          ],
+        ),
+        const SizedBox(height: 6),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: LinearProgressIndicator(
+            value: progress,
+            minHeight: 8,
+            backgroundColor: Colors.grey.shade200,
+            valueColor: AlwaysStoppedAnimation<Color>(
+              RankData.getRankColor(to),
             ),
           ),
-        ],
+        ),
+      ],
+    );
+  }
+}
+
+// ── Language Option ────────────────────────────────────────────────────────────
+
+class _LanguageOption extends StatelessWidget {
+  final String flag;
+  final String label;
+  final Locale locale;
+  final VoidCallback onSelected;
+
+  const _LanguageOption({
+    required this.flag,
+    required this.label,
+    required this.locale,
+    required this.onSelected,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      borderRadius: BorderRadius.circular(8),
+      onTap: () {
+        Provider.of<LanguageProvider>(context, listen: false).setLocale(locale);
+        onSelected();
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+        child: Row(
+          children: [
+            const SizedBox(width: 8),
+            Text(flag, style: const TextStyle(fontSize: 20)),
+            const SizedBox(width: 12),
+            Text(
+              label,
+              style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+            ),
+          ],
+        ),
       ),
     );
   }
