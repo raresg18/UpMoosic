@@ -1,13 +1,39 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 import '../l10n/l10n_extension.dart';
 import 'statistics_page.dart';
 import 'mood_selector_page.dart';
+import 'playlist_page.dart';
 import 'journal_page.dart';
 import '../l10n/app_localizations.dart';
+import '../data/mood_data.dart';
+import '../models/song.dart';
+import '../services/mood_tracker_service.dart';
+import '../services/quest_service.dart';
 import 'account_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final MoodTrackerService _trackerService = MoodTrackerService();
+  int _streak = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadStreak();
+  }
+
+  void _loadStreak() {
+    setState(() {
+      _streak = _trackerService.getStreak();
+    });
+  }
 
   String _getGreetingEmoji() {
     final hour = DateTime.now().hour;
@@ -33,6 +59,28 @@ class HomePage extends StatelessWidget {
     return '${days[now.weekday - 1]}, ${months[now.month]} ${now.day}';
   }
 
+  Future<void> _surpriseMe(AppLocalizations l10n) async {
+    final random = Random();
+    final randomMood = MoodData.allMoodsListView[
+    random.nextInt(MoodData.allMoodsListView.length)
+    ];
+    await QuestService.resetQuest();
+    final Song song = randomMood.playlist[random.nextInt(randomMood.playlist.length)];
+    final String quoteKey = randomMood.quotesKeys[random.nextInt(randomMood.quotesKeys.length)];
+    if (mounted) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => PlaylistScreen(
+            mood: randomMood.id,
+            song: song,
+            quoteKey: quoteKey,
+          ),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
@@ -49,10 +97,8 @@ class HomePage extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => const AccountPage(),
-                ),
-              );
+                MaterialPageRoute(builder: (context) => const AccountPage()),
+              ).then((_) => _loadStreak());
             },
           ),
           const SizedBox(width: 8),
@@ -97,42 +143,69 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 14),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      l10n.dynamicString('home_tagline'),
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                        letterSpacing: 0.3,
-                      ),
-                    ),
-                    const SizedBox(height: 2),
-                    Row(
-                      children: [
-                        Text(
-                          _getGreetingEmoji(),
-                          style: const TextStyle(fontSize: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        l10n.dynamicString('home_tagline'),
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                          letterSpacing: 0.3,
                         ),
-                        const SizedBox(width: 6),
+                      ),
+                      const SizedBox(height: 2),
+                      Row(
+                        children: [
+                          Text(
+                            _getGreetingEmoji(),
+                            style: const TextStyle(fontSize: 14),
+                          ),
+                          const SizedBox(width: 6),
+                          Text(
+                            '${_getGreetingText(l10n)}  ·  ${_getFormattedDate()}',
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: Colors.white.withOpacity(0.85),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+
+                // ── Streak Badge ───────────────────────────────
+                if (_streak > 0)
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: Colors.orange.shade400,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Text('🔥', style: TextStyle(fontSize: 14)),
+                        const SizedBox(width: 4),
                         Text(
-                          '${_getGreetingText(l10n)}  ·  ${_getFormattedDate()}',
-                          style: TextStyle(
-                            fontSize: 13,
-                            color: Colors.white.withOpacity(0.85),
+                          '$_streak',
+                          style: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
                           ),
                         ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
               ],
             ),
           ),
-
-          // ── Original buttons, untouched ────────────────────────
+          const SizedBox(height: 180),
+          // ── Buttons ────────────────────────────────────────────
           Expanded(
             child: Center(
               child: Column(
@@ -145,10 +218,12 @@ class HomePage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (_) => const MoodSelectorPage()),
-                      );
+                      ).then((_) => _loadStreak());
                     },
                   ),
-                  const SizedBox(height: 18),
+                  const SizedBox(height: 14),
+
+
 
                   ElevatedButton.icon(
                     icon: const Icon(Icons.pie_chart),
@@ -178,9 +253,22 @@ class HomePage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (_) => const JournalPage()),
-                      );
+                      ).then((_) => _loadStreak());
                     },
                   ),
+                  const SizedBox(height: 18),
+
+                  // ── Surprise Me button ─────────────────────────
+                  ElevatedButton.icon(
+                    icon: const Icon(Icons.casino_rounded),
+                    label: Text(l10n.dynamicString('surprise_me_button')),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.deepPurple.shade400,
+                      foregroundColor: Colors.white,
+                    ),
+                    onPressed: () => _surpriseMe(l10n),
+                  ),
+
                 ],
               ),
             ),

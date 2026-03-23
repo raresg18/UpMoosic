@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import '../models/mood_entry.dart';
@@ -33,6 +34,23 @@ class MoodTrackerService {
   Future<void> deleteMood(DateTime date) async {
     final String key = _getDateKey(date);
     await _box.delete(key);
+  }
+
+  int getStreak() {
+    int streak = 0;
+    DateTime day = DateTime.now();
+
+    while (true) {
+      final key = _getDateKey(day);
+      if (_box.containsKey(key)) {
+        streak++;
+        day = day.subtract(const Duration(days: 1));
+      } else {
+        break;
+      }
+    }
+
+    return streak;
   }
   String _getDateKey(DateTime date) {
     return '${date.year}-${date.month}-${date.day}';

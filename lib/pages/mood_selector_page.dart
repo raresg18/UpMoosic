@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import '../l10n/l10n_extension.dart';
 import 'playlist_page.dart';
 import '../data/mood_data.dart';
 import '../models/mood_model.dart';
@@ -122,6 +123,40 @@ class _MoodSelectorPageState extends State<MoodSelectorPage> {
                 }).toList(),
               ),
               const Spacer(),
+              OutlinedButton.icon(
+                onPressed: () async {
+                  final random = Random();
+                  final randomMood = MoodData.allMoodsListView[
+                  random.nextInt(MoodData.allMoodsListView.length)
+                  ];
+                  await QuestService.resetQuest();
+                  final song = randomMood.playlist[random.nextInt(randomMood.playlist.length)];
+                  final quoteKey = randomMood.quotesKeys[random.nextInt(randomMood.quotesKeys.length)];
+                  if (context.mounted) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PlaylistScreen(
+                          mood: randomMood.id,
+                          song: song,
+                          quoteKey: quoteKey,
+                        ),
+                      ),
+                    );
+                  }
+                },
+                icon: const Icon(Icons.casino_rounded),
+                label: Text(l10n.dynamicString('surprise_me_button')),
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: const Color(0xFF4A4E69),
+                  side: const BorderSide(color: Color(0xFF4A4E69), width: 1.5),
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 12),
               ElevatedButton(
                 onPressed: _selectedMoodModel != null ? _navigateToPlaylist : null,
                 style: ElevatedButton.styleFrom(
