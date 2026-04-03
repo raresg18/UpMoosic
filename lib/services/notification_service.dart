@@ -3,6 +3,7 @@ import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_timezone/flutter_timezone.dart';
 import 'dart:io';
 
 class NotificationService {
@@ -15,6 +16,12 @@ class NotificationService {
 
   Future<void> init() async {
     tz.initializeTimeZones();
+
+    if (Platform.isAndroid || Platform.isIOS) {
+      final tzInfo = await FlutterTimezone.getLocalTimezone();
+      final String timeZoneName = tzInfo.identifier;
+      tz.setLocalLocation(tz.getLocation(timeZoneName));
+    }
 
     const AndroidInitializationSettings initializationSettingsAndroid =
     AndroidInitializationSettings('@mipmap/ic_launcher');
@@ -52,10 +59,11 @@ class NotificationService {
           AndroidFlutterLocalNotificationsPlugin>();
 
       if (androidImplementation != null) {
-        isGranted = await androidImplementation.requestNotificationsPermission();
+        isGranted =
+        await androidImplementation.requestNotificationsPermission();
+        await androidImplementation.requestExactAlarmsPermission();
       }
-    }
-    else if (Platform.isIOS) {
+    } else if (Platform.isIOS) {
       final iosImplementation = flutterLocalNotificationsPlugin
           .resolvePlatformSpecificImplementation<
           IOSFlutterLocalNotificationsPlugin>();
@@ -72,13 +80,14 @@ class NotificationService {
     return isGranted ?? false;
   }
 
-  Future<void> scheduleDailyNotification(
-      int hour, int minute, String title, String body, String channelId, String channelName) async {
-
+  Future<void> scheduleDailyNotification(int hour, int minute, String title,
+      String body, String channelId, String channelName) async {
     if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-      if (kDebugMode) debugPrint("🖥️ Windows detectat: Notificarea nu a fost programată (comportament corect).");
+      if (kDebugMode) debugPrint("🖥️ Windows detectat: Notificarea nu a fost programată.");
       return;
     }
+
+    await flutterLocalNotificationsPlugin.cancel(0);
 
     await flutterLocalNotificationsPlugin.zonedSchedule(
       0,
@@ -102,7 +111,7 @@ class NotificationService {
       matchDateTimeComponents: DateTimeComponents.time,
     );
 
-    if (kDebugMode) debugPrint("🔔 Notificare programată zilnic la $hour:$minute");
+    if (kDebugMode) debugPrint("🔔 Notificare programată zilnic la $hour:$minute (${tz.local.name})");
   }
 
   Future<void> cancelNotifications() async {

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import '../l10n/app_localizations.dart';
 import '../l10n/l10n_extension.dart';
 import '../models/user_quest.dart';
 import '../providers/quest_state.dart';
-import '../services/notification_service.dart';
 import '../data/rank_data.dart';
 import 'language_selector_page.dart';
 import '../providers/language_provider.dart';
@@ -69,22 +67,11 @@ class _AccountPageState extends State<AccountPage> {
   }
 
   Future<void> _showSettingsDialog(BuildContext context) async {
-    if (!Hive.isBoxOpen('settings')) {
-      await Hive.openBox('settings');
-    }
-
-    final box = Hive.box('settings');
-
     if (!context.mounted) return;
 
     final l10n = AppLocalizations.of(context)!;
 
-    bool isEnabled = box.get('reminder_enabled', defaultValue: false);
-    int hour = box.get('reminder_hour', defaultValue: 20);
-    int minute = box.get('reminder_minute', defaultValue: 0);
     bool showLanguageOptions = false;
-
-    TimeOfDay selectedTime = TimeOfDay(hour: hour, minute: minute);
 
     showDialog(
       context: context,
@@ -97,106 +84,6 @@ class _AccountPageState extends State<AccountPage> {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    l10n.dynamicString('settings_section_notif'),
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).primaryColor
-                    ),
-                  ),
-                  const Divider(),
-                  SwitchListTile(
-                    contentPadding: EdgeInsets.zero,
-                    title: Text(l10n.dynamicString('settings_daily_notif')),
-                    value: isEnabled,
-                    onChanged: (bool value) async {
-                      if (value) {
-                        bool granted = await NotificationService().requestPermissions();
-
-                        if (granted) {
-                          setStateDialog(() {
-                            isEnabled = true;
-                          });
-                          box.put('reminder_enabled', true);
-
-                          NotificationService().scheduleDailyNotification(
-                            selectedTime.hour,
-                            selectedTime.minute,
-                            l10n.dynamicString('notif_title'),
-                            l10n.dynamicString('notif_body'),
-                            'daily_channel_id', // ID unic canal
-                            l10n.dynamicString('channel_name'),
-                          );
-
-                          if (context.mounted) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text("${l10n.dynamicString('settings_notif_active')} ${selectedTime.format(context)}!")),
-                            );
-                          }
-                        } else {
-                          setStateDialog(() { isEnabled = false; });
-                          if (context.mounted) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                  content: Text(l10n.dynamicString('settings_permission_required'))
-                              ),
-                            );
-                          }
-                        }
-                      } else {
-                        setStateDialog(() {
-                          isEnabled = false;
-                        });
-                        box.put('reminder_enabled', false);
-                        NotificationService().cancelNotifications();
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text(l10n.dynamicString('settings_notif_inactive'))),
-                        );
-                      }
-                    },
-                  ),
-                  if (isEnabled)
-                    ListTile(
-                      contentPadding: EdgeInsets.zero,
-                      title: Text(l10n.dynamicString('settings_time_label')),
-                      trailing: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade200,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Text(
-                          selectedTime.format(context),
-                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                      ),
-                      onTap: () async {
-                        final TimeOfDay? picked = await showTimePicker(
-                          context: context,
-                          initialTime: selectedTime,
-                        );
-                        if (picked != null && picked != selectedTime) {
-                          setStateDialog(() {
-                            selectedTime = picked;
-                          });
-
-                          box.put('reminder_hour', picked.hour);
-                          box.put('reminder_minute', picked.minute);
-
-                          NotificationService().scheduleDailyNotification(
-                            picked.hour,
-                            picked.minute,
-                            l10n.dynamicString('notif_title'),
-                            l10n.dynamicString('notif_body'),
-                            l10n.dynamicString('channel_name'),
-                            l10n.dynamicString('channel_desc'),
-                          );
-                        }
-                      },
-                    ),
-
-                  // ── Language section ───────────────────────────
                   const SizedBox(height: 16),
                   Text(
                     l10n.dynamicString('settings_section_language'),
@@ -619,15 +506,15 @@ class _RankProgressBar extends StatelessWidget {
 
   Map<String, dynamic> _getProgressInfo() {
     if (totalPoints < 100) {
-      return {'from': 0, 'to': 100, 'nextRank': '${l10n.rankBeginnerSpirit} 🎵'};
+      return {'from': 0, 'to': 100, 'nextRank': '${l10n.rankBeginnerSpirit}'};
     } else if (totalPoints < 200) {
-      return {'from': 100, 'to': 200, 'nextRank': '${l10n.rankBalancedListener} 🎧'};
+      return {'from': 100, 'to': 200, 'nextRank': '${l10n.rankBalancedListener}'};
     } else if (totalPoints < 500) {
-      return {'from': 200, 'to': 500, 'nextRank': '${l10n.rankRhythmExplorer} 🥁'};
+      return {'from': 200, 'to': 500, 'nextRank': '${l10n.rankRhythmExplorer}'};
     } else if (totalPoints < 1000) {
-      return {'from': 500, 'to': 1000, 'nextRank': '${l10n.rankMoodComposer} 🎼'};
+      return {'from': 500, 'to': 1000, 'nextRank': '${l10n.rankMoodComposer}'};
     } else if (totalPoints < 2500) {
-      return {'from': 1000, 'to': 2500, 'nextRank': '${l10n.rankLivingSymphony} 🎻'};
+      return {'from': 1000, 'to': 2500, 'nextRank': '${l10n.rankLivingSymphony} '};
     } else {
       return {'from': 2500, 'to': 2500, 'nextRank': null};
     }

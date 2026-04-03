@@ -122,7 +122,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     ),
                     child: Text(
                       _currentPage == _pages.length - 1
-                          ? "Let's go! 🚀"
+                          ? "Let's go!"
                           : 'Next →',
                       style: const TextStyle(
                         fontSize: 16,

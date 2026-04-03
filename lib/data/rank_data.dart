@@ -4,11 +4,11 @@ import '../l10n/app_localizations.dart';
 
 class RankData {
   static String getRankName(int points, AppLocalizations l10n) {
-    if (points >= 2500) return "${l10n.rankLivingSymphony} 🎻";
-    if (points >= 1000) return "${l10n.rankMoodComposer} 🎼";
-    if (points >= 500) return "${l10n.rankRhythmExplorer} 🥁";
-    if (points >= 200) return "${l10n.rankBalancedListener} 🎧";
-    if (points >= 100) return "${l10n.rankBeginnerSpirit} 🎵";
+    if (points >= 2500) return "${l10n.rankLivingSymphony}";
+    if (points >= 1000) return "${l10n.rankMoodComposer}";
+    if (points >= 500) return "${l10n.rankRhythmExplorer}";
+    if (points >= 200) return "${l10n.rankBalancedListener}";
+    if (points >= 100) return "${l10n.rankBeginnerSpirit}";
     return "${l10n.rankShyNote} 🎹";
   }
 

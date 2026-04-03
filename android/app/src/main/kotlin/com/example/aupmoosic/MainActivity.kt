@@ -1,4 +1,4 @@
-package com.example.aupmoosic
+package com.raresoftworks.aupmoosic
 
 import io.flutter.embedding.android.FlutterActivity
 
